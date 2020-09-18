@@ -6,7 +6,7 @@ urlpatterns = [
     path('register/', views.signup, name='user_register'),
     path('register/author', views.createauthor, name='author_register'),
     path('thank/', views.thankyou, name='thank'),
-    path('signin/',LoginView.as_view(template_name='registration/signin.html'), name='signin'),
-    # path('signin/',views.MyLoginView.as_view(), name='signin'),
+    # path('signin/',LoginView.as_view(), name='signin'),
+    path('signin/',views.MyLoginView.as_view(), name='signin'),
     path('logout/', LogoutView.as_view(), name='logout'),
 ]
