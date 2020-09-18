@@ -103,3 +103,15 @@ body{
     width: 250px;
     height: 30px;
   }
+
+div.left {
+    width: 10%;
+    float: left;
+    box-sizing: border-box;
+}
+
+div.right {
+    width: 10%;
+    float: left;
+    box-sizing: border-box;
+}
