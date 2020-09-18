@@ -20,11 +20,11 @@
               <li><a class="menuLink" href="#">홈</a></li>
               <li><a class="menuLink" href="#" style="color: #606060;">분야별</a></li>
               <li><a class="menuLink" href="#" style="color: #606060;">인기작품</a></li>
-              <img src="img/search.png" alt="검색">
+              <img src="{% static "img/search.png" %}" alt="검색">
               <li><input class="search" type = "text" name = "검색" size="20" maxlength="100"  height="200" value="검색" ></li>
               <!-- <li class="signin-header"> 검색 </li> -->
-              <li><input type="button" name="button1" value="로그인"></li>
-              <li><input type="button" name="button2" value="회원가입"></li>
+              <li><a href={% url 'signin' %}><input type="button" name="button1" value="로그인"></a></li>
+              <li><a href={% url 'user_register' %}><input type="button" name="button2" value="회원가입"></a></li>
           </ul>
       </nav>
     </header>

@@ -26,9 +26,9 @@ import report.urls
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('user/', include(user.urls)),
-    path('post/', include(tomaggeultext.urls)),
-    path('subscribe/', include(subscribe.urls)),
-    path('genre/', include(genre.urls)),
-    path('report/', include(report.urls)),
+    path('', include(user.urls)),
+    path('', include(tomaggeultext.urls)),
+    path('', include(subscribe.urls)),
+    path('', include(genre.urls)),
+    path('', include(report.urls)),
 ]+ static(settings.MEDIA_URL, document_root = settings.MEDIA_ROOT)
