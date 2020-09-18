@@ -19,7 +19,7 @@ from django.conf import settings
 from django.conf.urls.static import static
 
 import user.urls
-import tomaggeul.urls
+import tomaggeultext.urls
 import subscribe.urls
 import genre.urls
 import report.urls
@@ -27,7 +27,7 @@ import report.urls
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('user/', include(user.urls)),
-    path('post/', include(tomaggeul.urls)),
+    path('post/', include(tomaggeultext.urls)),
     path('subscribe/', include(subscribe.urls)),
     path('genre/', include(genre.urls)),
     path('report/', include(report.urls)),

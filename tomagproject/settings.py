@@ -40,7 +40,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
 
     'user.apps.UserConfig',             #회원
-    'tomaggeul.apps.TomaggeulConfig',   #토막글
+    'tomaggeultext.apps.TomaggeultextConfig',   #토막글
     'subscribe.apps.SubscribeConfig',   #구독
     'genre.apps.GenreConfig',           #장르
     'report.apps.ReportConfig',         #신고
@@ -127,12 +127,12 @@ USE_TZ = True
 STATIC_URL = '/static/'
 
 STATICFILES_DIRS = [
-    os.path.join(BASE_DIR, 'user', 'static')
+    Path(BASE_DIR, 'user', 'static')
 ]
 
-STATIC_ROOT = os.path.join(BASE_DIR, 'static')
+STATIC_ROOT = Path(BASE_DIR, 'static')
 
-MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+MEDIA_ROOT = Path(BASE_DIR, 'media')
 MEDIA_URL = '/media/'
 
 ## custom user ##
