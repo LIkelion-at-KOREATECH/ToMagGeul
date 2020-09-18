@@ -1,33 +1,13 @@
 <!doctype html>
 <html lang="ko-kr">
 
-<script src="//code.jquery.com/jquery-3.3.1.min.js"></script>
-
 <form method="POST" action="" enctype="multipart/form-data">
     {% csrf_token %}
     <table>
         {{regi_form.as_table}}
     </table>
 
-    <div id="authorform"> </div>
-    
     <input type="submit" value="회원가입">
 </form>
-
-<table class="dummy" style="display:none;">
-    {{author_form.as_table}}
-</table>
-
-<script type="text/javascript">
-function setDisplay(){
-    var authorform = $('.dummy').clone(true);
-    if($('input:checkbox[id=id_is_author]').is(':checked')){
-        $('#authorform').append(authorform.removeClass('dummy').show());
-    }else{
-        $('#authorform').children().remove()
-    }
-}
-setDisplay()
-</script>
 
 </html>

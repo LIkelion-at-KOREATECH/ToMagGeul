@@ -146,3 +146,5 @@ import dj_database_url
 db_from_env = dj_database_url.config(conn_max_age=500)
 DATABASES['default'].update(db_from_env)
 ### heroku 배포
+
+LOGIN_REDIRECT_URL='/'
