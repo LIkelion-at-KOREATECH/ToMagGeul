@@ -1,116 +1,114 @@
 {% load static %}
 <!DOCTYPE html>
+
+
 <html lang="ko-kr">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>토막글</title>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
-    <link rel="stylesheet" type="text/css" href="{%static 'css/mainpage.css'%}">
-  </head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>토막글</title>
+  <link rel="stylesheet" href={% static 'css/signin.css' %} />
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+    integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+    integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous">
+  </script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+    integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous">
+  </script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+    integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous">
+  </script>
+  <link rel="stylesheet" type="text/css" href="{%static 'css/mainpage.css'%}">
+</head>
+
 <body>
-    <!--헤더 네브바-->
-    <header class="TopHeader">
-      <nav id="topMenu">
-          <ul>
-              <li><a class="menuLink" href="#">토막글</a></li>
-              <li><a class="menuLink" href="#">홈</a></li>
-              <li><a class="menuLink" href="#" style="color: #606060;">분야별</a></li>
-              <li><a class="menuLink" href="#" style="color: #606060;">인기작품</a></li>
-              <img src="{% static "img/search.png" %}" alt="검색">
-              <li><input class="search" type = "text" name = "검색" size="20" maxlength="100"  height="200" value="검색" ></li>
-              <!-- <li class="signin-header"> 검색 </li> -->
-              <li><a href={% url 'signin' %}><input type="button" name="button1" value="로그인"></a></li>
-              <li><a href={% url 'user_register' %}><input type="button" name="button2" value="회원가입"></a></li>
-          </ul>
-      </nav>
-    </header>
+  <!--헤더 네브바-->
+  <header class="TopHeader">
+    <nav id="topMenu">
+      <ul>
+        <li><a class="menuLink" href="#">토막글</a></li>
+        <li><a class="menuLink" href="#">홈</a></li>
+        <li><a class="menuLink" href="#" style="color: #606060;">분야별</a></li>
+        <li><a class="menuLink" href="#" style="color: #606060;">인기작품</a></li>
+        <img src={% static "img/search.png" %} alt="검색" style="width: 30px;">
+        <li><input class="search" type="text" name="검색" size="20" maxlength="100" height="200" value="검색"></li>
+        <!-- <li class="signin-header"> 검색 </li> -->
+        <li><a href={% url 'signin' %}><input id="button_signin" type="button" name="button1" value="로그인"></a></li>
+        <li class="smallblank"></li>
+        <li><a href={% url 'user_register' %}><input id="button_signup" type="button" name="button2" value="회원가입"></a>
+        </li>
+      </ul>
+    </nav>
+  </header>
 
-    <!--장르바-->
-    <ul class="nav justify-content-center">
-        <li class="nav-item">
-          <a class="nav-link " href="#1">장르</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#2">장르</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#3">장르</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#4">장르</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#5">장르</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#6">장르</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#7">장르</a>
-        </li>
-    </ul>
+  <!--장르바-->
+  <ul class="nav justify-content-center">
+    {% for genre in all_genre %}
+    <li class="nav-item">
+      <a class="nav-link " href="#1">{{genre}}</a>
+    </li>
+    {% endfor %}
+  </ul>
 
-    <!--금주의 인기작-->
-    <div class="this_week_title">
-      <p>이번주 인기작 TOP 3</p>
-    </div>
+  <!--금주의 인기작-->
+  <div class="this_week_title">
+    <p>이번주 인기작 TOP 3</p>
+  </div>
 
-    <div class="this_week">
-      <div class="card-group">
-        <div class="card">
-          <img src="..." class="card-img-top" alt="...">
-          <div class="card-body">
-            <h5 class="card-title">Card title</h5>
-            <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-            <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
-          </div>
+  <div class="this_week">
+    <div class="card-group">
+      {% for tomaggeul in all_tmtext %}
+      <div class="card">
+        <div>
+          <img src={% static "img/no-image.png" %} alt="..." />
         </div>
-        <div class="card">
-          <img src="..." class="card-img-top" alt="...">
-          <div class="card-body">
-            <h5 class="card-title">Card title</h5>
-            <p class="card-text">This card has supporting text below as a natural lead-in to additional content.</p>
-            <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
-          </div>
-        </div>
-        <div class="card">
-          <img src="..." class="card-img-top" alt="...">
-          <div class="card-body">
-            <h5 class="card-title">Card title</h5>
-            <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This card has even longer content than the first to show that equal height action.</p>
-            <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
-          </div>
+
+
+        <div class="card-body">
+          <h5 class="card-title">{{tomaggeul.text_title}}</h5>
+          <p class="card-text">{{tomaggeul.main_sentence}}</p>
+          <p class="card-text"><small class="text-muted">{{genre}}</small></p>
         </div>
       </div>
+      {% endfor %}
     </div>
-    
+  </div>
 
 
-    <!--모든 토막글-->
-    <div class="all_TMtext_title">
-      모든 토막글
-    </div>
 
-    {% for tomaggeul in all_tmtext %}
+  <!--모든 토막글-->
+  <div class="all_TMtext_title">
+    모든 토막글
+  </div>
 
-      <div class="all_TMtext">
+  {% for tomaggeul in all_tmtext %}
+  <div>
+
+  </div>
+  <div class="all_TMtext">
+
+
+    <div>
+      <div class="left"><img src={% static "img/no-image.png" %} alt="..." style=" width:150px;heigth:200px;" /></div>
+      <div class="right">
         <p>제목 : {{tomaggeul.text_title}}<br></p>
 
         <P>{{tomaggeul.main_sentence}}</P>
-        
+
         <P>
-        {% for genre in tomaggeul.text_genre.all %}
-        {{genre}}
-        {% endfor %}
+          {% for genre in tomaggeul.text_genre.all %}
+          {{genre}}
+          {% endfor %}
         </P>
-        
+
         <P>작가 : {{tomaggeul.writer}}</P>
       </div>
+    </div>
+  </div>
 
-    {% endfor %}
+  {% endfor %}
 </body>
+
 </html>
