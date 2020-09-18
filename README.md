@@ -9,3 +9,6 @@
 
 * 이슈해결 참고 자료입니다.
 https://app.lucidchart.com/invitations/accept/1bd8b93e-7c50-4d74-833a-c5b88e480d29
+
+
+```settings.py```에서 #DEBUG = True 주석 풀어주세요
