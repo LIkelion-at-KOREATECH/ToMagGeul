@@ -39,4 +39,8 @@ def thankyou(request):
     return render(request, 'thankyou.html')
 
 class MyLoginView(LoginView):
-    template_name = 'signin.html'
+    template_name = 'registration/signin.html'
+
+    def get_success_url(self):
+        url = self.get_redirect_url()
+        return url or 'main'
