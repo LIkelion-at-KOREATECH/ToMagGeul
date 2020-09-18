@@ -91,7 +91,7 @@ class UserCreationForm(forms.ModelForm):
             attrs={
                 'type' : 'text',
                 'class': 'form-control',
-                'placeholder': _('Phone Number'),
+                'placeholder': '000-0000-0000',
             }
         ),
         max_length = 13
@@ -131,8 +131,7 @@ class UserCreationForm(forms.ModelForm):
                     'date_of_birth',
                     'phone_number',
                     'address',
-                    'prefer_genre',
-                    'is_author')
+                    'prefer_genre')
 
     def clean_password2(self):
         # 두 비밀번호 입력 일치 확인

@@ -1,0 +1,13 @@
+<!doctype html>
+<html lang="ko-kr">
+
+{% load static %}
+
+<form method="POST" action={% url 'author_register' %} enctype="multipart/form-data">
+    {% csrf_token %}
+    <table>
+    {{author_form.as_table}}
+    </table>
+    <input type="hidden" name="name" value={{user.nickname}}>
+    <input type="submit" value="작가등록">
+</form>
