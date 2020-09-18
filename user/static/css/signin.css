@@ -70,7 +70,6 @@ height : 35px;
     width: 300px;
     height: 30px;
     /* margin : 0px 0px 0px -200px; */
-
 }
 
 
@@ -89,8 +88,8 @@ height : 35px;
 }
 
 #button_signup{
-    height: 30px; 
-    width: 60px;
+    height: 40px; 
+    width: 70px;
     background-color: #C28B64;
     border-radius: 5px;
     color: white;
@@ -99,8 +98,8 @@ height : 35px;
 }
 
 #button_signin{
-    height: 30px; 
-    width: 60px;
+    height: 40px; 
+    width: 70px;
     background-color: white;
     border-color: #CCCCCC;
     border-radius: 5px;
@@ -120,3 +119,4 @@ login{
     width: 300px;
     height: 30px;
 }
+
