@@ -1,7 +1,7 @@
 {% load static %}
 <!doctype html>
 <html lang="ko-kr">
-<link rel="stylesheet" href ='{% static 'css/signin.css' %}'/>
+<link rel="stylesheet" href ="{% static 'css/signin.css' %}"/>
 
 <header class="TopHeader">
     <nav id="topMenu">
@@ -10,8 +10,8 @@
             <li><a class="menuLink" href="#">토막글</a></li>
             <li class ="blank"></li>
             <li><a class="menuLink" href="#">홈</a></li>
-            <li><a class="menuLink" href="#" style="color: #606060;">분야별</a></li>
-            <li><a class="menuLink" href="#" style="color: #606060;">인기작품</a></li>
+            <li><a class="menuLink" href="#">분야별</a></li>
+            <li><a class="menuLink" href="#" >인기작품</a></li>
             <li class ="blank"></li>
             <li class ="blank"></li>
             <li class ="blank"></li>
@@ -32,7 +32,7 @@
 <div class="blank"></div>
 
 <main float="center">
-    <div class="center" style="margin: 200px 0 0 0;">
+    <div class="center">
         <body>
             {% comment %} <ui class="left"> {% endcomment %}
                 <h1 class="left"> 토막글 로그인</h1>
@@ -44,11 +44,10 @@
                 <input id= "signup_button"  type = "text" name = "email" maxlength= 100; placeholder="   tomaggeul@gmail.com"  size= 34 >
                 <h3 class="left" style="color: #606060;">Password</h3>
                 <input id= "signup_button" type = "password" name = "password" size="34" maxlength="100" placeholder="   ********"  >
-                <h5 class="left" >계정이 없으세요?   *    <U>회원가입</U></h5>
-                <h5 class="left" >비밀번호 재설정 * 계정찾기</h5>
-                <h6 class="left" style="color: #909090" > SNS로 로그인 및 회원가입 시 토막글의 이용약관과 </h6>
-                <h6 class="left" style="color: #909090"  >개인정보처리방침에 동의한 것으로 간주합니다. </h6>
-                <input id="button_signup" type="submit" size="34" name="button2" value="로그인" style="width:310px; height:40px;">
+                <h5 class="left underbar" >계정이 없으세요?&nbsp&nbsp&nbsp&nbsp&nbsp<U>회원가입</U></h5>
+                <h5 class="left underunder" >비밀번호 재설정&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp계정찾기</h5>
+                <h6 class="left underbar" > SNS로 로그인 및 회원가입 시 토막글의 이용약관과 </h6>
+                <h6 class="left underunder" >개인정보처리방침에 동의한 것으로 간주합니다. </h6>
             </form>
         </body>
     </div>
