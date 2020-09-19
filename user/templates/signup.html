@@ -1,13 +1,53 @@
+{% load static %}
 <!doctype html>
 <html lang="ko-kr">
+<link rel="stylesheet" href='{% static 'css/signup.css' %}' />
 
-<form method="POST" action="" enctype="multipart/form-data">
-    {% csrf_token %}
-    <table>
-        {{regi_form.as_table}}
-    </table>
+<header class="TopHeader">
+    <nav id="topMenu">
+        <ul>
+            <li class="blank"></li>
+            <li><a class="menuLink" href="#">토막글</a></li>
+            <li class="blank"></li>
+            <li><a class="menuLink" href="#">홈</a></li>
+            <li><a class="menuLink" href="#" style="color: #606060;">분야별</a></li>
+            <li><a class="menuLink" href="#" style="color: #606060;">인기작품</a></li>
+            <li class="blank"></li>
+            <li class="blank"></li>
+            <li class="blank"></li>
+            <li class="blank"></li>
+            <li class="blank"></li>
+            <li class="blank"></li>
+            <img src="{% static 'img/search.png' %}" alt="없음"
+                style="height:20px; margin:8px 0px 0px -270px; color: #919191;">
+            <li><input id="search_text" type="text" name="검색" size="20" value="     검색"></li>
+            <li class="smallblank"></li>
+            <!-- <li class="signin-header"> 검색 </li> -->
+            <li><a href={% url 'signin' %}><input id="button_signin" type="button" name="button1" value="로그인"></a></li>
+            <li class="smallblank"></li>
+            <li><a href={% url 'user_register' %}><input id="button_signup" type="button" name="button2"
+                        value="회원가입"></a></li>
+            <li class="blank"></li>
+        </ul>
+    </nav>
+</header>
 
-    <input type="submit" value="회원가입">
-</form>
+<div class="blank"></div>
+<main float="center">
+    <div class="center" style="margin: 200px 0 0 0;">
+        <body>
+            {% comment %} <ui class="left"> {% endcomment %}
+                <h1 class="left"> 토막글 로그인</h1>
+                <h5 class="left" style="color: #606060;">이메일로 회원가입을 하고 토막글에서 다양한 글을 만나봐요!</h5>
+                <form method="POST" action="" enctype="multipart/form-data" class = box>
+                    {% csrf_token %}
+                    <table>
+                        {{regi_form.as_table}}
+                    </table>
+                    <input type="submit" value="회원가입">
+                </form>
+        </body>
+    </div>
+</main>
 
 </html>
