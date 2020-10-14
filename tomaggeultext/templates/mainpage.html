@@ -6,7 +6,6 @@
 
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>토막글</title>
 
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
@@ -26,11 +25,53 @@
 
   <link rel="stylesheet" type="text/css" href="{%static 'css/mainpage.css'%}">
 
+  <!-- swiper -->
+  <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.css">
+  <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css">
+
+  <script src="https://unpkg.com/swiper/swiper-bundle.js"></script>
+  <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+
+  <style>
+    html,
+    body {
+      position: relative;
+      height: 100%;
+    }
+
+    .swiper-container {
+      width: 90%;
+      height: 300px;
+    }
+
+    .swiper-slide {
+      text-align: center;
+      font-size: 18px;
+      background: #fff;
+      border-radius: 10px;
+      width: 100px;
+      height: 80%;
+
+      /* Center slide text vertically */
+      display: -webkit-box;
+      display: -ms-flexbox;
+      display: -webkit-flex;
+      display: flex;
+      -webkit-box-pack: center;
+      -ms-flex-pack: center;
+      -webkit-justify-content: center;
+      justify-content: center;
+      -webkit-box-align: center;
+      -ms-flex-align: center;
+      -webkit-align-items: center;
+      align-items: center;
+    }
+  </style>
 </head>
 
 <body>
-  
-  <header class="TopHeader">
+
+<header class="TopHeader">
     <nav id="topMenu">
       <ul>
         <li><a class="menuLink" href="#">토막글</a></li>
@@ -45,53 +86,62 @@
         </li>
       </ul>
     </nav>
-  </header>
+  </header> 
 
 
   <!-- 여기 부터 순수 main page -->
   <div class="wholebody">
 
-    <div class="genre_section">
+    <div class="genre_section" style="height: 70px;">
       <ul class="nav justify-content-center">
         {% for genre in all_genre %}
         <li class="nav-item">
           <p class="nav-link">{{genre}}</p>
         </li>
         {% endfor %}
-        
+
       </ul>
     </div>
 
-    <div class="card_slide">
+    <div class="card_slide" style="height: 80%;">
       <!--금주의 인기작-->
-      <div class="this_week_title">
-        <p>이번주 인기작 TOP 3</p>
-      </div> <!-- 여기 까지는 색상 적용 ok -->
+      
 
       <div class="card_area">
-        <p>컨텐츠가 있어야함</p>
+        <p>금주의 인기작</p>
       </div> <!-- 여기 까지는 색상 적용 ok -->
 
 
-
-      <div class="this_week">
-        <div class="card-group">
-          {% for tomaggeul in all_tmtext %}
-          <div class="card">
-            <div>
-              <img src={% static "img/no-image.png" %} alt="..." style=" width:150px;heigth:200px;" />
+      <div class="swiper-container">
+        <div class="swiper-wrapper">
+        {% for tomaggeul in all_tmtext %}
+          <div class="swiper-slide">
+          
+            <div style="width:30%;">
+              <div>
+                <img src={% static "img/no-image.png" %} alt="..." style=" width:150px;heigth:200px;" />
+              </div>
             </div>
-
-            <div class="card-body">
-              <h5 class="card-title">{{tomaggeul.text_title}}</h5>
-              <p class="card-text">{{tomaggeul.main_sentence}}</p>
-              <p class="card-text"><small class="text-muted">{{genre}}</small></p>
+            <div style="width:50%;">
+              <div class="second_area">
+                <div id="TM_title">
+                  {{tomaggeul.text_title}}
+                </div>
+                <div id="TM_main_content">
+                  <p>{{tomaggeul.main_sentence}}</p>
+                </div>
+                <div id="TM_information">
+                  <p>{{tomaggeul.series}} by {{tomaggeul.writer}}</p>
+                </div>
+              </div>
             </div>
-
           </div>
           {% endfor %}
         </div>
+        <!-- Add Pagination -->
+        <div class="swiper-pagination"></div>
       </div>
+
     </div>
 
     <!--모든 토막글-->
@@ -126,17 +176,17 @@
       <div class="all_TMtext">
 
         <div class="first_area">
-          <img src={% static "img/no-image.png" %} alt="..." style="margin-top:25px; width:150px;heigt:200px;"/>
+          <img src={% static "img/no-image.png" %} alt="..." style="margin-top:25px; width:150px;heigt:200px;" />
         </div>
         <div class="second_area">
           <div id="TM_title">
-          {{tomaggeul.text_title}}
+            {{tomaggeul.text_title}}
           </div>
           <div id="TM_main_content">
-          <p>{{tomaggeul.main_sentence}}</p>
+            <p>{{tomaggeul.main_sentence}}</p>
           </div>
           <div id="TM_information">
-          <p>책 제목 by Wooah</p>
+            <p>책 제목 by Wooah</p>
           </div>
 
         </div>
@@ -144,9 +194,7 @@
           세번째 영역
         </div>
 
-        <input class="favorite styled"
-       type="button"
-       value="Add to favorites">
+        <input class="favorite styled" type="button" value="Add to favorites">
 
         <!--
         <div>
@@ -176,13 +224,29 @@
 
 
 
-  </div>
-
 
   </div>
 
 
+  </div>
 
+
+
+  <script type="module">
+    import Swiper from 'https://unpkg.com/swiper/swiper-bundle.esm.browser.min.js'
+    const swiper = new Swiper(...)
+  </script>
+  <script>
+    var swiper = new Swiper('.swiper-container', {
+      slidesPerView: 3,
+      spaceBetween: 30,
+      freeMode: true,
+      pagination: {
+        el: '.swiper-pagination',
+        clickable: true,
+      },
+    });
+  </script>
 
 
 
