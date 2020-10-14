@@ -8,23 +8,28 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>토막글</title>
-  <link rel="stylesheet" href={% static 'css/signin.css' %} />
+
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
     integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
   <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
     integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous">
   </script>
+
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
     integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous">
   </script>
+
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
     integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous">
   </script>
+
   <link rel="stylesheet" type="text/css" href="{%static 'css/mainpage.css'%}">
+
 </head>
 
 <body>
-  <!--헤더 네브바-->
+  
   <header class="TopHeader">
     <nav id="topMenu">
       <ul>
@@ -34,7 +39,6 @@
         <li><a class="menuLink" href="#" style="color: #606060;">인기작품</a></li>
         <img src={% static "img/search.png" %} alt="검색" style="width: 30px;">
         <li><input class="search" type="text" name="검색" size="20" maxlength="100" height="200" value="검색"></li>
-        <!-- <li class="signin-header"> 검색 </li> -->
         <li><a href={% url 'signin' %}><input id="button_signin" type="button" name="button1" value="로그인"></a></li>
         <li class="smallblank"></li>
         <li><a href={% url 'user_register' %}><input id="button_signup" type="button" name="button2" value="회원가입"></a>
@@ -43,73 +47,147 @@
     </nav>
   </header>
 
-  <!--장르바-->
-  <ul class="nav justify-content-center">
-    {% for genre in all_genre %}
-    <li class="nav-item">
-      <a class="nav-link " href="#1">{{genre}}</a>
-    </li>
-    {% endfor %}
-  </ul>
 
-  <!--금주의 인기작-->
-  <div class="this_week_title">
-    <p>이번주 인기작 TOP 3</p>
-  </div>
+  <!-- 여기 부터 순수 main page -->
+  <div class="wholebody">
 
-  <div class="this_week">
-    <div class="card-group">
-      {% for tomaggeul in all_tmtext %}
-      <div class="card">
-        <div>
-          <img src={% static "img/no-image.png" %} alt="..." />
+    <div class="genre_section">
+      <ul class="nav justify-content-center">
+        {% for genre in all_genre %}
+        <li class="nav-item">
+          <p class="nav-link">{{genre}}</p>
+        </li>
+        {% endfor %}
+        
+      </ul>
+    </div>
+
+    <div class="card_slide">
+      <!--금주의 인기작-->
+      <div class="this_week_title">
+        <p>이번주 인기작 TOP 3</p>
+      </div> <!-- 여기 까지는 색상 적용 ok -->
+
+      <div class="card_area">
+        <p>컨텐츠가 있어야함</p>
+      </div> <!-- 여기 까지는 색상 적용 ok -->
+
+
+
+      <div class="this_week">
+        <div class="card-group">
+          {% for tomaggeul in all_tmtext %}
+          <div class="card">
+            <div>
+              <img src={% static "img/no-image.png" %} alt="..." style=" width:150px;heigth:200px;" />
+            </div>
+
+            <div class="card-body">
+              <h5 class="card-title">{{tomaggeul.text_title}}</h5>
+              <p class="card-text">{{tomaggeul.main_sentence}}</p>
+              <p class="card-text"><small class="text-muted">{{genre}}</small></p>
+            </div>
+
+          </div>
+          {% endfor %}
         </div>
-
-
-        <div class="card-body">
-          <h5 class="card-title">{{tomaggeul.text_title}}</h5>
-          <p class="card-text">{{tomaggeul.main_sentence}}</p>
-          <p class="card-text"><small class="text-muted">{{genre}}</small></p>
-        </div>
-
       </div>
+    </div>
+
+    <!--모든 토막글-->
+
+    <div class="TMtext_area">
+
+      <div class="all_TMtext_title">
+
+        <div>
+          <table class="TMtext_table" style="float: left;">
+            <tr>
+              <td id="all_product">모든 작품</td>
+              <td>&nbsp;|&nbsp;</td>
+              <td>배송 구독</td>
+              <td>&nbsp;|&nbsp;</td>
+              <td>구독</td>
+              <td>&nbsp;|&nbsp;</td>
+              <td>추천</td>
+            </tr>
+          </table>
+        </div>
+        <div style="float: right; font-weight:bold;">
+          <table class="TMtext_table" style="float: left;">
+            <tr>
+              <td><a href="#">최신순&nbsp;▽</a></td>
+            </tr>
+          </table>
+        </div>
+      </div>
+
+      {% for tomaggeul in all_tmtext %}
+      <div class="all_TMtext">
+
+        <div class="first_area">
+          <img src={% static "img/no-image.png" %} alt="..." style="margin-top:25px; width:150px;heigt:200px;"/>
+        </div>
+        <div class="second_area">
+          <div id="TM_title">
+          {{tomaggeul.text_title}}
+          </div>
+          <div id="TM_main_content">
+          <p>{{tomaggeul.main_sentence}}</p>
+          </div>
+          <div id="TM_information">
+          <p>책 제목 by Wooah</p>
+          </div>
+
+        </div>
+        <div style="border: 1px solid ; float: left; width: 40%;">
+          세번째 영역
+        </div>
+
+        <input class="favorite styled"
+       type="button"
+       value="Add to favorites">
+
+        <!--
+        <div>
+          <div class="left"><img src={% static "img/no-image.png" %} alt="..." style=" width:150px;heigth:200px;" />
+          </div>
+          <div class="right">
+            <p>제목 : {{tomaggeul.text_title}}<br></p>
+
+            <P>{{tomaggeul.main_sentence}}</P>
+
+            <P>
+              {% for genre in tomaggeul.text_genre.all %}
+              {{genre}}
+              {% endfor %}
+            </P>
+
+            <P>작가 : {{tomaggeul.writer}}</P>
+          </div>
+        </div>
+        -->
+      </div>
+
       {% endfor %}
     </div>
+
+
+
+
+
+  </div>
+
+
   </div>
 
 
 
-  <!--모든 토막글-->
-  <div class="all_TMtext_title">
-    모든 토막글
-  </div>
-
-  {% for tomaggeul in all_tmtext %}
-  <div>
-
-  </div>
-  <div class="all_TMtext">
 
 
-    <div>
-      <div class="left"><img src={% static "img/no-image.png" %} alt="..." style=" width:150px;heigth:200px;" /></div>
-      <div class="right">
-        <p>제목 : {{tomaggeul.text_title}}<br></p>
 
-        <P>{{tomaggeul.main_sentence}}</P>
 
-        <P>
-          {% for genre in tomaggeul.text_genre.all %}
-          {{genre}}
-          {% endfor %}
-        </P>
 
-        <P>작가 : {{tomaggeul.writer}}</P>
-      </div>
-    </div>
-  </div>
-
-  {% endfor %}
 </body>
 
 </html>

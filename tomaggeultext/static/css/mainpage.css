@@ -1,117 +1,172 @@
-body{
-    margin: 20px;
-    padding: 30px;
-  }
-
-  .this_week_title{
-    width: 100%;
-    height: 30px;
-    border-bottom :1px solid black;
-    display: flex;
-    flex-direction: column;
-    align-items: left;
-    text-align: left;
-  }
-
-  .this_week{
-      
+body {
+  margin: 20px;
+  padding: 30px;
 }
 
-  .all_TMtext_title{
-    width: 100%;
-    height: 30px;
-    border-bottom :1px solid black;
-    display: flex;
-    flex-direction: column;
-    align-items: left;
-    text-align: left;
-    margin-top: 5rem;
-  }
+.this_week_title {
+  width: 100%;
+  height: 30px;
+  border-bottom: 1px solid black;
+  flex-direction: column;
+  align-items: left;
+  text-align: left;
+}
 
-  .all_TMtext{
-      width: 100%;
-      height: 200px;
-      border-bottom :1px solid black;
-      display: flex;
-      flex-direction: column;
-      align-items: left;
-      text-align: left;
-  }
+.TMtext_table {
+  font-weight: bold;
+  color: gray;
+  cursor: pointer;
+}
 
-  .TopHeader{
-      width:100%;
-      height:20px;
-      background:white;
-      /* display:flex; */
-      text-align:center;
-      margin-bottom: 0px;
-  }
+#all_product {
+  color: black;
+}
 
-  .search{
-    margin-left: 50rem;
-  }
 
-  .nav-link{
-    margin-left: 5rem;
-    margin-right: 5rem;
-    margin-top: 1rem;
-    margin-bottom: 1rem;
-  }
+.all_TMtext_title {
+  width: 80%;
+  height: 30px;
+  border-bottom: 2px solid #D3D3D3;
+  flex-direction: column;
+  align-items: left;
+  margin-top: 5rem;
+  margin-left: 10%;
+}
 
-  #topMenu {    
-      position: fixed;
-      top: 0;
-      left: 0;
-      right: 0;
-      display:inline-block;        
-      height: 70px; 
-      width: 100%; 
-      border-bottom: 0.1px solid #979797;
-  }
+.all_TMtext {
+  width: 80%;
+  height: 200px;
+  border-bottom: 2px solid #D3D3D3;
+  flex-direction: column;
+  align-items: left;
+  text-align: left;
+  margin-left: 10%;
+}
 
-  #topMenu ul li {                    
-      list-style: none;       
-      color: white;               
-      background-color: white;  
-      float: left;                
-      line-height: 35px;   
-      height: 35px;  
-      vertical-align: middle;     
-      text-align: center;         
-  }
+.all_TMtext > .first_area{
+  float: left; 
+  width: 12%; 
+  height:200px;
+}
 
-  #topMenu .menuLink {                
-    text-decoration:none;       
-    color: black;               
-    display: block;             
-    width: 80px;             
-    font-size: 16px;           
-    font-weight: bold;           
-    font-family: "Trebuchet MS", Dotum, Arial; 
-  }
-        
-  #topMenu .menuLink:hover {            
-    color: white;                   
-    background-color: #4d4d4d;   
-  }
+.all_TMtext > .second_area{
+  float: left; 
+  width: 45%;
+  height: 80%;
+  margin-top: 2%;
+}
 
-  #signup_button{
-    background-color:#F7F7F7; 
-    border: 2px solid #979797;
-    border-radius: 2;
-    color: #979797;
-    width: 250px;
-    height: 30px;
-  }
+#TM_title {
+  font-weight: bold;
+  font-size: large;
+  margin-top: 3%;
+  margin-left: 1.5%;
+}
+
+#TM_main_content {
+  margin-left: 1.5%;
+}
+
+#TM_information {
+  margin-top: 5%;
+  margin-left: 1.5%;
+}
+
+.TopHeader {
+  width: 100%;
+  height: 20px;
+  background: white;
+  /* display:flex; */
+  text-align: center;
+  margin-bottom: 0px;
+}
+
+.search {
+  margin-left: 50rem;
+}
+
+.nav-link {
+  margin-left: 5rem;
+  margin-right: 5rem;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+  font-weight: bold;
+  cursor: pointer;
+  height: 50%;
+}
+
+.nav-link:hover {
+  color: #C28B64;
+  border-bottom: 2px solid #C28B64;
+}
+
+
+
+
+
+#topMenu {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  display: inline-block;
+  height: 70px;
+  width: 100%;
+  border-bottom: 0.1px solid #979797;
+}
+
+#topMenu ul li {
+  list-style: none;
+  color: white;
+  background-color: white;
+  float: left;
+  line-height: 35px;
+  height: 35px;
+  vertical-align: middle;
+  text-align: center;
+}
+
+#topMenu .menuLink {
+  text-decoration: none;
+  color: black;
+  display: block;
+  width: 80px;
+  font-size: 16px;
+  font-weight: bold;
+  font-family: "Trebuchet MS", Dotum, Arial;
+}
+
+#topMenu .menuLink:hover {
+  color: white;
+  background-color: #4d4d4d;
+}
+
+#signup_button {
+  background-color: #F7F7F7;
+  border: 2px solid #979797;
+  border-radius: 2;
+  color: #979797;
+  width: 250px;
+  height: 30px;
+}
 
 div.left {
-    width: 10%;
-    float: left;
-    box-sizing: border-box;
+  width: 10%;
+  float: left;
+  box-sizing: border-box;
 }
 
 div.right {
-    width: 10%;
-    float: left;
-    box-sizing: border-box;
+  width: 10%;
+  float: left;
+  box-sizing: border-box;
+}
+
+.card_slide {
+  background-color: #C28B64;;
+}
+
+.card_area {
+  width: 20%;
+  height: 100%;
 }
