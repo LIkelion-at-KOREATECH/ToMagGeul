@@ -1,3 +1,5 @@
+html { font-size:16px; }
+
 body {
   margin: 20px;
   padding: 30px;
@@ -11,10 +13,34 @@ body {
   cursor: pointer;
 }
 
-#all_product {
+#product_list {
   color: black;
 }
 
+#product_list:hover {
+  color: black;
+}
+
+#delivery_subscribe_list {
+}
+
+#delivery_subscribe_list:hover {
+  color: black;
+}
+
+#subscribe_list {
+}
+
+#subscribe_list:hover {
+  color: black;
+}
+
+#recomend_list {
+}
+
+#recomend_list:hover {
+  color: black;
+}
 
 .all_TMtext_title {
   width: 80%;
@@ -28,7 +54,7 @@ body {
 
 .all_TMtext {
   width: 80%;
-  height: 200px;
+  height: 13rem;
   border-bottom: 2px solid #D3D3D3;
   flex-direction: column;
   align-items: left;
@@ -39,7 +65,7 @@ body {
 .all_TMtext > .first_area{
   float: left; 
   width: 12%; 
-  height:200px;
+  height:13rem;
 }
 
 .all_TMtext > .second_area{
@@ -49,9 +75,33 @@ body {
   margin-top: 2%;
 }
 
+.all_TMtext > .third_area{
+  float: left; 
+  width: 40%;
+  font-size: 2em;
+  margin-top: 8%;
+}
+
+.all_TMtext > .third_area > .heart_icon{
+  float: left;
+  color: black;
+}
+
+.all_TMtext > .third_area > .heart_icon:hover{
+  color: red;
+}
+
+
+.all_TMtext > .third_area > .show_more_icon{
+  float: left;
+  color: black;
+}
+
+
+
 #TM_title {
   font-weight: bold;
-  font-size: large;
+  font-size: 1em;
   margin-top: 3%;
   margin-left: 1.5%;
   text-align: left;

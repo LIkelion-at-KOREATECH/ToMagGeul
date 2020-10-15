@@ -92,7 +92,7 @@
   <!-- 여기 부터 순수 main page -->
   <div class="wholebody">
 
-    <div class="genre_section" style="height: 70px;">
+    <div class="genre_section" style="height: 70px; "> <!-- overflow: hidden; -->
       <ul class="nav justify-content-center">
         {% for genre in all_genre %}
         <li class="nav-item">
@@ -109,7 +109,7 @@
 
       <div class="card_area">
         <p>금주의 인기작</p>
-      </div> <!-- 여기 까지는 색상 적용 ok -->
+      </div>
 
 
       <div class="swiper-container">
@@ -117,12 +117,12 @@
         {% for tomaggeul in all_tmtext %}
           <div class="swiper-slide">
           
-            <div style="width:30%;">
+            <div style="width:20%; overflow: hidden; display: flex;align-items: center; justify-content: center;width: 300px; height: 300px;">
               <div>
-                <img src={% static "img/no-image.png" %} alt="..." style=" width:150px;heigth:200px;" />
+                <img src={{tomaggeul.text_cover.url}} alt="..." style="max-width: 1rem%; height: 5rem;" />
               </div>
             </div>
-            <div style="width:50%;">
+            <div style="width:70%;">
               <div class="second_area">
                 <div id="TM_title">
                   {{tomaggeul.text_title}}
@@ -153,13 +153,13 @@
         <div>
           <table class="TMtext_table" style="float: left;">
             <tr>
-              <td id="all_product">모든 작품</td>
+              <td id="product_list">모든 작품</td>
               <td>&nbsp;|&nbsp;</td>
-              <td>배송 구독</td>
+              <td id="delivery_subscribe_list">배송 구독</td>
               <td>&nbsp;|&nbsp;</td>
-              <td>구독</td>
+              <td id="subscribe_list">구독</td>
               <td>&nbsp;|&nbsp;</td>
-              <td>추천</td>
+              <td id="recomend_list">추천</td>
             </tr>
           </table>
         </div>
@@ -176,7 +176,7 @@
       <div class="all_TMtext">
 
         <div class="first_area">
-          <img src={% static "img/no-image.png" %} alt="..." style="margin-top:25px; width:150px;heigt:200px;" />
+          <img src={{tomaggeul.text_cover.url}} alt="..." style="margin-top:18%; max-width: 100%; height: auto;" />
         </div>
         <div class="second_area">
           <div id="TM_title">
@@ -190,11 +190,11 @@
           </div>
 
         </div>
-        <div style="border: 1px solid ; float: left; width: 40%;">
-          세번째 영역
+        <div class="third_area">
+        <div class="heart_icon">♡</div>
+        <div class="show_more_icon">&nbsp;&nbsp;&nbsp;…</div>
         </div>
 
-        <input class="favorite styled" type="button" value="Add to favorites">
 
         <!--
         <div>
@@ -219,15 +219,7 @@
 
       {% endfor %}
     </div>
-
-
-
-
-
-
   </div>
-
-
   </div>
 
 
