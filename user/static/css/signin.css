@@ -66,7 +66,7 @@ height : 35px;
     color: red;
 }
 
-#signup_button{
+.signup_button{
     background-color:#F7F7F7; 
     border: 2px solid #979797;
     border-radius: 7px;

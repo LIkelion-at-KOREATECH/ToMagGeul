@@ -23,6 +23,7 @@ from decimal import Decimal
     # }
 
 class TMUser(AbstractBaseUser, PermissionsMixin):
+    username = None
     email = models.EmailField(max_length = 255, unique=True, primary_key=True, error_messages={'unique' : "이미 존재하는 이메일입니다."})
     nickname = models.CharField(max_length = 50, unique=True, error_messages={'unique' : "이미 존재하는 닉네임입니다."})
     name = models.CharField(max_length = 30, default="username")
