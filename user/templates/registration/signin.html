@@ -1,18 +1,18 @@
 {% load static %}
 <!doctype html>
 <html lang="ko-kr">
-<link rel="stylesheet" href ='{% static 'css/signin.css' %}'/>
+<link rel="stylesheet" href ="{% static 'css/signin.css' %}"/>
 
 <header class="TopHeader">
     <nav id="topMenu">
         <ul>
             <li><a class="menuLink" href="#" style="margin: 0 200% 0 0;">토막글</a></li>
             <li><a class="menuLink" href="#">홈</a></li>
-            <li><a class="menuLink" href="#" style="color: #606060;">분야별</a></li>
-            <li><a class="menuLink" href="#" style="color: #606060;">인기작품</a></li>
+            <li><a class="menuLink" href="#">분야별</a></li>
+            <li><a class="menuLink" href="#" >인기작품</a></li>
             <li class ="blank"></li>
             <img src="{% static 'img/search.png' %}" alt="없음" style="height:10%; width:2%; margin: 0.45% 0 0 -6%; color: #919191;" >
-            <li><input id="search_text" type = "text" name = "검색" size="40" value="       검색"></li>
+            <li><input id="search_text" type = "text" name = "검색"  value="       검색"></li>
             <li class ="smallblank"></li>
             <!-- <li class="signin-header"> 검색 </li> -->
             <li><a href={% url 'signin' %}><input id = "button_signin" type="button" name="button1" value="로그인"></a></li>
@@ -25,7 +25,11 @@
 <div class="blank"></div>
 
 <main float="center">
+<<<<<<< HEAD
     <div class="center" style="margin: 15% 0 0 0;">
+=======
+    <div class="center">
+>>>>>>> bdf311e4ffffd6242baf8e9ddcbdcf7aa25b918a
         <body>
             {% comment %} <ui class="left"> {% endcomment %}
                 <h1 class="left"> 토막글 로그인</h1>
@@ -37,11 +41,18 @@
                 <input id= "signup_button"  type = "text" name = "email" maxlength= 100; placeholder="   tomaggeul@gmail.com"  size= 34 >
                 <h3 class="left" style="color: #606060; margin : 10% -5.5% 0 0;">Password</h3>
                 <input id= "signup_button" type = "password" name = "password" size="34" maxlength="100" placeholder="   ********"  >
+<<<<<<< HEAD
                 <h5 class="left" style="margin : 10% -10% 0 0;">계정이 없으세요?   *    <U>회원가입</U></h5>
                 <h5 class="left" style="margin : 1% -10% 0 0;">비밀번호 재설정 * 계정찾기</h5>
                 <h6 class="left" style="color: #909090; margin : 10% -10% 0 0;" > SNS로 로그인 및 회원가입 시 토막글의 이용약관과 </h6>
                 <h6 class="left" style="color: #909090; margin : 0 -10% 0 0;"  >개인정보처리방침에 동의한 것으로 간주합니다. </h6>
                 <input id="submit_signup" type="submit" size="34" name="button2" value="로그인" style="width:310px; height:40px;">
+=======
+                <h5 class="left underbar" >계정이 없으세요?&nbsp&nbsp&nbsp&nbsp&nbsp<U>회원가입</U></h5>
+                <h5 class="left underunder" >비밀번호 재설정&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp계정찾기</h5>
+                <h6 class="left underbar" > SNS로 로그인 및 회원가입 시 토막글의 이용약관과 </h6>
+                <h6 class="left underunder" >개인정보처리방침에 동의한 것으로 간주합니다. </h6>
+>>>>>>> bdf311e4ffffd6242baf8e9ddcbdcf7aa25b918a
             </form>
         </body>
     </div>

@@ -4,20 +4,30 @@
 .center{
         text-align : center;
         display:inline-block;
+        margin-top: 80px;
     }   
     
 .TopHeader{
+<<<<<<< HEAD
     width:100vw;
     height:30%;
+=======
+    width:100%;
+>>>>>>> bdf311e4ffffd6242baf8e9ddcbdcf7aa25b918a
     background:white;
     /* display:flex; */
     text-align:left;
 }
 
 .blank{
+<<<<<<< HEAD
 width : 200%;
 height : 80%;
 background:white;
+=======
+width : 90px;
+height : 5px;
+>>>>>>> bdf311e4ffffd6242baf8e9ddcbdcf7aa25b918a
 }
 
 .smallblank{
@@ -55,15 +65,30 @@ background:white;
     text-align : center;     
     color: black;               
     display: block;             
+<<<<<<< HEAD
     width: 100%;             
     font-size: 100%;           
+=======
+    width: 68px;             
+    font-size: 16px;           
+>>>>>>> bdf311e4ffffd6242baf8e9ddcbdcf7aa25b918a
     font-weight: bold;           
     font-family: "Trebuchet MS", Dotum, Arial;              
     /* background-color: red; */
 }
     
+<<<<<<< HEAD
 #topMenu .menuLink:hover {                           
     /* background-color: #4d4d4d;    */
+=======
+#topMenu .menuLink:hover {            
+    color: black;                   
+    background-color: white; 
+}
+
+#topMenu .menuLink:active {            
+    color: red;
+>>>>>>> bdf311e4ffffd6242baf8e9ddcbdcf7aa25b918a
 }
 
 #signup_button{
@@ -128,6 +153,7 @@ login{
     height: 30px;
 }
 
+<<<<<<< HEAD
 #submit_signup{
     height: 300%; 
     width: 120%;
@@ -138,3 +164,13 @@ login{
     margin : 5% 0 0 0;
 }
 
+=======
+.underbar {
+    padding : 15px;
+    border-bottom : 3px solid #F7F7F7;
+}
+
+.underunder {
+    padding : 15px;
+}
+>>>>>>> bdf311e4ffffd6242baf8e9ddcbdcf7aa25b918a

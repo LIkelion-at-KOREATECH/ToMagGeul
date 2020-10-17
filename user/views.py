@@ -14,7 +14,6 @@ def signup(request):
                 author_form = AuthorCreationForm()
                 return render(request, 'createauthor.html', {'author_form':author_form, 'user':user})
             return redirect('signin')
- 
     return render(request, 'signup.html', {'regi_form':user_form})
 
 def createauthor(request):
