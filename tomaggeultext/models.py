@@ -16,7 +16,7 @@ class TMSeries(models.Model):
     heart_num_total = models.PositiveIntegerField(default=0)     #공감 수
     comment_num_total = models.PositiveIntegerField(default=0)   #댓글 수 종합
     views_num_total = models.PositiveIntegerField(default=0)     #조회 수 종합
-    writer = models.ForeignKey(TMAuthor, on_delete=models.CASCADE)
+    writer = models.ForeignKey(TMAuthor, on_delete=models.CASCADE, related_name='series')
 
     def __str__(self):
         return self.series_title
@@ -24,15 +24,15 @@ class TMSeries(models.Model):
 class TMText(models.Model):
     text_id = models.AutoField(primary_key=True)
     text_title = models.CharField(max_length=30)
-    main_sentence = models.CharField(max_length=200, null=True, blank=True)
+    main_sentence = models.CharField(max_length=200, null=True, blank=True, default="Main sentence")
     text_content = models.CharField(max_length=5000)
     text_genre =  models.ManyToManyField(Genre, related_name='text_genre')
     heart_num = models.PositiveIntegerField(default=0)     #공감 수
     comment_num = models.PositiveIntegerField(default=0)   #댓글 수
     views_num = models.PositiveIntegerField(default=0)     #조회 수
     date_of_write = models.DateField(default = timezone.now)
-    writer = models.ForeignKey(TMAuthor, on_delete=models.CASCADE)
-    series = models.ForeignKey(TMSeries, on_delete=models.CASCADE, null=True, blank=True)
+    writer = models.ForeignKey(TMAuthor, on_delete=models.CASCADE, related_name='text')
+    series = models.ForeignKey(TMSeries, on_delete=models.CASCADE, null=True, blank=True, related_name='text')
     text_cover = models.ImageField(upload_to='covers',default='../static/img/no-image.png')
     def __str__(self):
         return self.text_title
@@ -41,8 +41,8 @@ class Comment(models.Model):
     date_of_comment = models.DateField(default = timezone.now)
     comment_content = models.CharField(max_length=100)
     is_report = models.BooleanField(default=False)
-    tmtext = models.ForeignKey(TMText, on_delete=models.CASCADE)
-    tmuser = models.ForeignKey(TMUser, on_delete=models.CASCADE)
+    tmtext = models.ForeignKey(TMText, on_delete=models.CASCADE, related_name='comment')
+    tmuser = models.ForeignKey(TMUser, on_delete=models.CASCADE, related_name='comment')
 
     def __str__(self):
         return self.tmuser.nickname + ':' + self.comment_content
