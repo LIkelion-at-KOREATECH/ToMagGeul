@@ -1,0 +1,144 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="ko-kr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>토막글 리스트</title>
+    <link href="../static/css/tomaggeullist.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+    integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+    integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous">
+    </script>
+    <!-- fontawesome cdn 아이콘 폰트 사용하기 위해서 필요합니다. -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.1/css/all.min.css" rel="stylesheet">
+</head>
+
+<body>
+    <header>
+        <div id="nav">
+            <div class="back-btn-wrapper">
+                <i class="fa fa-chevron-left" aria-hidden="true"></i>
+            </div>
+
+            <div class="tm-series-name">
+                책제목
+            </div>
+        </div>
+    </header>
+
+    <section>
+        <div id="main">
+            <div class="tm-series-info">
+                <img src={% static "img/no-image.png" %} alt="..." />
+                <div class="tm-series-info-text">
+                    <h2>책 제목</h2>
+                    <h6>작가 이름 | 총 0화</h6>
+                    <p> </p>
+                    <h6>책 소개</h6>
+                    <div class="tm-series-genre">
+                        <button type="button" class="btn btn-light">장르</button>
+                    </div>
+                    
+                    <div class="tm-series-info-subscribe">
+                        <button type="button" class="btn btn-outline-warning">구독</button>
+                        <button type="button" class="btn btn-outline-warning">배송구독</button>
+                        <div class="tm-series-info-first">
+                            <button type="button" class="btn btn-outline-warning">첫화보기</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="author-info">
+                    <div class="info">
+                        <div class="info-text">
+                            <!--writer 이미지 넣어주고 싶었는데 안들어감-->
+                            <img src={% static "img/no-image.png" %} alt="..." />
+                            <div class="author-info-text">
+                                <p id="author-name">작가명</p>
+                                <p>구독자 0명</p>
+                            </div>
+                            <button type="button" class="btn btn-outline-dark">+ 팔로우</button>
+                        </div>
+                        <div class="author-info-sentence">
+                            작가 소개 ~
+                        </div>
+                        <div class="date-of-make">
+                            <!--calendar 이미지 넣어주고 싶었는데 안들어감-->
+                            <img src={% static "img/no-image.png" %} alt="..." /> 
+                            <div class="date">
+                                개설일 2020-10-15
+                            </div>
+                        </div>
+                        <div class="sns">
+                            <!--instagram 이미지 넣어주고 싶었는데 안들어감-->
+                            <img src={% static "img/no-image.png" %} alt="..." /> 
+                            <div class="sns-link">
+                                @ tomaggeul
+                            </div>
+                        </div>
+                    </div>
+                    <div class="tm-num-info">
+                        <div class="view">
+                            <!--view 이미지 넣어주고 싶었는데 안들어감-->
+                            <img src={% static "img/no-image.png" %} alt="..." /> 
+                            <p> 100 </p>
+                        </div>
+                        <div class="heart">
+                            <!--heart 이미지 넣어주고 싶었는데 안들어감-->
+                            <img src={% static "img/no-image.png" %} alt="..." /> 
+                            <p> 30 </p>
+                        </div>
+                        <div class="comment">
+                            <!--comment 이미지 넣어주고 싶었는데 안들어감-->
+                            <img src={% static "img/no-image.png" %} alt="..." /> 
+                            <p> 0 </p>
+                        </div>                        
+                    </div>
+                </div>
+            </div>
+            <div class="all_TMtext_title">
+                <p>1개의 포스트</p>
+                <div class="sort_way">
+                    <p>1화부터</p>
+                    <p> | </p>
+                    <p>최신순</p>
+                </div>
+            </div>
+
+            <div class="all_TMtext">
+                <div class="tmtext">
+                    <p id="series_name">책 이름</p>
+                    <div class="tmtext_info">
+                        <P>1화 이름</P>
+                        <P> | </P>
+                        <P>내용 중심문장 어쩌구</P>
+                    </div>
+                </div>
+                <div class="author_info_box">
+                    <!--writer 이미지 넣어주고 싶었는데 안들어감-->
+                    <img src={% static "img/no-image.png" %} alt="..." />
+                    <div class="author-info-text-2">
+                        <p id="author-name2">작가이름</p>
+                        <div class="k">
+                            <p>2020.00.00</p>
+                            <!--view 이미지 넣어주고 싶었는데 안들어감-->
+                            <p><img id="view" src={% static "img/no-image.png" %} alt="..." /> 7 </p>
+                        </div>                        
+                    </div>
+                    <div class="heart_puls">
+                        <!--heart 이미지 넣어주고 싶었는데 안들어감-->
+                        <img src={% static "img/no-image.png" %} alt="..." />
+                        <!--ellipsis 이미지 넣어주고 싶었는데 안들어감-->
+                        <img src={% static "img/no-image.png" %} alt="..." />
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    
+</body>
+
+</html>

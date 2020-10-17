@@ -1,7 +1,7 @@
 {% load static %}
 <!doctype html>
 <html lang="ko-kr">
-<link rel="stylesheet" href ='{% static 'css/signin.css' %}'/>
+<link rel="stylesheet" href ='{% static 'css/.css' %}'/>
 
 <header class="TopHeader">
     <nav id="topMenu">
@@ -21,8 +21,8 @@
             <img src="{% static 'img/search.png' %}" alt="없음" style="height:20px; margin:8px 0px 0px -270px; color: #919191;" >
             <li><input id="search_text" type = "text" name = "검색" size="20" value="     검색"></li>
             <li class ="smallblank"></li>
-            <!-- <li class="signin-header"> 검색 </li> -->
-            <li><a href={% url 'signin' %}><input id = "button_signin" type="button" name="button1" value="로그인"></a></li>
+            <!-- <li class="-header"> 검색 </li> -->
+            <li><a href={% url '' %}><input id = "button_" type="button" name="button1" value="로그인"></a></li>
             <li class ="smallblank"></li>
             <li><a href={% url 'user_register' %}><input id="button_signup" type="button" name="button2" value="회원가입"></a></li>
             <li class ="blank"></li>
