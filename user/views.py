@@ -39,6 +39,9 @@ def thankyou(request):
 
 
 def signin(request):
+    if str(request.user) != 'AnonymousUser':
+        return redirect('profile')  #로그인 한 상태에는 프로필 페이지로 감
+
     if request.method == "POST":
         email = request.POST.get('email','')
         password = request.POST.get('password','')
