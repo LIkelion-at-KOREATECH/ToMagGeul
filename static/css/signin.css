@@ -1,0 +1,176 @@
+.left{
+    text-align : left;
+}
+.center{
+        text-align : center;
+        display:inline-block;
+        margin-top: 80px;
+    }   
+    
+.TopHeader{
+<<<<<<< HEAD
+    width:100vw;
+    height:30%;
+=======
+    width:100%;
+>>>>>>> bdf311e4ffffd6242baf8e9ddcbdcf7aa25b918a
+    background:white;
+    /* display:flex; */
+    text-align:left;
+}
+
+.blank{
+<<<<<<< HEAD
+width : 200%;
+height : 80%;
+background:white;
+=======
+width : 90px;
+height : 5px;
+>>>>>>> bdf311e4ffffd6242baf8e9ddcbdcf7aa25b918a
+}
+
+.smallblank{
+width : 10%;
+height : 10%; 
+background:white;
+}   
+
+
+#topMenu {    
+    position: fixed;
+    top: 1%;
+    left: 0;
+    right: 0;
+    display:inline-block;        
+    height: 7%; 
+    width: 100vw; 
+    border-bottom: 0.1px solid #979797;
+}
+
+#topMenu ul li {                   
+    list-style: none;           
+    /* color: red;                */
+    /* background-color: red;   */
+    float: left;             
+    /* line-height: 7%;    */
+    width: 8%;
+    height:10%;
+    /* vertical-align: middle;   */
+    /* text-align: center;   */
+}
+    
+#topMenu .menuLink {                
+    text-decoration:none;  
+    text-align : center;     
+    color: black;               
+    display: block;             
+<<<<<<< HEAD
+    width: 100%;             
+    font-size: 100%;           
+=======
+    width: 68px;             
+    font-size: 16px;           
+>>>>>>> bdf311e4ffffd6242baf8e9ddcbdcf7aa25b918a
+    font-weight: bold;           
+    font-family: "Trebuchet MS", Dotum, Arial;              
+    /* background-color: red; */
+}
+    
+<<<<<<< HEAD
+#topMenu .menuLink:hover {                           
+    /* background-color: #4d4d4d;    */
+=======
+#topMenu .menuLink:hover {            
+    color: black;                   
+    background-color: white; 
+}
+
+#topMenu .menuLink:active {            
+    color: red;
+>>>>>>> bdf311e4ffffd6242baf8e9ddcbdcf7aa25b918a
+}
+
+#signup_button{
+    background-color:#F7F7F7; 
+    border: 2px solid #979797;
+    border-radius: 7px;
+    color: #979797;
+    width: 300px;
+    height: 30px;
+    /* margin : 0px 0px 0px -200px; */
+}
+
+
+#search_text{
+    background-color: #FAFAFA;
+    border: 2px solid #E1E1E1;
+    border-radius: 50px;
+    height: 300%; 
+    width: 300%;
+    margin : 0 100% 0 210%;
+    /* text-align: right; */
+    /* display:inline-block; */
+} 
+
+#button_img{
+    height: 10%;
+    width:10%;
+    color : #919191;
+}
+
+#button_signup{
+    height: 300%; 
+    width: 120%;
+    background-color: #C28B64;
+    border-radius: 5px;
+    color: white;
+    border-color: #8C4E30;
+    margin : 0 0 0 460%;
+}
+
+#button_signin{
+    height: 1000%; 
+    width: 100%;
+    background-color: white;
+    border-color: #CCCCCC;
+    border-radius: 5px;
+    margin : 0 0 0 450%;
+
+}
+main{
+    width:100vw;
+    height:100vh;
+    text-align:center;
+}
+
+login{
+    background-color:#F7F7F7; 
+    border: 2px solid #979797;
+    border-radius: 7px;
+    color: #979797;
+    width: 300px;
+    height: 30px;
+}
+
+<<<<<<< HEAD
+#submit_signup{
+    height: 300%; 
+    width: 120%;
+    background-color: #C28B64;
+    border-radius: 5px;
+    color: white;
+    border-color: #8C4E30;
+    margin : 5% 0 0 0;
+}
+
+=======
+.underbar {
+    padding : 15px;
+    border-bottom : 3px solid #F7F7F7;
+}
+
+.underunder {
+    padding : 15px;
+}
+>>>>>>> bdf311e4ffffd6242baf8e9ddcbdcf7aa25b918a
