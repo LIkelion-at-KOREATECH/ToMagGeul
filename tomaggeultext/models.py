@@ -33,7 +33,7 @@ class TMText(models.Model):
     date_of_write = models.DateField(default = timezone.now)
     writer = models.ForeignKey(TMAuthor, on_delete=models.CASCADE)
     series = models.ForeignKey(TMSeries, on_delete=models.CASCADE, null=True, blank=True)
-
+    text_cover = models.ImageField(upload_to='covers',default='../static/img/no-image.png')
     def __str__(self):
         return self.text_title
 
