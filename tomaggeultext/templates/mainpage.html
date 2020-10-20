@@ -42,15 +42,16 @@
     .swiper-container {
       width: 90%;
       height: 300px;
+
     }
 
     .swiper-slide {
       text-align: center;
-      font-size: 18px;
       background: #fff;
       border-radius: 10px;
-      width: 100px;
       height: 80%;
+      box-shadow: 4px 4px #dee2e6;
+      cursor: pointer;
 
       /* Center slide text vertically */
       display: -webkit-box;
@@ -71,7 +72,7 @@
 
 <body>
 
-<header class="TopHeader">
+  <header class="TopHeader">
     <nav id="topMenu">
       <ul>
         <li><a class="menuLink" href="#">토막글</a></li>
@@ -86,13 +87,15 @@
         </li>
       </ul>
     </nav>
-  </header> 
+  </header>
 
+  <div id="toast"></div>
 
   <!-- 여기 부터 순수 main page -->
   <div class="wholebody">
 
-    <div class="genre_section" style="height: 70px; "> <!-- overflow: hidden; -->
+    <div class="genre_section" style="height: 70px; ">
+      <!-- overflow: hidden; -->
       <ul class="nav justify-content-center">
         {% for genre in all_genre %}
         <li class="nav-item">
@@ -105,7 +108,7 @@
 
     <div class="card_slide" style="height: 80%;">
       <!--금주의 인기작-->
-      
+
 
       <div class="card_area">
         <p>금주의 인기작</p>
@@ -114,28 +117,35 @@
 
       <div class="swiper-container">
         <div class="swiper-wrapper">
-        {% for tomaggeul in all_tmtext %}
-          <div class="swiper-slide">
+          {% for tomaggeul in all_tmtext %}
           
-            <div style="width:20%; overflow: hidden; display: flex;align-items: center; justify-content: center;width: 300px; height: 300px;">
-              <div>
-                <img src={{tomaggeul.text_cover.url}} alt="..." style="max-width: 1rem%; height: 5rem;" />
-              </div>
-            </div>
-            <div style="width:70%;">
-              <div class="second_area">
-                <div id="TM_title">
-                  {{tomaggeul.text_title}}
-                </div>
-                <div id="TM_main_content">
-                  <p>{{tomaggeul.main_sentence}}</p>
-                </div>
-                <div id="TM_information">
-                  <p>{{tomaggeul.series}} by {{tomaggeul.writer}}</p>
+          <div class="swiper-slide">
+            <a href="{% url 'tmtext_detail' tomaggeul.text_id %}">
+              <div class="card_image"
+                style="margin-left:20%; width:20%; overflow: hidden; display: flex;align-items: center; justify-content: center;width: 8rem; height: 80%;">
+                
+                <div>
+                  <img src={{tomaggeul.text_cover.url}} alt="..." style="max-width: 1rem%; height: 8rem;" />
                 </div>
               </div>
-            </div>
+              </a>
+              
+              <div style="width:70%; margin: 5% 5%;">
+                <div class="second_area">
+                  <div id="TM_title">
+                    <a href="{% url 'tmtext_detail' tomaggeul.text_id %}" style="text-decoration:none ; color:#000000;"><p>{{tomaggeul.text_title}}</p></a>
+                  </div>
+                  <div id="TM_main_content">
+                    <p>{{tomaggeul.main_sentence}}</p>
+                  </div>
+                  <div id="TM_information">
+                    <p>{{tomaggeul.series}} by {{tomaggeul.writer}}</p>
+                  </div>
+                </div>
+              </div>
+            
           </div>
+          
           {% endfor %}
         </div>
         <!-- Add Pagination -->
@@ -176,48 +186,38 @@
       <div class="all_TMtext">
 
         <div class="first_area">
-          <img src={{tomaggeul.text_cover.url}} alt="..." style="margin-top:18%; max-width: 100%; height: auto;" />
+          <a href="{% url 'tmtext_detail' tomaggeul.text_id %}">
+            <img src={{tomaggeul.text_cover.url}} alt="..."
+              style="margin-top:2rem; margin-left:5%; max-width: 70%; height: auto; cursor: pointer;" />
+          </a>
         </div>
         <div class="second_area">
           <div id="TM_title">
-            {{tomaggeul.text_title}}
+            <a href="{% url 'tmtext_detail' tomaggeul.text_id %}"
+              style="text-decoration:none ; color:#000000;">{{tomaggeul.text_title}}</a>
           </div>
           <div id="TM_main_content">
             <p>{{tomaggeul.main_sentence}}</p>
           </div>
           <div id="TM_information">
-            <p>책 제목 by Wooah</p>
+            <p>
+              {%if tomaggeul.series%}
+              {{tomaggeul.series.series_title}},
+              {%endif%}
+              {{tomaggeul.writer.author_name}}
+            </p>
           </div>
 
         </div>
         <div class="third_area">
-        <div class="heart_icon">♡</div>
-        <div class="show_more_icon">&nbsp;&nbsp;&nbsp;…</div>
+          <!-- <a href="{% url 'it_sounds_good' tomaggeul.text_id %}"> test</a> -->
+          <div class="heart_icon" onclick="location.href={% url 'it_sounds_good' tomaggeul.text_id %}">♡</div>
+          <div class="show_more_icon">&nbsp;&nbsp;&nbsp;…</div>
         </div>
-
-
-        <!--
-        <div>
-          <div class="left"><img src={% static "img/no-image.png" %} alt="..." style=" width:150px;heigth:200px;" />
-          </div>
-          <div class="right">
-            <p>제목 : {{tomaggeul.text_title}}<br></p>
-
-            <P>{{tomaggeul.main_sentence}}</P>
-
-            <P>
-              {% for genre in tomaggeul.text_genre.all %}
-              {{genre}}
-              {% endfor %}
-            </P>
-
-            <P>작가 : {{tomaggeul.writer}}</P>
-          </div>
-        </div>
-        -->
       </div>
 
       {% endfor %}
+
     </div>
   </div>
   </div>
@@ -240,9 +240,31 @@
     });
   </script>
 
+  <script>
+    $(".heart_icon").click(function () {
+
+      let removeToast;
+      const toast = document.getElementById("toast");
+
+      toast.classList.contains("reveal") ?
+        (clearTimeout(removeToast), removeToast = setTimeout(function () {
+          document.getElementById("toast").classList.remove("reveal")
+        }, 1000)) :
+        removeToast = setTimeout(function () {
+          document.getElementById("toast").classList.remove("reveal")
+        }, 1000)
+      toast.classList.add("reveal"),
+        toast.innerText = "좋아요"
 
 
+      if ($('.heart_icon').css('color') == 'rgb(255, 0, 0)')
+        $('.heart_icon').css('color', 'black');
+      else
+        $('.heart_icon').css('color', 'red');
 
+
+    })
+  </script>
 
 </body>
 
