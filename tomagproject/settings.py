@@ -127,7 +127,7 @@ USE_TZ = True
 
 
 STATICFILES_DIRS = [
-    Path(BASE_DIR, 'user', 'static'),
+    Path(BASE_DIR, 'user', 'static')
 ]
 
 STATIC_ROOT = Path(BASE_DIR, 'static')
