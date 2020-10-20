@@ -14,3 +14,5 @@ def createText(request):
 def tmtextcreate(request):
     all_tmseries = TMSeries.objects.all()
     return render(request, 'createText.html', {'all_tmseries':all_tmseries})
+def tmlist(request):
+    return render(request, 'tomaggeullist.html')

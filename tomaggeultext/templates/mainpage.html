@@ -186,7 +186,12 @@
             <p>{{tomaggeul.main_sentence}}</p>
           </div>
           <div id="TM_information">
-            <p>책 제목 by Wooah</p>
+            <p>
+              {%if tomaggeul.series%}
+                {{tomaggeul.series.series_title}}, 
+              {%endif%}
+              {{tomaggeul.writer.author_name}}
+            </p>
           </div>
 
         </div>
@@ -239,10 +244,6 @@
       },
     });
   </script>
-
-
-
-
 
 </body>
 

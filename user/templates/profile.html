@@ -1,4 +1,51 @@
-{{user}}
 
-<a href={% url 'signout' %}><h6>to Logout</h6></a>
-<a href={% url 'main' %}><h6>to main</h6></a>
+<!-- 프로필 -->
+
+<h1>{{user.nickname}}</h1>
+<table>
+    <tr>
+        <td>{{user.tmauthor.series.count}}</td>
+        <td>{{user.tmauthor.text.count}}</td>
+        <td>{{user.tmauthor.series.count}}</td>
+        <td>{{user.tmauthor.series.count}}</td>
+    </tr>
+    <tr>
+        <td>책</td>
+        <td>토막글</td>
+        <td>..</td>
+        <td>..</td>
+    </tr>
+    <tr>
+        <td colspan="4">
+            개설일 {{user.tmauthor.opening_date|date:"Y.m.d"}}
+        </td>
+    </tr>
+    <tr>
+        <td colspan="4">
+            {{user.tmauthor.sns_link}}
+        </td>
+    </tr>
+    <tr>
+        <td colspan="4">
+            {%for genre in user.prefer_genre.all %}
+                <span>#{{genre}}</span>
+            {%endfor%}
+        </td>
+    </tr>
+    <tr>
+        <td colspan="4">
+            {{user.tmauthor.introduce}}
+        </td>
+    </tr>
+</table>
+
+<!-- 베너 -->
+
+
+<!-- 내 글 -->
+
+
+
+
+<a href={% url 'signout' %}><span>to Logout</span></a>
+<a href={% url 'main' %}><span>to main</span></a>
