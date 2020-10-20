@@ -9,7 +9,7 @@ import math
 
 # Create your views here.
 def tmtext(request):
-    all_tmtext = TMText.objects.all()
+    all_tmtext = TMText.objects.all().order_by('-date_of_write')
     all_genre = Genre.objects.all()
     paginator = Paginator(all_tmtext,5)
     page=1 if(request.GET.get('page') == None) else int(request.GET.get('page'))
