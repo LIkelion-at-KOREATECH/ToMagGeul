@@ -21,7 +21,7 @@ class Migration(migrations.Migration):
             fields=[
                 ('password', models.CharField(max_length=128, verbose_name='password')),
                 ('last_login', models.DateTimeField(blank=True, null=True, verbose_name='last login')),
-                ('is_superuser', models.BooleanField(default=False, help_text='Designates that this user has all permissions without explicitly assigning them.', verbose_name='superuser status')),
+                ('is_superuser', models.BooleanField(default=False, help_text='Designates that this user has all permissions without explicitly asg them.', verbose_name='superuser status')),
                 ('email', models.EmailField(error_messages={'unique': '이미 존재하는 이메일입니다.'}, max_length=255, primary_key=True, serialize=False, unique=True)),
                 ('nickname', models.CharField(error_messages={'unique': '이미 존재하는 닉네임입니다.'}, max_length=50, unique=True)),
                 ('name', models.CharField(default='username', max_length=30)),
