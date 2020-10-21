@@ -1,7 +1,8 @@
 from django import forms
-from django.contrib.auth.forms import ReadOnlyPasswordHashField
+from django.contrib.auth.forms import ReadOnlyPasswordHashField, AuthenticationForm
 from django.utils.translation import ugettext_lazy as _
 from django.core.validators import RegexValidator
+from django.forms import EmailField
 
 from .models import TMUser, TMAuthor
 from .managers import TMUserManager
@@ -161,6 +162,7 @@ class AuthorCreationForm(forms.ModelForm):
                     'page_link', 
                     'sns_link', 
                     'portfolio',)
+
 
 # class UserChangeForm(forms.ModelForm):
 #     # 비밀번호 변경 폼

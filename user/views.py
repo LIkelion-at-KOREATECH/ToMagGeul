@@ -1,7 +1,7 @@
 from user.models import TMUser
 from django.shortcuts import get_object_or_404, render, redirect
 from django.contrib.auth.forms import UserCreationForm
-from django.contrib.auth.views import LoginView
+from django.contrib.auth import authenticate, login, logout
 from .forms import UserCreationForm, AuthorCreationForm
 
 def signup(request):
@@ -37,9 +37,20 @@ def createauthor(request):
 def thankyou(request):
     return render(request, 'thankyou.html')
 
-class MyLoginView(LoginView):
-    template_name = 'registration/signin.html'
 
-    def get_success_url(self):
-        url = self.get_redirect_url()
-        return url or 'main'
+def signin(request):
+    if request.method == "POST":
+        email = request.POST.get('email','')
+        password = request.POST.get('password','')
+        user = authenticate(request, email=email, password=password)
+        if user is not None:
+            login(request, user)
+            return redirect('profile')
+    return render(request, 'signin.html')
+
+def signout(request):
+    logout(request)
+    return redirect('thank')
+
+def profile(request):
+    return render(request, 'profile.html')

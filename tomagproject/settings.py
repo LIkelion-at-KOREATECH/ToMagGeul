@@ -138,7 +138,7 @@ MEDIA_URL = '/media/'
 
 ## custom user ##
 
-AUTH_USER_MODEL = 'user.TMUser'
+
 
 # Heroku: Update database configuration from $DATABASE_URL.
 import dj_database_url
@@ -146,4 +146,6 @@ db_from_env = dj_database_url.config(conn_max_age=500)
 DATABASES['default'].update(db_from_env)
 ### heroku 배포
 
-LOGIN_REDIRECT_URL='/'
+AUTH_USER_MODEL = 'user.TMUser'
+LOGIN_REDIRECT_URL='/profile/'
+LOGIN_URL = '/login/'
