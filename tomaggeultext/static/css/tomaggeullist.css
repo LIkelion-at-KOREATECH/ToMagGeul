@@ -1,0 +1,401 @@
+@import url(//fonts.googleapis.com/earlyaccess/nanumgothic.css); 
+.nanumgothic * { 
+    font-family: 'Nanum Gothic', sans-serif; 
+}
+
+html, body{
+    margin: 0;
+    height: 100vh;
+    width: 100%;
+}
+
+#main{
+    margin-left: 40vh;
+    margin-right: 40vh;
+}
+
+header{
+    margin: 0;
+    height: 5vh;
+    width: 100%;
+    border-bottom :1px solid burlywood;
+    border-top :1px solid burlywood;
+    text-align: center;
+    bottom: 5px;
+}
+
+.back-btn-wrapper{
+    /* 위치 설정*/
+    position: absolute;
+    left: 35vh;
+    top: 5px;
+}
+
+.back-btn-wrapper > i{
+    font-size: 30px;
+    color: black;
+}
+
+.tm-series-name{
+    font-size: 25px;
+    font-family: 'Nanum Gothic', sans-serif; 
+    font-weight: bold;
+    text-align: center;
+    margin-top: 0px;
+}
+
+.tm-series-info{
+    /* 위치 설정*/
+    position: relative;
+    height: 300px;
+    display: flex;
+    flex-direction: row;
+    border-bottom :1px solid burlywood;
+}
+
+.tm-series-info > img{
+    height: 300px;
+    width: 250px;
+    margin: 0;
+    box-sizing: border-box;
+    border-bottom :1px solid burlywood;
+}
+
+.tm-series-info-text > h2{
+    font-weight: bold;
+}
+
+.tm-series-info-text{
+    box-sizing: border-box;
+    width: 200px;
+    margin-top: 38px;
+    height: 300px;
+    margin-left: 10px;
+}
+
+.tm-series-genre > button{
+    box-sizing: border-box;
+    height: 20px;
+    width: 35px;
+    font-size: 10px;
+    text-align: center;
+    left: 0;
+    vertical-align: middle;
+    margin:0;
+}
+
+.tm-series-info-subscribe{
+    margin-top: 20px;
+}
+
+.tm-series-info-first > button{
+    width: 150px;
+    margin-top: 1px;
+}
+
+.author-info{
+    box-sizing: border-box;
+    margin-left: 45vh;
+    margin-top: 25px;
+    width: 250px;
+    height: 250px;
+    border-radius: 30px;
+}
+.info{
+    box-sizing: border-box;
+    background-color: rgb(228, 228, 228);
+    width: 250px;
+    height: 200px;
+    border-radius: 20px;
+}
+.info-text > img{
+    height: 30px;
+    width: 30px;
+    margin-top: 20px;
+    margin-left: 20px;
+}
+
+.info-text{
+    /* 위치 설정*/
+    position: relative;
+    display: flex;
+    flex-direction: row;
+}
+
+.author-info-text{
+    font-size: 10px;
+    text-align: center;
+    margin-top: 15px;
+    margin-left: 8px;
+}
+
+.author-info-text > p{
+    margin-top: 3px;
+    margin-bottom: 3px;
+}
+.info-text > button{
+    margin-top: 25px;
+    margin-bottom: 3px;
+    margin-left: 70px;
+    width: 50px;
+    height: 30px;
+    background-color: white;
+    font-size: 10px;
+    text-align: center;
+}
+
+#author-name{
+    font-weight: bolder;
+    font-size: 13px;
+}
+
+.author-info-sentence{
+    height: 60px;
+    font-size: 10px;
+    margin-top: 10px;
+    margin-left: 25px;
+    margin-right: 25px;
+    border-bottom :0.5px solid gray;
+}
+
+.date-of-make{
+    position: relative;
+    display: flex;
+    flex-direction: row;
+}
+
+.date-of-make > img{
+    height: 15px;
+    width: 15px;
+    margin-top: 10px;
+    margin-left: 25px;
+}
+
+.date{
+    font-size: 12px;
+    font-weight: bolder;
+    margin-top: 8px;
+    margin-left: 10px;
+    color: rgb(73, 73, 73);
+}
+
+.sns{
+    position: relative;
+    display: flex;
+    flex-direction: row;
+}
+
+.sns > img{
+    height: 15px;
+    width: 15px;
+    margin-top: 10px;
+    margin-left: 25px;
+}
+
+.sns-link{
+    font-size: 12px;
+    font-weight: bolder;
+    margin-top: 8px;
+    margin-left: 10px;
+    color: rgb(73, 73, 73);
+}
+
+.tm-num-info{
+    position: relative;
+    display: flex;
+    flex-direction: row;
+    
+}
+
+.view{
+    text-align: center;
+    width: 80px;
+    height: 55px;
+    border-right: 0.5px solid darkgray;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+.view > img{
+    height: 20px;
+    width: 22px;
+    margin-right: 10px;
+}
+
+.view > p{
+    margin-top: 5px;
+    font-size: 15px;
+    font-weight: bolder;
+    text-align: center;
+    margin-right: 10px;
+}
+
+.heart{
+    text-align: center;
+    width: 80px;
+    height: 55px;
+    border-right: 0.5px solid darkgray;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.heart > img{
+    height: 20px;
+    width: 22px;
+    margin-right: 20px;
+    margin-left: 20px;
+}
+
+.heart > p{
+    margin-top: 5px;
+    font-size: 15px;
+    font-weight: bolder;
+    text-align: center;
+    margin-right: 20px;
+    margin-left: 20px;
+}
+
+.comment{
+    text-align: center;
+    width: 80px;
+    height: 55px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.comment > img{
+    height: 20px;
+    width: 22px;
+    margin-left: 10px;
+}
+
+.comment > p{
+    margin-top: 5px;
+    font-size: 15px;
+    font-weight: bolder;
+    text-align: center;
+    margin-left: 10px;
+}
+
+.all_TMtext_title{
+    width: 100%;
+    height: 80px;
+    border-bottom :0.5px solid burlywood;
+    position: relative;
+    display: flex;
+    flex-direction: row;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.all_TMtext_title > p{
+    font-size: 15px;
+    font-weight: bolder;
+    margin-top: 45px;
+    margin-left: 15px;
+    width: 200px;
+}
+
+.sort_way{
+    margin-left: 88vh;
+    margin-top: 45px;
+    width: 150px;
+    font-size: 13px;
+    font-weight: bolder;
+    position: relative;
+    display: flex;
+    flex-direction: row;
+}
+
+.sort_way > p{
+    margin-left: 5px;
+    margin-right: 5px;
+}
+
+.all_TMtext{
+    width: 100%;
+    height: 130px;
+    border-bottom :0.5px solid burlywood;
+    display: flex;
+    flex-direction: column;
+    align-items: left;
+    text-align: left;
+}
+
+.tmtext{
+    margin-left: 25px;
+}
+
+#series_name{
+    font-weight: bolder;
+    margin-top: 10px;
+    margin-bottom: 0;
+}
+
+.tmtext_info{
+    font-size: 13px;
+    position: relative;
+    display: flex;
+    flex-direction: row;
+    margin-top: 5px;
+}
+
+.tmtext_info > p{
+    margin-left: 3px;
+    margin-right: 3px;
+}
+
+.author_info_box > img{
+    width: 30px;
+    height: 30px;
+    box-sizing: border-box;
+    border: 0.5px solid lightgray;
+    border-radius: 100px;
+    margin-top: 3px;
+}
+
+.author_info_box{
+    margin-left: 25px;
+    position: relative;
+    display: flex;
+    flex-direction: row;
+}
+
+#view{
+    width: 10px;
+    height: 10px;
+}
+
+.author-info-text-2{
+    font-size: 12px;
+    text-align: left;
+    margin-left: 12px;
+    margin-bottom: 3px;
+}
+
+.k{
+    position: relative;
+    display: flex;
+    flex-direction: row;
+    margin-top: 0;
+}
+
+.k > p{
+    margin-left: 3px;
+    margin-right: 3px;
+}
+
+#author-name2{
+    font-weight: bolder;
+    font-size: 13px;
+    margin-bottom: 2px;
+}
+
+.heart_puls > img{
+    width: 30px;
+    height: 30px;
+    margin-left: 10px;
+}
+
+.heart_puls{
+    margin-left: 95vh;
+}
