@@ -38,6 +38,7 @@ class TMText(models.Model):
     writer = models.ForeignKey(TMAuthor, on_delete=models.CASCADE, related_name='text')
     series = models.ForeignKey(TMSeries, on_delete=models.CASCADE, null=True, blank=True, related_name='text')
     text_cover = models.ImageField(upload_to='covers',default='../static/img/no-image.png')
+    
     def __str__(self):
         return self.text_title
 
@@ -63,8 +64,8 @@ class Paid_subscription(models.Model):
         return self.tmuser.nickname + " paid subs " + self.tmseries.writer.author_name+ '\'s ' + self.tmseries.series_title
 
 class Subscription(models.Model):
-    tmuser = models.ForeignKey(TMUser, on_delete=models.CASCADE)
-    tmseries = models.ForeignKey(TMSeries, on_delete=models.CASCADE)
+    tmuser = models.ForeignKey(TMUser, on_delete=models.CASCADE, related_name='subs')
+    tmseries = models.ForeignKey(TMSeries, on_delete=models.CASCADE, related_name='subs')
     start_time = models.DateTimeField(default=timezone.now)
 
     def __str__(self):

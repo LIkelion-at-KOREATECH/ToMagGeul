@@ -9,6 +9,7 @@
     <link href="../static/css/tomaggeullist.css" rel="stylesheet">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
     integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
     integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous">
     </script>
@@ -28,7 +29,7 @@
             </div>
         </div>
     </header>
-
+    <div id="toast"></div>
     <section>
         <div id="main">
             <div class="tm-series-info">
@@ -46,8 +47,12 @@
                     </div>
                     
                     <div class="tm-series-info-subscribe">
-                        <button type="button" class="btn btn-outline-warning">구독</button>
-                        <button type="button" class="btn btn-outline-warning">배송구독</button>
+                        <button class=  {% if isSubs %} "btn btn-warning" 
+                                        {% else %} "btn btn-outline-warning"
+                                        {% endif %}
+
+                            type="button" id='subs' onclick="subs({{series.series_id}})">구독</button>
+                        
                         <div class="tm-series-info-first">
                             <button type="button" class="btn btn-outline-warning">첫화보기</button>
                         </div>
@@ -160,8 +165,44 @@
 
         </div>
     </section>
-
-    
 </body>
+
+
+<script type="text/javascript">
+function subs(id) {
+    var tmt_url = "/subscribe/" + id
+    $.ajax({
+        url: tmt_url,
+        dataType: "json",
+        success: function (data) {
+            let removeToast;
+            const toast = document.getElementById("toast");
+
+            toast.classList.contains("reveal") ?
+            (clearTimeout(removeToast), removeToast = setTimeout(function () {
+                document.getElementById("toast").classList.remove("reveal")
+            }, 1000)) :
+            removeToast = setTimeout(function () {
+                document.getElementById("toast").classList.remove("reveal")
+            }, 1000)
+            toast.classList.add("reveal"),
+            toast.innerText = data['substext'];
+
+            if ($('#subs').hasClass('btn-outline-warning')){
+                $('#subs').addClass('btn-warning')
+                $('#subs').removeClass('btn-outline-warning')
+            }
+            else {
+                $('#subs').addClass('btn-outline-warning')
+                $('#subs').removeClass('btn-warning')
+            }
+        },
+        error: function (request, status, error) {
+            alert("서버와 통신 원활하지 않음");
+            window.location.replace("{% url 'main' %}")
+        }
+    });
+}
+</script>
 
 </html>
