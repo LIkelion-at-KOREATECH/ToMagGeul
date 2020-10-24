@@ -26,57 +26,8 @@
             <label class="form-check-label" for="defaultCheck1">
               기존의 책에 토막글 만들기
             </label>
-          </div><br>
-
-          <div class="Series" id ="Series-Name">
-          <div class="book-choice">
-            <p><label for="book-choice">책 선택하기</label></p>
-            <select class="book-choice" id="book-choice" name="series">
-              {% for value in user.tmauthor.series.all %}
-              <option>{{value.series_title}}</option>
-              {% endfor %}
-            </select>
-            <a href = ""> 새로운 시리즈 추가하기 </a>
-          </div><br>
-        </div>
-          <div class="input-title">
-              <label class="input-title-label" for="inputtitle">
-                토막글 제목
-              </label>
-              <p><input class="input-title-label" type="text" placeholder="토막글 제목" id="inputtitle" name="text_title"></p>
-              <p>토막글에 제목을 붙여주세요. 글의 개성이 잘 드러날수록 좋습니다. (최대 30자)</p>
-          </div><br>
-          <div class="tomag-introduce">
-                <label class="tomag-introduce">토막글 소개</label>
-                <p><textarea class="tomag-introduce" rows="5" name="main_sentence"></textarea></p>
-                <p>토막글을 적어주세요. (최대 200자)</p>
-          </div><br>
-          <div class="tomag-write">
-              <label class="tomag-write">토막글 쓰기</label>
-              <p><textarea class="tomag-introduce" rows="15" name="text_content"></textarea></p>
-              <p>토막글을 적어주세요. (최대 500자)</p>
-          </div><br>
-          <div class="input-genre">
-            <label class="input-genre" for="input-genre">
-              장르
-            </label>
-            <p><input class="input-genre" type="text" placeholder="장르" id="genre" name="text_genre"></p>
-            <p>토막글과 어울리는 장르를 입력해주세요. 자유롭게 입력하실 수 있지만, 메인 페이지에서 보여주는 장르는</p>
-            <p>#ooo #ooo #ooo #ooo #ooo 입니다.</p>
-        </div><br>
-        <div class="enroll-cover">
-            <label class="enroll-cover" for="enroll-cover">책 표지 등록하기</label>
-            <div class="enroll-cover-box">
-              <a href="">
-                <div class="plus_btn">
-                  <label for="ex_file"> + </label>
-                  <input type="file" id="ex_file">
-                </div>
-              </a>
-              </div>
-            </div>
-        </div>
+         </div><br>
+        {{tmtext_form.as_p}}
         <input type="submit" value="글 작성">
     </form>
-    {{tmtext_form.as_p}}
 </html>

@@ -39,9 +39,7 @@ class TMtextCreationForm(forms.ModelForm):
         label = ("토막글 장르")
     )
 
-    text_cover = forms.ImageField(
-        required=False
-    )
+    text_cover = forms.ImageField()
 
     series = forms.ModelChoiceField(
         TMSeries.objects.all(),
@@ -56,8 +54,10 @@ class TMtextCreationForm(forms.ModelForm):
         # 글 생성 Form
     class Meta:
         model = TMText
-        fields = (  'text_title', 
+        fields = (  'series',
+                    'text_title', 
                     'main_sentence', 
                     'text_content', 
+                    'text_genre', 
+                    'writer',
                     'text_cover',)
-                    
