@@ -24,7 +24,6 @@ def createauthor(request):
         if author_form.is_valid():
             author = author_form.save(commit=False)
             username = request.POST.get('name', '')
-            print(username)
             user = get_object_or_404(TMUser, nickname=username)
             author.user = user
             user.is_author = True

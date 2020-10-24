@@ -37,29 +37,47 @@
                     <div class="user-name">
                         <h1>{{user.nickname}}</h1>
                         <button type="button" class="btn btn-outline-dark">프로필 편집</button>
+                        {% if not user.is_author %}
+                        <a href={% url 'author_register' %}>
+                            <button type="button" class="btn btn-outline-dark">작가 등록</button>
+                        </a>
+                        {%endif%}
                     </div>
 
                     <div class="tm-profile-num-info">
                         <div class="series_count">
                             <h6>시리즈</h6>
-                            <p> {{user.tmauthor.series.count}} </p>
+                            {% if user.is_author %}
+                                <p> {{user.tmauthor.series.count}} </p>
+                            {% else %}
+                                <p> - </p>
+                            {%endif%}
                         </div>
                         <div class="text_count">
                             <h6>토막글</h6>
-                            <p> {{user.tmauthor.text.count}} </p>
+                            {% if user.is_author %}
+                                <p> {{user.tmauthor.text.count}} </p>
+                            {% else %}
+                                <p> - </p>
+                            {%endif%}
                         </div>
                         <div class="follower">
                             <h6>팔로워</h6>
                             <!--팔로워 수로 수정 필요-->
-                            <p> {{user.tmauthor.series.count}} </p>
+                            {% if user.is_author %}
+                                <p> {{user.tmauthor.follower_num}} </p>
+                            {% else %}
+                                <p> - </p>
+                            {%endif%}
                         </div>
                         <div class="following">
                             <h6>팔로잉</h6>
                             <!--팔로잉 수로 수정 필요-->
-                            <p> {{user.tmauthor.series.count}} </p>
+                            <p> {{user.following_num}} </p>
                         </div>
+                        
                     </div>
-
+                    {% if user.is_author %}
                     <div class="date-of-make">
                         <img src={% static "img/calendar.png" %} alt="..." /> 
                         <div class="date">
@@ -80,7 +98,7 @@
                             SNS : {{user.tmauthor.sns_link}}
                         </div>
                     </div>
-
+                    {%endif%}
                     <div class="prefer_genre">
                         {%for genre in user.prefer_genre.all %}
                         <button type="button" class="btn btn-light">#{{genre}}</button>
