@@ -90,6 +90,7 @@ html, body{
     font-size: 10px;
     margin-left: 40px;
     margin-top: 15px;
+    padding:2px 5px;
 }
 
 .tm-profile-num-info{
@@ -98,6 +99,7 @@ html, body{
     flex-direction: row;   
     width: 400px;
     font-weight: bolder;
+    margin-left:-15px;
 }
 
 .series_count > h6{
@@ -196,7 +198,7 @@ html, body{
     height: 15px;
     width: 15px;
     margin-top: 10px;
-    margin-left: 25px;
+    /* margin-left: 25px; */
 }
 
 .date{
@@ -217,7 +219,7 @@ html, body{
     height: 15px;
     width: 15px;
     margin-top: 10px;
-    margin-left: 25px;
+    /* margin-left: 25px; */
 }
 
 .sns-link{
