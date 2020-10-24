@@ -10,7 +10,9 @@ import json
 # Create your views here.
 def tmtext(request):
     all_tmtext = TMText.objects.all().order_by('-date_of_write')
+    popular_tmts = TMText.objects.all().order_by('-heart_num')[:5] # 좋아요 많은 순으로 5개 
     all_genre = Genre.objects.all()
+    
     paginator = Paginator(all_tmtext,5)
     page=1 if(request.GET.get('page') == None) else int(request.GET.get('page'))
     posts = paginator.get_page(page)
@@ -19,7 +21,7 @@ def tmtext(request):
     start_block = (current_block-1) * page_range
     end_block = start_block + page_range
     p_range = paginator.page_range[start_block:end_block]
-    return render(request, 'mainpage.html', {'p_range':p_range , 'page': page,'posts':posts,'all_tmtext':posts, 'all_genre':all_genre})
+    return render(request, 'mainpage.html', {'p_range':p_range , 'page': page,'posts':posts,'popular_tmts':popular_tmts, 'all_genre':all_genre})
 
 def tmlist(request, pk):
     user = request.user
