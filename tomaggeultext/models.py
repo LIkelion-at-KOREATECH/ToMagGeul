@@ -12,14 +12,18 @@ class TMSeries(models.Model):
     is_paid_subs = models.BooleanField(default=False)
     series_genre = models.ManyToManyField(Genre, related_name='series_genre')
     last_uploaded_date = models.DateTimeField(default = timezone.now)
-    tomag_num_total = models.PositiveIntegerField(default=0)     #토막글 수 종합
-    heart_num_total = models.PositiveIntegerField(default=0)     #공감 수
-    comment_num_total = models.PositiveIntegerField(default=0)   #댓글 수 종합
-    views_num_total = models.PositiveIntegerField(default=0)     #조회 수 종합
+    # tomag_num_total = models.PositiveIntegerField(default=0)     #토막글 수 종합
+    heart_num_total = models.PositiveIntegerField(default=0)     #공감 수 #property로 바꾸기
+    comment_num_total = models.PositiveIntegerField(default=0)   #댓글 수 종합 #property로 바꾸기
+    views_num_total = models.PositiveIntegerField(default=0)     #조회 수 종합 #property로 바꾸기
     writer = models.ForeignKey(TMAuthor, on_delete=models.CASCADE, related_name='series')
 
     def __str__(self):
         return self.series_title
+
+    @property
+    def tomag_num_total(self):
+        return len(self.text.all())
 
 class TMText(models.Model):
     text_id = models.AutoField(primary_key=True)
