@@ -70,14 +70,14 @@
                     <div class="sns">
                         <img src={% static "img/cloud-computing.png" %} alt="..." /> 
                         <div class="sns-link">
-                            SNS : {{user.tmauthor.page_link}}
+                            PAGE : {{user.tmauthor.page_link}}
                         </div>
                     </div>
 
                     <div class="sns">
                         <img src={% static "img/instagram.png" %} alt="..." /> 
                         <div class="sns-link">
-                            PAGE : {{user.tmauthor.sns_link}}
+                            SNS : {{user.tmauthor.sns_link}}
                         </div>
                     </div>
 
@@ -110,7 +110,7 @@
                         <div class="tmtext_info">
                             <span>{{tmg.text_title}}</span>
                         </div>
-                        <span id="author-name2">{{tmg.date_of_write}}</span>
+                        <span id="author-name2">{{tmg.date_of_write|date:"Y.m.d"}}</span>
                     </div>
                     <div class="author_info_box">
                         <div class="heart_puls">
