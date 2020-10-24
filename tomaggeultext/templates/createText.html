@@ -27,10 +27,11 @@
               기존의 책에 토막글 만들기
             </label>
           </div><br>
+
           <div class="Series" id ="Series-Name">
           <div class="book-choice">
             <p><label for="book-choice">책 선택하기</label></p>
-            <select class="book-choice" id="book-choice">
+            <select class="book-choice" id="book-choice" name="series">
               {% for value in user.tmauthor.series.all %}
               <option>{{value.series_title}}</option>
               {% endfor %}
@@ -78,6 +79,5 @@
         </div>
         <input type="submit" value="글 작성">
     </form>
-    
-</body>
+    {{tmtext_form.as_p}}
 </html>
