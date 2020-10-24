@@ -43,7 +43,7 @@
 
     .swiper-container {
       width: 90%;
-      height: 300px;
+      height: 17.2rem;
 
     }
 
@@ -314,8 +314,9 @@
 
     function onClickSubscrbe(login) {
       if (login.length != 0) {
+        window.location.replace("{% url 'signin' %}") // 변경 해야함 
         // 비동기 처리 
-      
+        /*
         $('#product_list').css('color', 'gray');
         $('#subscribe_list').css('color', 'black');
         $(".all_TMtext").remove();
@@ -327,8 +328,8 @@
         //$(".subscribe_info").css('justify-content', 'center');
         $(".subscribe_info").css('text-align', 'center');
         $(".subscribe_info").css('align-items', 'center');
-        $(".subscribe_info").append("<p>123</p>");
-        //$("<div>hello</div>").appendTo(".all_TMtext");
+        $(".subscribe_info").append("<p> TEST TEST</p>");
+        */
 
 
 
