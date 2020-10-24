@@ -17,14 +17,27 @@
 	border-radius: 50px;
 	padding: 5px;
 }
+.nav-login--wrap{
+	flex-direction: row !important;
+}
 @media screen and (max-width: 990px) {
     .search-box{
-		left:50%;
+		left:10% !important;
 	}
 	.wrap-search{
 		width:200px !important;
 		margin-right:0 !important;
-		margin : 30px 0 !important;
+		margin: 30px 0 30px 48% !important;
+	}
+	.nav-login--wrap{
+		flex-direction: row !important;
+	}
+	.nav-login--wrap > li{
+		width:20%;
+		margin:0 15%;
+	}
+	.nav-login--wrap > li > a > button{
+		width:100%;
 	}
 }
 .search-box:hover .search-txt{
