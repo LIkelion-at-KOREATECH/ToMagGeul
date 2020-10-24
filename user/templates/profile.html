@@ -44,7 +44,12 @@
 
 <!-- 내 글 -->
 
-
+{%for tmg in user.tmauthor.text.all %}
+    <span>{{tmg.text_title}}</span>
+    <span>{{tmg.series}}</span>
+    <span>{{tmg.date_of_write}}</span>
+    <br />
+{%endfor%}
 
 
 <a href={% url 'signout' %}><span>to Logout</span></a>
