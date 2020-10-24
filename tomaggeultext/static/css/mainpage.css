@@ -55,6 +55,17 @@ body {
   margin-left: 10%;
 }
 
+
+.all_subscribe {
+  width: 80%;
+  height: 13rem;
+  border-bottom: 2px solid #D3D3D3;
+  flex-direction: column;
+  align-items: left;
+  text-align: left;
+  margin-left: 10%;
+}
+
 .all_TMtext {
   width: 80%;
   height: 13rem;

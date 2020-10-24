@@ -117,7 +117,7 @@
 
       <div class="swiper-container">
         <div class="swiper-wrapper">
-          {% for tomaggeul in all_tmtext %}
+          {% for tomaggeul in popular_tmts %}
 
           <div class="swiper-slide">
             <a href={% url 'tmtext_detail' tomaggeul.text_id %}>
@@ -141,7 +141,12 @@
                   <p>{{tomaggeul.main_sentence}}</p>
                 </div>
                 <div id="TM_information">
-                  <p>{{tomaggeul.series}} by {{tomaggeul.writer}}</p>
+                  <p>
+                    {% if tomaggeul.series != None %}
+                    {{tomaggeul.series}} written by
+                    {% endif%}
+                    {{tomaggeul.writer}}
+                  </p>
                 </div>
               </div>
             </div>
@@ -166,12 +171,9 @@
           <table class="TMtext_table" style="float: left;">
             <tr>
               <td id="product_list">모든 작품</td>
-              <td>&nbsp;|&nbsp;</td>
-              <td id="delivery_subscribe_list">배송 구독</td>
-              <td>&nbsp;|&nbsp;</td>
-              <td id="subscribe_list">구독</td>
-              <td>&nbsp;|&nbsp;</td>
-              <td id="recomend_list">추천</td>
+              <td>&nbsp;|&nbsp;</td> {{user.nickname}}
+              <!-- {% if user.nickname == None %}{{user.nickname}}{% endif %} -->
+              <td id="subscribe_list" onclick="onClickSubscrbe('{{user.nickname}}')">구독</td>
             </tr>
           </table>
         </div>
@@ -184,7 +186,10 @@
         </div>
       </div>
 
-      {% for tomaggeul in all_tmtext %}
+      <div class="all_subscribe">
+
+      </div>
+      {% for tomaggeul in posts %}
       <div class="all_TMtext">
 
         <div class="first_area">
@@ -202,13 +207,13 @@
             <p>{{tomaggeul.main_sentence}}</p>
           </div>
           <div id="TM_information">
-            <p>
-              {%if tomaggeul.series%}
-              <a href={% url 'tmlist' tomaggeul.series.series_id %}
+            {%if tomaggeul.series%}
+            <a href={% url 'tmlist' tomaggeul.series.series_id %}
               style="text-decoration:none; color:#000000;">{{tomaggeul.series.series_title}}</a>
-              
-              {%endif%}
-              {{tomaggeul.writer.author_name}}
+
+            {%endif%}
+            wrriten by {{tomaggeul.writer.author_name}}<br><br>{{tomaggeul.date_of_write}}
+
             </p>
           </div>
 
@@ -315,10 +320,46 @@
         },
         error: function (request, status, error) {
           alert("서버와 통신 원활하지 않음");
-          window.location.replace({% url 'main' %})
+          window.location.replace("{% url 'main' %}")
         }
       });
     }
+
+    function onClickSubscrbe(login) {
+      if (typeof login != "undefined") {
+        alert(login + "입니다");
+        // 비동기 처리 
+        
+        alert("구독 클릭");
+        $('#product_list').css('color', 'gray');
+        $('#subscribe_list').css('color', 'black');
+        $(".all_TMtext").remove();
+
+        $(".all_subscribe").append("<div class=\"all_TMtext\"></div>");
+        $(".all_TMtext").append("<div class=\"subscribe_info\"></div>");
+        $(".all_TMtext").css('height', '5rem').css('padding-top', '1.5rem');
+        //$(".subscribe_info").css('color', 'red');
+        //$(".subscribe_info").css('justify-content', 'center');
+        $(".subscribe_info").css('text-align', 'center');
+        $(".subscribe_info").css('align-items', 'center');
+        $(".subscribe_info").append("<p>123</p>");
+        //$("<div>hello</div>").appendTo(".all_TMtext");
+
+
+
+      } else {
+        alert("구독 정보를 확인하기 위해 로그인해주세요!");
+        window.location.replace("{% url 'signin' %}")
+
+
+      }
+    }
+
+    $("#product_list").click(function () {
+      alert("모든 작품 클릭");
+      $('#product_list').css('color', 'black');
+      $('#subscribe_list').css('color', 'gray');
+    });
   </script>
 </body>
 
