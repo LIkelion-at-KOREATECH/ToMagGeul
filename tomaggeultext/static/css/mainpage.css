@@ -55,6 +55,10 @@ body {
   margin-left: 10%;
 }
 
+
+.all_subscribe {
+}
+
 .all_TMtext {
   width: 80%;
   height: 13rem;
@@ -131,11 +135,8 @@ body {
   margin-bottom: 0px;
 }
 
-.search {
-  margin-left: 50rem;
-}
 
-.nav-link {
+.main-nav-link {
   margin-left: 5rem;
   margin-right: 5rem;
   margin-top: 1rem;
@@ -145,10 +146,11 @@ body {
   height: 50%;
 }
 
-.nav-link:hover {
+.main-nav-link:hover {
   color: #C28B64;
   border-bottom: 2px solid #C28B64;
 }
+
 
 
 #topMenu {
