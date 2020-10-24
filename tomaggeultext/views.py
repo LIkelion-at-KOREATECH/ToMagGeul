@@ -1,5 +1,5 @@
-from django.shortcuts import render
-from .models import TMText
+from django.shortcuts import get_object_or_404, render
+from .models import TMSeries, TMText
 from .models import Genre
 from django.core.paginator import Paginator
 import math
@@ -21,8 +21,10 @@ def tmtext(request):
     p_range = paginator.page_range[start_block:end_block]
     return render(request, 'mainpage.html', {'p_range':p_range , 'page': page,'posts':posts,'all_tmtext':posts, 'all_genre':all_genre})
 
-def tmlist(request):
-    return render(request, 'tomaggeullist.html')
+def tmlist(request, pk):
+    series = get_object_or_404(TMSeries, series_id = pk)
+
+    return render(request, 'tomaggeullist.html', {'series':series})
 
 def it_sounds_good(request,tmt_id): # test
     tmtext=TMText.objects.filter(text_id=tmt_id)
