@@ -213,52 +213,53 @@
         </div>
         <div class="third_area">
           <!-- <a href="{% url 'it_sounds_good' tomaggeul.text_id %}"> test</a> -->
-          <div class="heart_icon" onclick="location.href={% url 'it_sounds_good' tomaggeul.text_id %}">♡</div>
+          <!--<div class="heart_icon" onclick="location.href={% url 'it_sounds_good' tomaggeul.text_id %}">♡</div>-->
+          <div class="heart_icon" onclick="it_sounds_good({{tomaggeul.text_id}})">♡</div>
           <div class="show_more_icon">&nbsp;&nbsp;&nbsp;…</div>
         </div>
       </div>
       {% endfor %}
 
       <div style="margin-top:3%; margin-bottom:5%; ">
-        <div >
+        <div>
           <nav>
             <ul class="pagination" style="justify-content: center;">
-                {%if posts.has_previous%}
-                <li class="page-item">
-                  <a class="page-link" href="?page={{posts.previous_page_number}}" aria-label="Previous">
-                    <span aria-hidden="true">&laquo;</span>
-                  </a>
-                </li>
-                {% else %}
-                <li class="page-item disabled">
-                  <a class="page-link" href="" aria-label="Previous">
-                    <span aria-disabled="true">&laquo;</span>
-                  </a>
-                </li>
+              {%if posts.has_previous%}
+              <li class="page-item">
+                <a class="page-link" href="?page={{posts.previous_page_number}}" aria-label="Previous">
+                  <span aria-hidden="true">&laquo;</span>
+                </a>
+              </li>
+              {% else %}
+              <li class="page-item disabled">
+                <a class="page-link" href="" aria-label="Previous">
+                  <span aria-disabled="true">&laquo;</span>
+                </a>
+              </li>
 
-                {%endif%}
-                {% for i in p_range %}
+              {%endif%}
+              {% for i in p_range %}
 
-                {% if i == page %}
-                <li class="page-item active"><a class="page-link" href="?page={{i}}">{{i}}</a></li>
-                {% else %}
-                <li class="page-item"><a class="page-link" href="?page={{i}}">{{i}}</a></li>
-                {% endif %}
-                {% endfor %}
+              {% if i == page %}
+              <li class="page-item active"><a class="page-link" href="?page={{i}}">{{i}}</a></li>
+              {% else %}
+              <li class="page-item"><a class="page-link" href="?page={{i}}">{{i}}</a></li>
+              {% endif %}
+              {% endfor %}
 
-                {%if posts.has_next%}
-                <li class="page-item">
-                  <a class="page-link" href="?page={{posts.next_page_number}}" aria-label="Next">
-                    <span aria-hidden="true">&raquo;</span>
-                  </a>
-                </li>
-                {% else %}
-                <li class="page-item disabled">
-                  <a class="page-link" href="" aria-label="Next">
-                    <span aria-disabled="true">&raquo;</span>
-                  </a>
-                </li>
-                {%endif%}
+              {%if posts.has_next%}
+              <li class="page-item">
+                <a class="page-link" href="?page={{posts.next_page_number}}" aria-label="Next">
+                  <span aria-hidden="true">&raquo;</span>
+                </a>
+              </li>
+              {% else %}
+              <li class="page-item disabled">
+                <a class="page-link" href="" aria-label="Next">
+                  <span aria-disabled="true">&raquo;</span>
+                </a>
+              </li>
+              {%endif%}
             </ul>
           </nav>
         </div>
@@ -266,8 +267,6 @@
     </div>
   </div>
   </div>
-
-
 
   <script type="module">
     import Swiper from 'https://unpkg.com/swiper/swiper-bundle.esm.browser.min.js'
@@ -284,36 +283,41 @@
       },
     });
   </script>
+  <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+  <script type="text/javascript">
+    function it_sounds_good(id) {
+      var tmt_url = "/it_sounds_good/" + id
+      $.ajax({
+        url: tmt_url,
+        dataType: "json",
+        success: function (data) {
+          let removeToast;
+          const toast = document.getElementById("toast");
 
-<<<<<<< HEAD
-=======
-  <script>
-    $(".heart_icon").click(function () {
+          toast.classList.contains("reveal") ?
+            (clearTimeout(removeToast), removeToast = setTimeout(function () {
+              document.getElementById("toast").classList.remove("reveal")
+            }, 1000)) :
+            removeToast = setTimeout(function () {
+              document.getElementById("toast").classList.remove("reveal")
+            }, 1000)
+          toast.classList.add("reveal"),
+            toast.innerText = "좋아요 +" + data['heart_count'];
 
-      let removeToast;
-      const toast = document.getElementById("toast");
+          if ($('.heart_icon').css('color') == 'rgb(255, 0, 0)')
+            $('.heart_icon').css('color', 'black');
+          else
+            $('.heart_icon').css('color', 'red');
 
-      toast.classList.contains("reveal") ?
-        (clearTimeout(removeToast), removeToast = setTimeout(function () {
-          document.getElementById("toast").classList.remove("reveal")
-        }, 1000)) :
-        removeToast = setTimeout(function () {
-          document.getElementById("toast").classList.remove("reveal")
-        }, 1000)
-      toast.classList.add("reveal"),
-        toast.innerText = "좋아요"
-
-
-      if ($('.heart_icon').css('color') == 'rgb(255, 0, 0)')
-        $('.heart_icon').css('color', 'black');
-      else
-        $('.heart_icon').css('color', 'red');
-
-
-    })
+          // 해당 좋아요 바꾸는 부분
+        },
+        error: function (request, status, error) {
+          alert("서버와 통신 원활하지 않음");
+          window.location.replace("{% url 'main' %}")
+        }
+      });
+    }
   </script>
-
->>>>>>> J_branch
 </body>
 
 </html>
