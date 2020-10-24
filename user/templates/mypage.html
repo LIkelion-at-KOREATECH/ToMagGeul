@@ -23,7 +23,7 @@
         <div id="nav">
 
             <div class="tm-series-name">
-                프로필
+                마이페이지
             </div>
         </div>
     </div>
@@ -34,15 +34,19 @@
                 <img src={% static "img/no-image.png" %} alt="..." />
                 <div class="tm-profile-text">
                     <div class="user-name">
-                        <h1>{{user.nickname}}</h1>
-                        <button type="button" class="btn btn-outline-dark">프로필 편집</button>
-                        {%if ismypage %}
-                            {% if not user.is_author %}
-                            <a href={% url 'author_register' %}>
-                                <button type="button" class="btn btn-outline-dark">작가 등록</button>
-                            </a>
-                            {%endif%}
+                        
+                        <h1>{{user.tmauthor}}</h1>
+                        {% if not user.is_author %}
+                        <h1>({{user.nickname}})</h1>
                         {%endif%}
+                        <button type="button" class="btn btn-outline-dark">프로필 편집</button>
+                        
+                        {% if not user.is_author %}
+                        <a href={% url 'author_register' %}>
+                            <button type="button" class="btn btn-outline-dark">작가 등록</button>
+                        </a>
+                        {%endif%}
+                        
                     </div>
 
                     <div class="tm-profile-num-info">
@@ -72,34 +76,37 @@
                             {%endif%}
                         </div>
                         <div class="following">
-                            <h6>팔로잉</h6>
-                            <!--팔로잉 수로 수정 필요-->
+                            <h6>구독 수</h6>
                             <p> {{user.following_num}} </p>
                         </div>
                         
                     </div>
-                    {% if user.is_author %}
                     <div class="date-of-make">
                         <img src={% static "img/calendar.png" %} alt="..." /> 
                         <div class="date">
-                            개설일 : {{user.tmauthor.opening_date|date:"Y.m.d"}}
+                            개설일 : {% if user.is_author %}{{user.tmauthor.opening_date|date:"Y.m.d"}}
+                            {% else %}-
+                            {%endif%}
                         </div>
                     </div>
                     
                     <div class="sns">
                         <img src={% static "img/cloud-computing.png" %} alt="..." /> 
                         <div class="sns-link">
-                            PAGE : {{user.tmauthor.page_link}}
+                            PAGE : {% if user.is_author %}{{user.tmauthor.page_link}}
+                            {% else %}-
+                            {%endif%}
                         </div>
                     </div>
 
                     <div class="sns">
                         <img src={% static "img/instagram.png" %} alt="..." /> 
                         <div class="sns-link">
-                            SNS : {{user.tmauthor.sns_link}}
+                            SNS : {% if user.is_author %}{{user.tmauthor.sns_link}}
+                            {% else %}-
+                            {%endif%}
                         </div>
                     </div>
-                    {%endif%}
                     <div class="prefer_genre">
                         {%for genre in user.prefer_genre.all %}
                         <button type="button" class="btn btn-light">#{{genre}}</button>

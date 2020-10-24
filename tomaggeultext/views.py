@@ -26,7 +26,9 @@ def tmtext(request):
 def tmlist(request, pk):
     user = request.user
     series = get_object_or_404(TMSeries, series_id = pk)
-    isSubs = user.subs.filter(tmseries=series)
+    isSubs = False
+    if user.is_authenticated:
+        isSubs = user.subs.filter(tmseries=series)
     return render(request, 'tomaggeullist.html', {'series':series, 'isSubs':isSubs})
 
 def popup(request):
