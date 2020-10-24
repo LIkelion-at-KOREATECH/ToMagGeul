@@ -20,35 +20,46 @@ class TMtextCreationForm(forms.ModelForm):
         widget=forms.TextInput(
             attrs={
                 'required' : 'True',
-                'placeholder' : 'Introduce'
+                'placeholder' : 'Introduce',
+                'class': 'tomag-introduce',
             }
         )
     )
     text_content = forms.CharField(
-        max_length = 5000,
+        max_length = 500,
         label=('토막글 쓰기'),
         widget= forms.TextInput(
             attrs={
                 'required' : 'True',
                 'placeholder': 'Content',
+                'class': 'tomag-write'
             }
         )
     )
     text_genre = forms.ModelMultipleChoiceField(
         Genre.objects.all(),
-        label = ("토막글 장르")
+        label = ("토막글 장르"),
+        widget = forms.TextInput(
+            attrs={
+                'required' : 'True',
+                'class': 'input-genre',
+            }
+        )
     )
 
     text_cover = forms.ImageField(
         required=False
+        label = ("책 표지 등록"),
     )
 
     series = forms.ModelChoiceField(
         TMSeries.objects.all(),
-        label= "책 선택하기",
+        label= ("책 선택하기"),
         widget=forms.Select(
             attrs ={
-            'id' : 'Series-Name',
+                'required' : 'True',
+                'class': 'book-choice',
+                'id' : 'book-choice',
             }
     )
     )
