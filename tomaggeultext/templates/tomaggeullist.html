@@ -34,17 +34,19 @@
             <div class="tm-series-info">
                 <img src={% static "img/no-image.png" %} alt="..." />
                 <div class="tm-series-info-text">
-                    <h2>책 제목</h2>
-                    <h6>작가 이름 | 총 0화</h6>
+                    <h2>{{series.series_title}}</h2>
+                    <h6>{{series.writer}} | 총 {{series.tomag_num_total}}화</h6>
                     <p> </p>
-                    <h6>책 소개</h6>
+                    <h6>{{series.introduce}}</h6>
                     <div class="tm-series-genre">
-                        <button type="button" class="btn btn-light">장르</button>
+                        {%for genre in series.series_genre.all %}
+                        <button type="button" class="btn btn-light">#{{genre}}</button>
+                        {%endfor%}
+                        
                     </div>
                     
                     <div class="tm-series-info-subscribe">
                         <button type="button" class="btn btn-outline-warning">구독</button>
-                        <button type="button" class="btn btn-outline-warning">배송구독</button>
                         <div class="tm-series-info-first">
                             <button type="button" class="btn btn-outline-warning">첫화보기</button>
                         </div>
@@ -53,53 +55,47 @@
                 <div class="author-info">
                     <div class="info">
                         <div class="info-text">
-                            <!--writer 이미지 넣어주고 싶었는데 안들어감-->
                             <img src={% static "img/writer.png" %} alt="..." />
                             <div class="author-info-text">
-                                <p id="author-name">작가명</p>
-                                <p>구독자 0명</p>
+                                <p id="author-name">{{series.writer}}</p>
+                                <p>구독자 {{series.writer.follower_num}}명</p>
                             </div>
                             <button type="button" class="btn btn-outline-dark">+ 팔로우</button>
                         </div>
                         <div class="author-info-sentence">
-                            작가 소개 ~
+                            {{series.writer.introduce}}
                         </div>
                         <div class="date-of-make">
-                            <!--calendar 이미지 넣어주고 싶었는데 안들어감-->
-                            <img src={% static "img/no-image.png" %} alt="..." /> 
+                            <img src={% static "img/calendar.png" %} alt="..." /> 
                             <div class="date">
-                                개설일 2020-10-15
+                                개설일 {{series.writer.opening_date|date:"Y.m.d"}}
                             </div>
                         </div>
                         <div class="sns">
-                            <!--instagram 이미지 넣어주고 싶었는데 안들어감-->
-                            <img src={% static "img/no-image.png" %} alt="..." /> 
+                            <img src={% static "img/instagram.png" %} alt="..." /> 
                             <div class="sns-link">
-                                @ tomaggeul
+                                {{series.writer.sns_link}}
                             </div>
                         </div>
                     </div>
                     <div class="tm-num-info">
                         <div class="view">
-                            <!--view 이미지 넣어주고 싶었는데 안들어감-->
-                            <img src={% static "img/no-image.png" %} alt="..." /> 
-                            <p> 100 </p>
+                            <img src={% static "img/view.png" %} alt="..." /> 
+                            <p> {{series.views_num_total}} </p>
                         </div>
                         <div class="heart">
-                            <!--heart 이미지 넣어주고 싶었는데 안들어감-->
-                            <img src={% static "img/no-image.png" %} alt="..." /> 
-                            <p> 30 </p>
+                            <img src={% static "img/heart.png" %} alt="..." /> 
+                            <p> {{series.heart_num_total}} </p>
                         </div>
                         <div class="comment">
-                            <!--comment 이미지 넣어주고 싶었는데 안들어감-->
-                            <img src={% static "img/no-image.png" %} alt="..." /> 
-                            <p> 0 </p>
+                            <img src={% static "img/comment.png" %} alt="..." /> 
+                            <p> {{series.comment_num_total}} </p>
                         </div>                        
                     </div>
                 </div>
             </div>
             <div class="all_TMtext_title">
-                <p>1개의 포스트</p>
+                <p>{{series.tomag_num_total}}개의 포스트</p>
                 <div class="sort_way">
                     <p>1화부터</p>
                     <p> | </p>
@@ -107,9 +103,37 @@
                 </div>
             </div>
 
+            {% for tmg in series.text.all %}
             <div class="all_TMtext">
                 <div class="tmtext">
-                    <p id="series_name">책 이름</p>
+                    <p id="series_name">{{series}}</p>
+                    <div class="tmtext_info">
+                        <P>{{tmg.text_title}}</P>
+                        {% if tmg.main_sentence %}
+                        <P> | </P>
+                        <P>{{tmg.main_sentence}}</P>
+                        {% endif%}
+                    </div>
+                </div>
+                <div class="author_info_box">
+                    <img src={% static "img/writer.png" %} alt="..." />
+                    <div class="author-info-text-2">
+                        <p id="author-name2">{{series.writer}}</p>
+                        <div class="k">
+                            <p>{{tmg.date_of_write|date:"Y.m.d"}}</p>
+                            <p><img id="view" src={% static "img/view.png" %} alt="..." /> {{tmg.views_num}} </p>
+                        </div>                        
+                    </div>
+                    <div class="heart_puls">
+                        <img src={% static "img/heart.png" %} alt="..." />
+                        <img src={% static "img/ellipsis.png" %} alt="..." />
+                    </div>
+                </div>
+            </div>
+            {% empty %}
+            <div class="all_TMtext">
+                <div class="tmtext">
+                    <p id="series_name">아직 글이 없습니다...</p>
                     <div class="tmtext_info">
                         <P>1화 이름</P>
                         <P> | </P>
@@ -117,24 +141,22 @@
                     </div>
                 </div>
                 <div class="author_info_box">
-                    <!--writer 이미지 넣어주고 싶었는데 안들어감-->
-                    <img src={% static "img/no-image.png" %} alt="..." />
+                    <img src={% static "img/writer.png" %} alt="..." />
                     <div class="author-info-text-2">
                         <p id="author-name2">작가이름</p>
                         <div class="k">
                             <p>2020.00.00</p>
-                            <!--view 이미지 넣어주고 싶었는데 안들어감-->
-                            <p><img id="view" src={% static "img/no-image.png" %} alt="..." /> 7 </p>
+                            <p><img id="view" src={% static "img/view.png" %} alt="..." /> 7 </p>
                         </div>                        
                     </div>
                     <div class="heart_puls">
-                        <!--heart 이미지 넣어주고 싶었는데 안들어감-->
-                        <img src={% static "img/no-image.png" %} alt="..." />
-                        <!--ellipsis 이미지 넣어주고 싶었는데 안들어감-->
-                        <img src={% static "img/no-image.png" %} alt="..." />
+                        <img src={% static "img/heart.png" %} alt="..." />
+                        <img src={% static "img/ellipsis.png" %} alt="..." />
                     </div>
                 </div>
             </div>
+            {% endfor %}
+
         </div>
     </section>
 

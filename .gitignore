@@ -222,3 +222,5 @@ dmypy.json
 ### my venv folder name ###
 tomagvenv/
 venvtomag/
+
+*/migrations/*
