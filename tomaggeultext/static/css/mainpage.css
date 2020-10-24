@@ -124,18 +124,27 @@
   text-align: center;
   margin-bottom: 0px;
 }
-
-
+.genre_section{
+  width:100%;
+  display:flex;
+  justify-content: space-around;
+  flex-direction: row;
+  align-content: center;
+  height: 70px;
+  padding-top:20px;
+}
+.main-nav-link--wrap{
+ display: inline-block;
+}
 .main-nav-link {
   /* margin-left: 5vw;
   margin-right: 5vw;
   margin-top: 1rem;
   margin-bottom: 1rem; */
-  margin:1vh 5vw 1vh 5vw;
   font-weight: bold;
   cursor: pointer;
   height: 50%;
-  font-size:1vw;
+  font-size:100%;
 }
 
 .main-nav-link:hover {

@@ -66,13 +66,13 @@
                         </div>
                     </div>
                     {% empty %}
-                    <div class="all_TMtext">
+                    <div class="all_TMtext" style="height:auto">
                         <div class="tmtext">
-                            <p id="series_name">아직 글이 없습니다...</p>
+                            <!-- <p id="series_name">아직 글이 없습니다...</p> -->
                             <div class="tmtext_info">
-                                <P>1화 이름</P>
+                                <!-- <P>1화 이름</P>
                                 <P> | </P>
-                                <P>내용 중심문장 어쩌구</P>
+                                <P>내용 중심문장 어쩌구</P> -->
                             </div>
                         </div>
                         <div class="author_info_box">
@@ -80,9 +80,12 @@
                             <div class="author-info-text-2">
                                 <p id="author-name2">작가이름</p>
                                 <div class="k">
-                                    <p>2020.00.00</p>
+                                    <p style="margin-left: 0;">2020.00.00</p>
                                     <p><img id="view" src={% static "img/view.png" %} alt="..." /> 7 </p>
                                 </div>                        
+                            </div>
+                            <div class="author-info-text-2">
+                                <p> 멈추면, 비로소 보이는 것들</p>                    
                             </div>
                             <div class="heart_puls">
                                 <img src={% static "img/heart.png" %} alt="..." />
