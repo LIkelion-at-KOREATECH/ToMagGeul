@@ -261,6 +261,7 @@ header{
     align-items: left;
     text-align: left;
 }
+
 .tmtext_list{
     position: relative;
     display: flex;
@@ -317,7 +318,4 @@ header{
     width: 20px;
     height: 20px;
     margin-left: 10px;
-}
-
-.heart_puls{
 }

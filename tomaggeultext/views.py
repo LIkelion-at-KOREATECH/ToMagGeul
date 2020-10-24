@@ -54,5 +54,5 @@ def subscribe(request,series): # test
     return HttpResponse(json.dumps(context), content_type='application/json')
 
 def tmtext_detail(request, tmt_id):
-    tmtext=TMText.objects.filter(text_id=tmt_id)
+    tmtext=get_object_or_404(TMText, text_id=tmt_id)
     return render(request, 'tomaggeul_detail.html', {'tmtext':tmtext})
