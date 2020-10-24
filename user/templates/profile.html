@@ -1,4 +1,6 @@
+{% extends 'navbar.html' %}
 {% load static %}
+{% block content %}
 <!DOCTYPE html>
 <html lang="ko-kr">
 
@@ -17,17 +19,14 @@
 </head>
 
 <body>
-    <header>
+    <div style="border-bottom :1px solid burlywood;">
         <div id="nav">
-            <div class="back-btn-wrapper">
-                <i class="fa fa-chevron-left" aria-hidden="true"></i>
-            </div>
 
             <div class="tm-series-name">
                 프로필
             </div>
         </div>
-    </header>
+    </div>
 
     <section>
         <div id="main">
@@ -113,9 +112,8 @@
 
             <div class="list">
                 <div class="all_list_title">
-                    <span>내가 쓴 글</span>
+                    <span>시리즈 글</span>
                     <span>구독</span>
-                    <span>배송 현황</span>
                 </div>
             </div>
 
@@ -156,3 +154,4 @@
 </body>
 
 </html>
+{% endblock %}
