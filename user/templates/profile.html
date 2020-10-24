@@ -1,21 +1,13 @@
 {% extends 'navbar.html' %}
 {% load static %}
 {% block content %}
-<!DOCTYPE html>
-<html lang="ko-kr">
+<!-- <!DOCTYPE html>
+<html lang="ko-kr"> -->
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>프로필</title>
     <link href="../static/css/profile.css" rel="stylesheet">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
-    integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
-    integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous">
-    </script>
-    <!-- fontawesome cdn 아이콘 폰트 사용하기 위해서 필요합니다. -->
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.1/css/all.min.css" rel="stylesheet">
+    
 </head>
 
 <body>
@@ -28,10 +20,10 @@
         </div>
     </div>
 
-    <section>
-        <div id="main">
+    <section class="container">
+        <div>
             <div class="profile">
-                <img src={% static "img/no-image.png" %} alt="..." />
+                <img src={% static "img/no-image.png" %} alt="..."/>
                 <div class="tm-profile-text">
                     <div class="user-name">
                         <h1>{{user.nickname}}</h1>
@@ -155,5 +147,5 @@
     </section>
 </body>
 
-</html>
+<!-- </html> -->
 {% endblock %}
