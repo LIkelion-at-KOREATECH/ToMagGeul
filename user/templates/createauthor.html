@@ -1,13 +1,70 @@
+{% load static %}
 <!doctype html>
 <html lang="ko-kr">
+    <link rel="stylesheet" href ="{% static 'css/signin.css' %}"/>
 
-{% load static %}
+    <header class="TopHeader">
+        <nav id="topMenu">
+            <ul>
+                <li><a class="menuLink" href="#" style="margin: 0 200% 0 0;">토막글</a></li>
+                <li><a class="menuLink" href={% url 'main' %}>홈</a></li>
+                <li><a class="menuLink" href="#">분야별</a></li>
+                <li><a class="menuLink" href="#" >인기작품</a></li>
+                <li class ="blank"></li>
+                <img src="{% static 'img/search.png' %}" alt="없음" style="height:8%; width:1%; margin: 0.3% 0 0 -6.5%; color: #919191;" >
+                <li><input id="search_text" type = "text" name = "검색" size="40%%" value="       검색" style="height:10%;"></li>
+                <li class ="smallblank"></li>
+                <!-- <li class="signin-header"> 검색 </li> -->
+                <li><a href={% url 'signin' %}><input id = "button_signin" type="button" name="button1" value="로그인"></a></li>
+                <li class ="smallblank"></li>
+                <li><a href={% url 'user_register' %}><input id="button_signup" type="button" name="button2" value="회원가입"></a></li>
+                <li class ="blank"></li>
+            </ul>
+        </nav>
+    </header>
+    <div class="blank"></div>
 
-<form method="POST" action={% url 'author_register' %} enctype="multipart/form-data">
-    {% csrf_token %}
-    <table>
-    {{author_form.as_table}}
-    </table>
-    <input type="hidden" name="name" value={{user.nickname}}>
-    <input type="submit" value="작가등록">
-</form>
+
+<div class="SecondHeader">
+    <h3 class="middle"  style="margin: 0.7% 0 0 0;">작가등록</h3>
+</div>
+
+<main float="center">
+    <div class="center" style="width: 20%; margin: 10% 0 0 0;">
+        <body>
+            <h3 class="left" style="color: #606060; margin : 10% -5% 0 0;">작가명</h3>
+            <input class= "signup_button"  type = "text" name = "email" maxlength= 100; placeholder="   토막글 작가"  size= "34" >
+            <h3 class="left" style="color: #606060; margin : 10% -5% 0 0;">자기 소개</h3>
+            <textarea rows="4" cols="37" class= "introduce" name="contents">자신의 개성을 살려 소개글을 작성해주세요!</textarea>
+            <h3 class="left" style="color: #606060; margin : 10% -5% 0 0;">소개 링크</h3>
+            <textarea rows="4" cols="37" class= "introduce" name="contents">자신을 표현할 수 있는 링크를 적어주세요!</textarea>
+            <h3 class="left" style="color: #606060; margin : 10% -5% 0 0;">SNS 링크</h3>
+            <textarea rows="4" cols="37" class= "introduce" name="contents">회원들과 소통할 계정을 작성해주세요!</textarea>
+            <h3 class="left" style="color: #606060; margin : 10% -5% 0 0;">포트폴리오</h3>
+            <input type="file" name="file" id="file" />
+            <input type="hidden" name="name" value={{user.nickname}}>
+            <input id="submit_signup" type="submit" size="34" name="button2" value="작가등록" style="width:310px; height:40px; margin:  10% 0 30% 0">
+            </form>
+        </body>
+    </div>
+</main>
+
+{% comment %} 
+<main float="center">
+    <div class="center" style="width: 20%; margin: 12% 0 0 0;">
+        <body>
+            <h3 class="left" style="color: #606060; margin : 10% -5% 0 0;">작가명</h3>
+            <input class= "signup_button"  type = "text" name = "email" maxlength= 100; placeholder="   토막글 작가"  size= "34" >
+            {% load static %}
+
+            <form method="POST" action={% url 'author_register' %} enctype="multipart/form-data">
+            {% csrf_token %}
+            <table>
+            {{author_form.as_table}}
+            </table>
+            <input type="hidden" name="name" value={{user.nickname}}>
+            <input id="submit_signup" type="submit" size="34" name="button2" value="작가등록" style="width:310px; height:40px; margin:  10% 0 30% 0">
+            </form>
+        </body>
+    </div>
+</main> {% endcomment %}

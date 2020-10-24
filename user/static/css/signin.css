@@ -1,6 +1,10 @@
 .left{
     text-align : left;
 }
+
+.middle{
+    text-align : center;
+}
 .center{
         text-align : center;
         display:inline-block;
@@ -13,6 +17,7 @@
     /* display:flex; */
     text-align:left;
 }
+
 
 .blank{
 width : 200%;
@@ -27,14 +32,25 @@ height : 10%;
 
 #topMenu {    
     position: fixed;
-    top: 1%;
-    left: 0;
-    right: 0;
     display:inline-block;        
     height: 7%; 
     width: 100vw; 
     border-bottom: 0.1px solid #979797;
     background:white;
+}
+
+.SecondHeader{
+    position: fixed;
+    top: 8%;
+    left: 0;
+    right: 0;
+    display:inline-block;        
+    height: 5%; 
+    width: 100vw; 
+    border-bottom: 0.1px solid #979797;
+    border-top: 0.1px solid #979797;
+    background:white;
+    text-align : center;
 }
 
 #topMenu ul li {                   
@@ -62,6 +78,12 @@ height : 10%;
     /* background-color: red; */
 }
 
+.introduce{
+    background-color:#F7F7F7; 
+    border: 2px solid #979797;
+    border-radius: 7px;
+    color: #979797;
+}
 
 .signup_button{
     background-color:#F7F7F7; 
