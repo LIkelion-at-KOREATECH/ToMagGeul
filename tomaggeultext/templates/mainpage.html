@@ -23,7 +23,7 @@
     integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous">
   </script>
 
-  <link rel="stylesheet" type="text/css" href="{%static 'css/mainpage.css'%}">
+  <link rel="stylesheet" type="text/css" href={%static 'css/mainpage.css'%}>
 
   <!-- swiper -->
   <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.css">
@@ -120,7 +120,7 @@
           {% for tomaggeul in all_tmtext %}
 
           <div class="swiper-slide">
-            <a href="{% url 'tmtext_detail' tomaggeul.text_id %}">
+            <a href={% url 'tmtext_detail' tomaggeul.text_id %}>
               <div class="card_image"
                 style="margin-left:20%; width:20%; overflow: hidden; display: flex;align-items: center; justify-content: center;width: 8rem; height: 80%;">
 
@@ -133,7 +133,7 @@
             <div style="width:70%; margin: 5% 5%;">
               <div class="second_area">
                 <div id="TM_title">
-                  <a href="{% url 'tmtext_detail' tomaggeul.text_id %}" style="text-decoration:none ; color:#000000;">
+                  <a href={% url 'tmtext_detail' tomaggeul.text_id %} style="text-decoration:none ; color:#000000;">
                     <p>{{tomaggeul.text_title}}</p>
                   </a>
                 </div>
@@ -188,14 +188,14 @@
       <div class="all_TMtext">
 
         <div class="first_area">
-          <a href="{% url 'tmtext_detail' tomaggeul.text_id %}">
+          <a href={% url 'tmtext_detail' tomaggeul.text_id %}>
             <img src={{tomaggeul.text_cover.url}} alt="..."
               style="margin-top:2rem; margin-left:5%; max-width: 70%; height: auto; cursor: pointer;" />
           </a>
         </div>
         <div class="second_area">
           <div id="TM_title">
-            <a href="{% url 'tmtext_detail' tomaggeul.text_id %}"
+            <a href={% url 'tmtext_detail' tomaggeul.text_id %}
               style="text-decoration:none; color:#000000;">{{tomaggeul.text_title}}</a>
           </div>
           <div id="TM_main_content">
@@ -204,7 +204,9 @@
           <div id="TM_information">
             <p>
               {%if tomaggeul.series%}
-              {{tomaggeul.series.series_title}}
+              <a href={% url 'tmlist' tomaggeul.series.series_id %}
+              style="text-decoration:none; color:#000000;">{{tomaggeul.series.series_title}}</a>
+              
               {%endif%}
               {{tomaggeul.writer.author_name}}
             </p>
@@ -212,8 +214,8 @@
 
         </div>
         <div class="third_area">
-          <!-- <a href="{% url 'it_sounds_good' tomaggeul.text_id %}"> test</a> -->
-          <!--<div class="heart_icon" onclick="location.href={% url 'it_sounds_good' tomaggeul.text_id %}">♡</div>-->
+          <!-- <a href={% url 'it_sounds_good' tomaggeul.text_id %}> test</a> -->
+          <!--<div class="heart_icon" onclick="location.href={% url 'it_sounds_good' tomaggeul.text_id %}>♡</div>-->
           <div class="heart_icon" onclick="it_sounds_good({{tomaggeul.text_id}})">♡</div>
           <div class="show_more_icon">&nbsp;&nbsp;&nbsp;…</div>
         </div>
@@ -313,7 +315,7 @@
         },
         error: function (request, status, error) {
           alert("서버와 통신 원활하지 않음");
-          window.location.replace("{% url 'main' %}")
+          window.location.replace({% url 'main' %})
         }
       });
     }

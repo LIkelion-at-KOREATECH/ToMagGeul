@@ -1,4 +1,6 @@
+{% extends 'navbar.html' %}
 {% load static %}
+<<<<<<< HEAD
 <!doctype html>
 <html lang="ko-kr">
     <link rel="stylesheet" href ="{% static 'css/signin.css' %}"/>
@@ -69,17 +71,33 @@
     <div class="center" style="margin: 200px 0 0 0;">
         <body>
             {% comment %} <ui class="left">
+=======
+
+{% block content %}
+<link rel="stylesheet" href="{% static 'css/signup.css' %}" />
+
+
+<body>
+    <div  class="container center">
+        <div class="login-content">
+            {% comment %} <ui class="left"> {% endcomment %}
+>>>>>>> 43b574cbafffd88a630a12684aec243c4e69d65c
                 <h1 class="left"> 토막글 회원가입</h1>
                 <h5 class="left" style="color: #606060;">이메일로 회원가입을 하고 토막글에서 다양한 글을 만나봐요!</h5>
-                <form method="POST" action="" enctype="multipart/form-data" class = box>
+                <form method="POST" action="" enctype="multipart/form-data" class = "box" >
                     {% csrf_token %}
                     <table>
                         {{regi_form.as_table}}
                     </table>
-                    <input type="submit" value="회원가입">
+                    <input type="submit" class="btn btn-primary btn-lg btn-block btn-yellow"  value="회원가입">
                 </form>
-        </body>
+            </div>
     </div>
-</main>
+</body>
 
+
+<<<<<<< HEAD
 </html> {% endcomment %}
+=======
+{% endblock %}
+>>>>>>> 43b574cbafffd88a630a12684aec243c4e69d65c
