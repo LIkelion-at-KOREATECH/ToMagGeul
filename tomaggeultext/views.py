@@ -1,11 +1,4 @@
-<<<<<<< HEAD
-from django.shortcuts import render,redirect
-from .forms import *
-from .models import TMText
-from .models import Genre
-from .models import TMSeries
-=======
-from django.shortcuts import get_object_or_404, render
+from django.shortcuts import get_object_or_404, render, redirect
 from .models import TMSeries, TMText
 from .models import Genre
 from django.core.paginator import Paginator
@@ -13,7 +6,6 @@ import math
 from django.http import HttpResponse
 import json
 
->>>>>>> master
 
 # Create your views here.
 def tmtext(request):
