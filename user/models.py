@@ -7,21 +7,6 @@ from .managers import TMUserManager
 
 from genre.models import Genre
 
-from decimal import Decimal
-
-
-    # default_error_messages = {
-    #     'invalid_choice': _('Value %(value)r is not a valid choice.'),
-    #     'null': _('This field cannot be null.'),
-    #     'blank': _('This field cannot be blank.'),
-    #     'unique': _('%(model_name)s with this %(field_label)s '
-    #                 'already exists.'),
-    #     # Translators: The 'lookup_type' is one of 'date', 'year' or 'month'.
-    #     # Eg: "Title must be unique for pub_date year"
-    #     'unique_for_date': _("%(field_label)s must be unique for "
-    #                          "%(date_field_label)s %(lookup_type)s."),
-    # }
-
 class TMUser(AbstractBaseUser, PermissionsMixin):
     username = None
     email = models.EmailField(max_length = 255, unique=True, primary_key=True, error_messages={'unique' : "이미 존재하는 이메일입니다."})
