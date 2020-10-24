@@ -200,7 +200,7 @@
               style="text-decoration:none; color:#000000;">{{tomaggeul.series.series_title}}</a>
 
             {%endif%}
-            wrriten by {{tomaggeul.writer.author_name}}<br><br>{{tomaggeul.date_of_write}}
+            Wrriten By {{tomaggeul.writer.author_name}}<br><br>{{tomaggeul.date_of_write}}
 
             </p>
           </div>
@@ -209,7 +209,7 @@
         <div class="third_area">
           <!-- <a href={% url 'it_sounds_good' tomaggeul.text_id %}> test</a> -->
           <!--<div class="heart_icon" onclick="location.href={% url 'it_sounds_good' tomaggeul.text_id %}>♡</div>-->
-          <div class="heart_icon" onclick="it_sounds_good({{tomaggeul.text_id}})">♡</div>
+          <div class="heart_icon" id="heart_{{tomaggeul.text_id}}"onclick="it_sounds_good({{tomaggeul.text_id}})">♡</div>
           <div class="show_more_icon">&nbsp;&nbsp;&nbsp;…</div>
         </div>
       </div>
@@ -299,12 +299,13 @@
           toast.classList.add("reveal"),
             toast.innerText = "좋아요 +" + data['heart_count'];
 
-          if ($('.heart_icon').css('color') == 'rgb(255, 0, 0)')
-            $('.heart_icon').css('color', 'black');
+          
+          if ($('#heart_'+id).css('color') == 'rgb(255, 0, 0)')
+            $('#heart_'+id).css('color', 'black');
           else
-            $('.heart_icon').css('color', 'red');
-
+            $('#heart_'+id).css('color', 'red');
           // 해당 좋아요 바꾸는 부분
+          //$('#heart_'+id).css('color', 'red');
         },
         error: function (request, status, error) {
           alert("서버와 통신 원활하지 않음");
@@ -315,7 +316,7 @@
 
     function onClickSubscrbe(login) {
       if (login.length != 0) {
-        window.location.replace("{% url 'signin' %}") // 변경 해야함 
+        window.location.replace("{% url 'main' %}") // 변경 해야함 
         // 비동기 처리 
         /*
         $('#product_list').css('color', 'gray');
