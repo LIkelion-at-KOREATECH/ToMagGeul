@@ -2,30 +2,42 @@
 <!DOCTYPE html>
 <html lang="ko-kr">
 <head>
+  <script type = "text/javascript">
+    function Visible(){
+      var isSeries = document.getElementById("Series-Name");
+      if (isSeries.style.display == 'none'){
+        isSeries.style.display = 'block';
+      }else{
+        isSeries.style.display = 'none';
+      }
+    }
+  </script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
-    <link rel="stylesheet" type="text/css" href="{% static 'css/createText.css' %}">
-    <title>Document</title>
+    <link rel="stylesheet" href="{% static 'css/createText.css' %}">
+    <title>토막글 글생성</title>
 </head>
 <body>
-    <form>
+    <form method="POST" action="">
+      {% csrf_token %}
         <div class="form-check">
-            <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
+            <input class="form-check-input" type="checkbox" value="" id="defaultCheck1" onclick="javascript:Visible()" checked>
             <label class="form-check-label" for="defaultCheck1">
               기존의 책에 토막글 만들기
             </label>
           </div><br>
+          <div class="Series" id ="Series-Name">
           <div class="book-choice">
             <p><label for="book-choice">책 선택하기</label></p>
             <select class="book-choice" id="book-choice">
-              <option>책 제목1</option>
-              <option>책 제목2</option>
-              <option>책 제목3</option>
-              <option>책 제목4</option>
-              <option>책 제목5</option>
+              {% for value in user.tmauthor.series.all %}
+              <option>{{value.series_title}}</option>
+              {% endfor %}
             </select>
+            <a href = ""> 새로운 시리즈 추가하기 </a>
           </div><br>
+        </div>
           <div class="input-title">
               <label class="input-title-label" for="inputtitle">
                 토막글 제목
@@ -64,8 +76,8 @@
               </div>
             </div>
         </div>
+        <input type="submit" value="글 작성">
     </form>
-    
     
 </body>
 </html>
