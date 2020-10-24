@@ -120,12 +120,21 @@
                     </div>
                 </div>
             </div>
+            {%empty%}
+            <div class="all_TMtext">
+                <div class="tmtext_list">
+                    <img src="{% static "img/no-image.png" %}"  alt="Hi!">
+                    <div class="tmtext">
+                        <span id="series_name">아직 쓴 시리즈가 없습니다!</span>
+                        <div class="tmtext_info">
+                            <span>아직 쓴 책도 없습니다!</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
             {%endfor%}
         </div>
     </section>
-
-<a href={% url 'signout' %}><span>to Logout</span></a>
-<a href={% url 'main' %}><span>to main</span></a>
 </body>
 
 </html>
