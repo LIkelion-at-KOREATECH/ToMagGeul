@@ -1,5 +1,5 @@
 from django.shortcuts import get_object_or_404, render
-from .models import TMSeries, TMText
+from .models import Subscription, TMSeries, TMText
 from .models import Genre
 from django.core.paginator import Paginator
 import math
@@ -22,15 +22,35 @@ def tmtext(request):
     return render(request, 'mainpage.html', {'p_range':p_range , 'page': page,'posts':posts,'all_tmtext':posts, 'all_genre':all_genre})
 
 def tmlist(request, pk):
+    user = request.user
     series = get_object_or_404(TMSeries, series_id = pk)
+    isSubs = user.subs.filter(tmseries=series)
+    return render(request, 'tomaggeullist.html', {'series':series, 'isSubs':isSubs})
 
-    return render(request, 'tomaggeullist.html', {'series':series})
+def popup(request):
+    return render(request, 'popup.html')
+    
 
 def it_sounds_good(request,tmt_id): # test
     tmtext=TMText.objects.filter(text_id=tmt_id)
     heart_num = tmtext.values()[0]['heart_num']
     tmtext.update(heart_num = heart_num+1)
     context = {'heart_count' : heart_num}
+    return HttpResponse(json.dumps(context), content_type='application/json')
+
+def subscribe(request,series): # test
+    user = request.user
+    tmseries = get_object_or_404(TMSeries, series_id=series)
+    subs = user.subs.filter(tmseries=series)
+    state = "구독 취소되었습니다."
+    if subs:
+        subs.delete()
+    else:
+        subs = Subscription(tmuser = user, tmseries = tmseries)
+        subs.save()
+        state = "구독 신청하였습니다."
+    context = {'substext' : state}
+    
     return HttpResponse(json.dumps(context), content_type='application/json')
 
 def tmtext_detail(request, tmt_id):

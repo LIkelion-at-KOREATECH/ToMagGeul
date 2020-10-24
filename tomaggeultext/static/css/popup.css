@@ -1,0 +1,34 @@
+.popup-container{
+    height:100vh;
+    background-color: red;
+}
+.center{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+}
+.innerDiv{
+    width:100%;
+    min-height:500px;
+    height:70vh;
+    max-height:800px;
+    background-color: blue;
+    display:inline-block;
+    
+}
+.innerDiv > div {
+    width:100%;
+    height:100%;
+    margin:0;
+}
+.innerDiv > div > div:nth-child(1){
+    width:100%;
+    height:100%;
+    background:rgba(255, 255, 0, 0.637);
+}
+.innerDiv > div > div:nth-child(2){
+    width:100%;
+    height:100%;
+    background: rgba(255, 192, 203, 0.479);
+}
