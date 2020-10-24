@@ -143,8 +143,8 @@ body {
 }
 
 .nav-link:hover {
-  color: #C28B64;
-  border-bottom: 2px solid #C28B64;
+  color: #deb887;
+  border-bottom: 2px solid #deb887;
 }
 
 
@@ -207,7 +207,7 @@ div.right {
 }
 
 .card_slide {
-  background-color: #C28B64;
+  background-color: #deb887;
   border-radius: 10px;
 }
 
