@@ -52,8 +52,6 @@ class TMtextCreationForm(forms.ModelForm):
             }
     )
     )
-    # writer = forms.ModelChoiceField()
-        # 글 생성 Form
     class Meta:
         model = TMText
         fields = (  'text_title', 

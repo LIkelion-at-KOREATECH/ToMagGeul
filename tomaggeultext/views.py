@@ -5,6 +5,7 @@ from django.core.paginator import Paginator
 import math
 from django.http import HttpResponse
 import json
+from .forms import *
 
 
 # Create your views here.
