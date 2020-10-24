@@ -132,8 +132,6 @@ login{
     height: 30px;
 }
 
-<<<<<<< HEAD
-=======
 #submit_signup{
     height: 300%; 
     width: 120%;
@@ -144,7 +142,6 @@ login{
     margin : 5% 0 0 0;
 }
 
->>>>>>> W_branch
 .underbar {
     padding : 15px;
     border-bottom : 3px solid #F7F7F7;
@@ -152,8 +149,4 @@ login{
 
 .underunder {
     padding : 15px;
-<<<<<<< HEAD
 }
-=======
-}
->>>>>>> W_branch
