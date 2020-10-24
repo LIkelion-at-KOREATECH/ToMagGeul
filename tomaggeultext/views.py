@@ -28,6 +28,10 @@ def tmlist(request, pk):
 
     return render(request, 'tomaggeullist.html', {'series':series})
 
+def popup(request):
+    return render(request, 'popup.html')
+    
+
 def it_sounds_good(request,tmt_id): # test
     tmtext=TMText.objects.filter(text_id=tmt_id)
     heart_num = tmtext.values()[0]['heart_num']

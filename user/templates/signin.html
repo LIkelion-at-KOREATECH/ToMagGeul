@@ -1,36 +1,16 @@
+{% extends 'navbar.html' %}
 {% load static %}
-<!doctype html>
-<html lang="ko-kr">
-<link rel="stylesheet" href ="{% static 'css/signin.css' %}"/>
 
-<header class="TopHeader">
-    <nav id="topMenu">
-        <ul>
-            <li class ="blank"></li>
-            <li><a class="menuLink" href="#">토막글</a></li>
-            <li class ="blank"></li>
-            <li><a class="menuLink" href={% url 'main' %}>홈</a></li>
-            <li><a class="menuLink" href="#">분야별</a></li>
-            <li><a class="menuLink" href="#" >인기작품</a></li>
-            <li class ="blank"></li>
-            <img src="{% static 'img/search.png' %}" alt="없음" style="height:8%; width:1%; margin: 0.2% 0 0 1.5%; color: #919191;" >
-            <li><input id="search_text" type = "text" name = "검색" size="40%%" value="       검색" style="height:10%;"></li>
-            <li class ="smallblank"></li>
-            <!-- <li class="signin-header"> 검색 </li> -->
-            <li><a href={% url 'signin' %}><input id = "button_signin" type="button" name="button1" value="로그인"></a></li>
-            <li class ="smallblank"></li>
-            <li><a href={% url 'user_register' %}><input id="button_signup" type="button" name="button2" value="회원가입"></a></li>
-            <li class ="blank"></li>
-        </ul>
-    </nav>
-</header>
-<div class="blank"></div>
+{% block content %}
+<link rel="stylesheet" href="{% static 'css/signin.css' %}" />
 
-<main float="center">
-    <div class="center" style="margin: 15% 0 0 0;">
-        <body>
+
+<body >
+    <div class="container center" >
+        <div class="login-content">
             {% comment %} <ui class="left"> {% endcomment %}
                 <h1 class="left"> 토막글 로그인</h1>
+                <br />
                 <h5 class="left" style="color: #606060; margin : -5.5% 0 0 0;">토막글에서 다양한 글을 만나봐요!</h5>
             {% comment %} </ui> {% endcomment %}
             <form method="POST" action="">
@@ -43,15 +23,14 @@
                 <h5 class="left" style="margin : 1% -10% 0 0;">비밀번호 재설정 * 계정찾기</h5>
                 <h6 class="left" style="color: #909090; margin : 10% -10% 0 0;" > SNS로 로그인 및 회원가입 시 토막글의 이용약관과 </h6>
                 <h6 class="left" style="color: #909090; margin : 0 -10% 0 0;"  >개인정보처리방침에 동의한 것으로 간주합니다. </h6>
-                <input id="submit_signup" type="submit" size="34" name="button2" value="로그인" style="width:310px; height:40px;">
+                
+                <input id="submit_signup" class="btn btn-primary btn-lg btn-block btn-yellow" type="submit" size="34" name="button2" value="로그인" style="width:310px;">
             </form>
-        </body>
+        </div>
     </div>
-</main>
+</body>
 
-
-
-</html>
+{% endblock %}
 
 
 

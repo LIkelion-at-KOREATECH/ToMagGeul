@@ -1,56 +1,131 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="ko-kr">
 
-<!-- 프로필 -->
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>프로필</title>
+    <link href="../static/css/profile.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+    integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+    integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous">
+    </script>
+    <!-- fontawesome cdn 아이콘 폰트 사용하기 위해서 필요합니다. -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.1/css/all.min.css" rel="stylesheet">
+</head>
 
-<h1>{{user.nickname}}</h1>
-<table>
-    <tr>
-        <td>{{user.tmauthor.series.count}}</td>
-        <td>{{user.tmauthor.text.count}}</td>
-        <td>{{user.tmauthor.series.count}}</td>
-        <td>{{user.tmauthor.series.count}}</td>
-    </tr>
-    <tr>
-        <td>책</td>
-        <td>토막글</td>
-        <td>..</td>
-        <td>..</td>
-    </tr>
-    <tr>
-        <td colspan="4">
-            개설일 {{user.tmauthor.opening_date|date:"Y.m.d"}}
-        </td>
-    </tr>
-    <tr>
-        <td colspan="4">
-            {{user.tmauthor.sns_link}}
-        </td>
-    </tr>
-    <tr>
-        <td colspan="4">
-            {%for genre in user.prefer_genre.all %}
-                <span>#{{genre}}</span>
+<body>
+    <header>
+        <div id="nav">
+            <div class="back-btn-wrapper">
+                <i class="fa fa-chevron-left" aria-hidden="true"></i>
+            </div>
+
+            <div class="tm-series-name">
+                프로필
+            </div>
+        </div>
+    </header>
+
+    <section>
+        <div id="main">
+            <div class="profile">
+                <img src={% static "img/no-image.png" %} alt="..." />
+                <div class="tm-profile-text">
+                    <div class="user-name">
+                        <h1>{{user.nickname}}</h1>
+                        <button type="button" class="btn btn-outline-dark">프로필 편집</button>
+                    </div>
+
+                    <div class="tm-profile-num-info">
+                        <div class="series_count">
+                            <h6>시리즈</h6>
+                            <p> {{user.tmauthor.series.count}} </p>
+                        </div>
+                        <div class="text_count">
+                            <h6>토막글</h6>
+                            <p> {{user.tmauthor.text.count}} </p>
+                        </div>
+                        <div class="follower">
+                            <h6>팔로워</h6>
+                            <!--팔로워 수로 수정 필요-->
+                            <p> {{user.tmauthor.series.count}} </p>
+                        </div>
+                        <div class="following">
+                            <h6>팔로잉</h6>
+                            <!--팔로잉 수로 수정 필요-->
+                            <p> {{user.tmauthor.series.count}} </p>
+                        </div>
+                    </div>
+
+                    <div class="date-of-make">
+                        <img src={% static "img/calendar.png" %} alt="..." /> 
+                        <div class="date">
+                            개설일 : {{user.tmauthor.opening_date|date:"Y.m.d"}}
+                        </div>
+                    </div>
+                    
+                    <div class="sns">
+                        <img src={% static "img/cloud-computing.png" %} alt="..." /> 
+                        <div class="sns-link">
+                            SNS : {{user.tmauthor.page_link}}
+                        </div>
+                    </div>
+
+                    <div class="sns">
+                        <img src={% static "img/instagram.png" %} alt="..." /> 
+                        <div class="sns-link">
+                            PAGE : {{user.tmauthor.sns_link}}
+                        </div>
+                    </div>
+
+                    <div class="prefer_genre">
+                        {%for genre in user.prefer_genre.all %}
+                        <button type="button" class="btn btn-light">#{{genre}}</button>
+                        {%endfor%}
+                    </div>
+
+                    <div class="introduce">
+                        {{user.tmauthor.introduce}}
+                    </div>
+                </div>
+            </div>
+
+            <div class="list">
+                <div class="all_list_title">
+                    <span>내가 쓴 글</span>
+                    <span>구독</span>
+                    <span>배송 현황</span>
+                </div>
+            </div>
+
+            {%for tmg in user.tmauthor.text.all %}
+            <div class="all_TMtext">
+                <div class="tmtext_list">
+                    <img src="{% get_static_prefix %}{{tmg.text_cover}}"  alt="Hi!">
+                    <div class="tmtext">
+                        <span id="series_name">{{tmg.series}}</span>
+                        <div class="tmtext_info">
+                            <span>{{tmg.text_title}}</span>
+                        </div>
+                        <span id="author-name2">{{tmg.date_of_write}}</span>
+                    </div>
+                    <div class="author_info_box">
+                        <div class="heart_puls">
+                            <img src={% static "img/heart.png" %} alt="..." />
+                            <img src={% static "img/ellipsis.png" %} alt="..." />
+                        </div>
+                    </div>
+                </div>
+            </div>
             {%endfor%}
-        </td>
-    </tr>
-    <tr>
-        <td colspan="4">
-            {{user.tmauthor.introduce}}
-        </td>
-    </tr>
-</table>
-
-<!-- 베너 -->
-
-
-<!-- 내 글 -->
-
-{%for tmg in user.tmauthor.text.all %}
-    <span>{{tmg.text_title}}</span>
-    <span>{{tmg.series}}</span>
-    <span>{{tmg.date_of_write}}</span>
-    <br />
-{%endfor%}
-
+        </div>
+    </section>
 
 <a href={% url 'signout' %}><span>to Logout</span></a>
 <a href={% url 'main' %}><span>to main</span></a>
+</body>
+
+</html>
