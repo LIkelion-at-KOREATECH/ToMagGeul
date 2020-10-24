@@ -1,4 +1,6 @@
+{% extends 'navbar.html' %}
 {% load static %}
+{% block content %}
 <!DOCTYPE html>
 
 
@@ -72,23 +74,6 @@
 
 <body>
 
-  <header class="TopHeader">
-    <nav id="topMenu">
-      <ul>
-        <li><a class="menuLink" href="#">토막글</a></li>
-        <li><a class="menuLink" href="#">홈</a></li>
-        <li><a class="menuLink" href="#" style="color: #606060;">분야별</a></li>
-        <li><a class="menuLink" href="#" style="color: #606060;">인기작품</a></li>
-        <img src={% static "img/search.png" %} alt="검색" style="width: 30px;">
-        <li><input class="search" type="text" name="검색" size="20" maxlength="100" height="200" value="검색"></li>
-        <li><a href={% url 'signin' %}><input id="button_signin" type="button" name="button1" value="로그인"></a></li>
-        <li class="smallblank"></li>
-        <li><a href={% url 'user_register' %}><input id="button_signup" type="button" name="button2" value="회원가입"></a>
-        </li>
-      </ul>
-    </nav>
-  </header>
-
   <div id="toast"></div>
 
   <!-- 여기 부터 순수 main page -->
@@ -99,7 +84,7 @@
       <ul class="nav justify-content-center">
         {% for genre in all_genre %}
         <li class="nav-item">
-          <p class="nav-link">{{genre}}</p>
+          <p class="main-nav-link">{{genre}}</p>
         </li>
         {% endfor %}
 
@@ -171,12 +156,13 @@
           <table class="TMtext_table" style="float: left;">
             <tr>
               <td id="product_list">모든 작품</td>
-              <td>&nbsp;|&nbsp;</td> {{user.nickname}}
+              <td>&nbsp;|&nbsp;</td>
               <!-- {% if user.nickname == None %}{{user.nickname}}{% endif %} -->
               <td id="subscribe_list" onclick="onClickSubscrbe('{{user.nickname}}')">구독</td>
             </tr>
           </table>
         </div>
+        <!--
         <div style="float: right; font-weight:bold;">
           <table class="TMtext_table" style="float: left;">
             <tr>
@@ -184,6 +170,7 @@
             </tr>
           </table>
         </div>
+        -->
       </div>
 
       <div class="all_subscribe">
@@ -326,11 +313,9 @@
     }
 
     function onClickSubscrbe(login) {
-      if (typeof login != "undefined") {
-        alert(login + "입니다");
+      if (login.length != 0) {
         // 비동기 처리 
-        
-        alert("구독 클릭");
+      
         $('#product_list').css('color', 'gray');
         $('#subscribe_list').css('color', 'black');
         $(".all_TMtext").remove();
@@ -351,16 +336,14 @@
         alert("구독 정보를 확인하기 위해 로그인해주세요!");
         window.location.replace("{% url 'signin' %}")
 
-
       }
     }
 
     $("#product_list").click(function () {
-      alert("모든 작품 클릭");
-      $('#product_list').css('color', 'black');
-      $('#subscribe_list').css('color', 'gray');
+      window.location.replace("{% url 'main' %}");
     });
   </script>
 </body>
 
 </html>
+{% endblock %}
