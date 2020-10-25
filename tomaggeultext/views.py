@@ -1,4 +1,4 @@
-from django.shortcuts import get_object_or_404, redirect, render
+from django.shortcuts import get_object_or_404, redirect, render,redirect
 from django.contrib.auth.decorators import login_required
 from .models import Subscription, TMSeries, TMText, Comment
 from .models import Genre
@@ -7,6 +7,7 @@ from django.http import HttpResponse
 from django.db.models import Count
 import math
 import json
+from .forms import *
 
 
 # Create your views here.
@@ -15,7 +16,6 @@ def tmtext(request):
     popular_tmts = TMText.objects.annotate(like_num=Count('like_users')).order_by('-like_num')[:5] # 좋아요 많은 순으로 5개 
     print(popular_tmts)
     all_genre = Genre.objects.all()
-    
     paginator = Paginator(all_tmtext,5)
     page=1 if(request.GET.get('page') == None) else int(request.GET.get('page'))
     posts = paginator.get_page(page)
@@ -33,9 +33,6 @@ def tmlist(request, pk):
     if user.is_authenticated:
         isSubs = user.subs.filter(tmseries=series)
     return render(request, 'tomaggeullist.html', {'series':series, 'isSubs':isSubs})
-
-def popup(request):
-    return render(request, 'popup.html')
     
 @login_required
 def it_sounds_good(request,tmt_id): # test
@@ -49,6 +46,63 @@ def it_sounds_good(request,tmt_id): # test
     tmtext.save()
     context = {'heart_count' : tmtext.heart_num}
     return HttpResponse(json.dumps(context), content_type='application/json')
+
+def tmtextcreate(request):
+    genre = Genre.objects.all()
+    # form 불러오기
+    tmtext_form = TMtextCreationForm()
+    # request의 Method가 POST로 주어졌다면
+    if request.method == "POST":
+        # 입력받은 값을 data로 저장
+        data = request.POST
+        # 입력받은 값을 Form에 넣은 형태로 새로 저장
+        tmtext_form = TMtextCreationForm(data)
+        # 입력받은 폼의 유효성 검사
+        if tmtext_form.is_valid():
+            # 객체를 생성하지 않고 저장
+            tmtext = tmtext_form.save(commit=False)
+            # series의 data를 get하는데 입력값이 없으면 None
+            series = data.get('series',None)
+            # series 값이 있다면
+            if series:
+                # 저장된 값의 seires를 입력받은 value값에서 객체를 접근하여 값을 호출하여 저장
+                tmtext.series=TMSeries.objects.get(series_id=int(series[0]))
+            # 작성자는 현재 로그인이 되어있는 작가
+            tmtext.writer = request.user.tmauthor
+            # 객체를 생성하여 저장
+            tmtext.save()
+            # 입력받은 장르 값을 get한다.
+            genres = data.get('text_genre',[])
+            # 장르는 다중 값임으로 모든 값에 대하여
+            for i in genres:
+                genre = Genre.objects.get(id = int(i))
+                # 장르의 id 값으로 접근하여 값을 호출하여 add한다.
+                tmtext.text_genre.add(genre)
+            # 다시 객체를 저장한다.
+            tmtext.save()
+            return redirect('tmlist')
+    return render(request, 'createText.html', {'tmtext_form':tmtext_form, 'genre':genre})
+    
+def tmseriescreate(request):
+    genre = Genre.objects.all()
+    series_form = TMSeriesCreationForm()
+    if request.method == "POST":
+        data = request.POST
+        series_form = TMSeriesCreationForm(data)
+        if series_form.is_valid():
+            series = series_form.save(commit=False)
+            series.writer = request.user.tmauthor
+            series.save()
+            genres = data.get('series_genre',[])
+            for i in genres:
+                g = Genre.objects.get(id = int(i))
+                series.series_genre.add(g)
+            series.save()
+            
+    return render(request, 'createSeries.html',{'genre':genre, 'series_form':series_form})
+
+def tmlist(request):
+    return render(request, 'tomaggeullist.html')
 
 @login_required
 def subscribe(request,series): # test

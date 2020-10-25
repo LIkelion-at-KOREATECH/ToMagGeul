@@ -1,0 +1,56 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="ko-kr">
+
+<head>
+    <title> Series 추가 </title>
+</head>
+
+<body class="" data-admin-utc-offset="32400">
+    <!-- Container -->
+    <div id="container">
+        <div class="main shifted" id="main">
+            <div class="content">
+                <!-- Content -->
+                <div id="content" class="colM">
+                    <h1>새로운 책 추가</h1>
+                    <div id="content-main">
+                        <form method="post" id="tmseries_form" enctype="multipart/form-data">
+                           {% csrf_token %}
+                            <div>
+                                <fieldset class="module aligned ">
+                                    {{series_form.as_p}}
+                            </div>
+                            <div class="form-row field-series_genre">
+                                <div>
+                                    <label class="required" for="id_series_genre">책 장르:</label>
+                                    <div class="related-widget-wrapper">
+                                        <select name="series_genre" required id="id_series_genre" multiple = "multiple">
+                                            {% for value in genre %}
+                                            <option value={{value.id}}>{{value}}</option>
+                                            {% endfor %}
+                                        </select>
+                                        <!-- <a class="related-widget-wrapper-link add-related" id="add_id_series_genre"
+                                            href="/admin/genre/genre/add/?_to_field=id&amp;_popup=1"
+                                            title="genre 추가"><img src="/static/admin/img/icon-addlink.svg" alt="추가"></a> -->
+                                    </div>
+                                    <div class="help">하나 이상을 선택하려면 "Control" 키를 누른 채로 선택해주세요. Mac의 경우에는
+                                        "Command" 키를 눌러주세요.</div>
+                                </div>
+                            </div>
+                            <div class="submit-row">
+                                <input type="submit" value="시리즈 생성">
+                            </div>
+                    </div>
+                    </form>
+                </div>
+                <br class="clear">
+            </div>
+            <!-- END Content -->
+        </div>
+    </div>
+    </div>
+    <!-- END Container -->
+</body>
+
+</html>
