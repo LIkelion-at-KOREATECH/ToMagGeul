@@ -8,6 +8,29 @@ html, body{
     height: 100vh;
     width: 100%;
 }
+#toast {
+    position: fixed;
+    bottom: 30px;
+    left: 50%;
+    padding: 15px 20px;
+    transform: translate(-50%, 10px);
+    border-radius: 30px;
+    overflow: hidden;
+    visibility: hidden;
+    font-size: .8rem;
+    opacity: 0;
+    font-weight: bold;
+    transition: opacity .5s, visibility .5s, transform .5s;
+    background: rgba(224, 109, 109, 0.35);
+    color: #fff;
+    z-index: 10000;
+  }
+  
+  #toast.reveal {
+    opacity: 1;
+    visibility: visible;
+    transform: translate(-50%, 0)
+  }
 
 #main{
     margin-left: 40vh;

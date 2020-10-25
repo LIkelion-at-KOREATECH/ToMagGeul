@@ -147,5 +147,5 @@ DATABASES['default'].update(db_from_env)
 ### heroku 배포
 
 AUTH_USER_MODEL = 'user.TMUser'
-LOGIN_REDIRECT_URL='/profile/'
-LOGIN_URL = '/login/'
+LOGIN_REDIRECT_URL='/mypage'
+LOGIN_URL = '/signin'

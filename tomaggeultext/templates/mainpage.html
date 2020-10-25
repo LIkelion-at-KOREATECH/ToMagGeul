@@ -211,7 +211,10 @@
         <div class="third_area">
           <!-- <a href={% url 'it_sounds_good' tomaggeul.text_id %}> test</a> -->
           <!--<div class="heart_icon" onclick="location.href={% url 'it_sounds_good' tomaggeul.text_id %}>♡</div>-->
-          <div class="heart_icon" id="heart_{{tomaggeul.text_id}}"onclick="it_sounds_good({{tomaggeul.text_id}})">♡</div>
+          <div class="heart_icon" id="heart_{{tomaggeul.text_id}}" 
+              onclick="it_sounds_good({{tomaggeul.text_id}},'{{user.nickname}}')"
+              {% if user in tomaggeul.like_users.all %} style="color:red" {% endif %}>♡
+          </div>
           <div class="show_more_icon">&nbsp;&nbsp;&nbsp;…</div>
         </div>
       </div>
@@ -278,74 +281,6 @@
         el: '.swiper-pagination',
         clickable: true,
       },
-    });
-  </script>
-  <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
-  <script type="text/javascript">
-    function it_sounds_good(id) {
-      var tmt_url = "/it_sounds_good/" + id
-      $.ajax({
-        url: tmt_url,
-        dataType: "json",
-        success: function (data) {
-          let removeToast;
-          const toast = document.getElementById("toast");
-
-          toast.classList.contains("reveal") ?
-            (clearTimeout(removeToast), removeToast = setTimeout(function () {
-              document.getElementById("toast").classList.remove("reveal")
-            }, 1000)) :
-            removeToast = setTimeout(function () {
-              document.getElementById("toast").classList.remove("reveal")
-            }, 1000)
-          toast.classList.add("reveal"),
-            toast.innerText = "좋아요 +" + data['heart_count'];
-
-          
-          if ($('#heart_'+id).css('color') == 'rgb(255, 0, 0)')
-            $('#heart_'+id).css('color', 'black');
-          else
-            $('#heart_'+id).css('color', 'red');
-          // 해당 좋아요 바꾸는 부분
-          //$('#heart_'+id).css('color', 'red');
-        },
-        error: function (request, status, error) {
-          alert("서버와 통신 원활하지 않음");
-          window.location.replace("{% url 'main' %}")
-        }
-      });
-    }
-
-    function onClickSubscrbe(login) {
-      if (login.length != 0) {
-        window.location.replace("{% url 'main' %}") // 변경 해야함 
-        // 비동기 처리 
-        /*
-        $('#product_list').css('color', 'gray');
-        $('#subscribe_list').css('color', 'black');
-        $(".all_TMtext").remove();
-
-        $(".all_subscribe").append("<div class=\"all_TMtext\"></div>");
-        $(".all_TMtext").append("<div class=\"subscribe_info\"></div>");
-        $(".all_TMtext").css('height', '5rem').css('padding-top', '1.5rem');
-        //$(".subscribe_info").css('color', 'red');
-        //$(".subscribe_info").css('justify-content', 'center');
-        $(".subscribe_info").css('text-align', 'center');
-        $(".subscribe_info").css('align-items', 'center');
-        $(".subscribe_info").append("<p> TEST TEST</p>");
-        */
-
-
-
-      } else {
-        alert("구독 정보를 확인하기 위해 로그인해주세요!");
-        window.location.replace("{% url 'signin' %}")
-
-      }
-    }
-
-    $("#product_list").click(function () {
-      window.location.replace("{% url 'main' %}");
     });
   </script>
 </body>
