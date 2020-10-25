@@ -1,0 +1,59 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="ko-kr">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
+  <link rel="stylesheet" href="{% static 'css/createText.css' %}">
+  <title>토막글 글생성</title>
+</head>
+
+<body>
+  <form method="POST" action="" enctype="multipart/form-data">
+    {% csrf_token %}
+
+    <!-- 제목, 소개, 쓰기 Form -->
+    <div class="text-form">
+      {{tmtext_form.as_p}}
+      <a id="popup"> 새로운 책 추가하기 </a>
+    </div>
+    
+    <!-- 장르 다중 선택 -->
+    <label class="genre-label"> 장르 </label>
+    <div class="genre">
+      <select class="input-genre-select" id="genre" name="text_genre" multiple="multiple">
+        {% for value in genre %}
+        <option value={{value.id}}>{{value}}</option>
+        {% endfor %}
+      </select>
+      <p>토막글과 어울리는 장르를 입력해주세요. 자유롭게 입력하실 수 있지만, 메인 페이지에서 보여주는 장르는</p>
+      <p>#ooo #ooo #ooo #ooo #ooo 입니다.</p>
+    </div><br>
+
+    <!-- 책 표지 등록하기 -->
+    <div class="enroll-cover">
+      <label class="enroll-cover-label" for="enroll-cover">책 표지 등록하기</label>
+      <div class="enroll-cover-box">
+        <a href="">
+          <div class="plus_btn">
+            <label for="ex_file"> + </label>
+            <input type="file" id="ex_file">
+          </div>
+        </a>
+      </div>
+    </div>
+
+    <!-- 제출 버튼 -->
+    <input type="submit" value="글 작성">
+  </form>
+
+  <script type ="text/javascript">
+    var popup = document.getElementById('popup');
+    popup.onclick= function (){
+    window.open("/createseries/", "시리즈 추가", "width=800,height=400");
+    popup.onclick = null;
+    }
+  </script>
+</html>
