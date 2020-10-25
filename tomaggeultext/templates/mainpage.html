@@ -103,17 +103,20 @@
           {% for tomaggeul in popular_tmts %}
 
           <div class="swiper-slide">
-            <a href={% url 'tmtext_detail' tomaggeul.text_id %}>
-              <div class="card_image"
+            <a href={% url 'tmtext_detail' tomaggeul.text_id %} 
+                style="width:40%; height:100%; padding:5px; 
+                        justify-content: space-between;
+                        align-items: center; display: flex;">
+              <!-- <div class="card_image"
                 style="margin-left:20%; width:20%; overflow: hidden; display: flex;align-items: center; justify-content: center;width: 8rem; height: 80%;">
 
-                <div>
-                  <img src={{tomaggeul.text_cover.url}} alt="..." style="max-width: 1rem; height: 8rem;" />
-                </div>
-              </div>
+                <div> -->
+                  <img src={{tomaggeul.text_cover.url}} alt="..." style="max-width: 100%; max-height: 100%; object-fit: contain;" />
+                <!-- </div>
+              </div> -->
             </a>
 
-            <div style="width:70%; margin: 5% 5%;">
+            <div style="width:50%; margin: 5% 5%;">
               <div class="second_area">
                 <div id="TM_title">
                   <a href={% url 'tmtext_detail' tomaggeul.text_id %} style="text-decoration:none ; color:#000000;">
@@ -197,7 +200,7 @@
               style="text-decoration:none; color:#000000;">{{tomaggeul.series.series_title}}</a>
 
             {%endif%}
-            wrriten by {{tomaggeul.writer.author_name}}<br><br>{{tomaggeul.date_of_write}}
+            Wrriten By {{tomaggeul.writer.author_name}}<br><br>{{tomaggeul.date_of_write}}
 
             </p>
           </div>
@@ -206,7 +209,7 @@
         <div class="third_area">
           <!-- <a href={% url 'it_sounds_good' tomaggeul.text_id %}> test</a> -->
           <!--<div class="heart_icon" onclick="location.href={% url 'it_sounds_good' tomaggeul.text_id %}>♡</div>-->
-          <div class="heart_icon" onclick="it_sounds_good({{tomaggeul.text_id}})">♡</div>
+          <div class="heart_icon" id="heart_{{tomaggeul.text_id}}"onclick="it_sounds_good({{tomaggeul.text_id}})">♡</div>
           <div class="show_more_icon">&nbsp;&nbsp;&nbsp;…</div>
         </div>
       </div>
@@ -296,12 +299,13 @@
           toast.classList.add("reveal"),
             toast.innerText = "좋아요 +" + data['heart_count'];
 
-          if ($('.heart_icon').css('color') == 'rgb(255, 0, 0)')
-            $('.heart_icon').css('color', 'black');
+          
+          if ($('#heart_'+id).css('color') == 'rgb(255, 0, 0)')
+            $('#heart_'+id).css('color', 'black');
           else
-            $('.heart_icon').css('color', 'red');
-
+            $('#heart_'+id).css('color', 'red');
           // 해당 좋아요 바꾸는 부분
+          //$('#heart_'+id).css('color', 'red');
         },
         error: function (request, status, error) {
           alert("서버와 통신 원활하지 않음");
@@ -312,7 +316,7 @@
 
     function onClickSubscrbe(login) {
       if (login.length != 0) {
-        window.location.replace("{% url 'signin' %}") // 변경 해야함 
+        window.location.replace("{% url 'main' %}") // 변경 해야함 
         // 비동기 처리 
         /*
         $('#product_list').css('color', 'gray');

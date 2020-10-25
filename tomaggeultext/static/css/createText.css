@@ -1,13 +1,15 @@
+/* header{
+    margin: 0px;
+    padding: 50px;
+} */
 body{
     margin: 0 auto;
     padding: 50px;
     width: 700px;
 }
 
-
-
 /* 클래스 */
-.form-check, .book-choice, .input-title, .tomag-introduce, .tomag-write, .input-genre, .enroll-cover{
+.form-check, .book-choice, .input-title, .tomag-introduce, .tomag-write, .genre, .enroll-cover{
     padding: 3px;
     margin-bottom: auto;
 }
@@ -24,11 +26,13 @@ body{
     height: 30px;
     margin-bottom: auto;
 }
-
+.tomag-write{
+    width : 600px;
+}
 .tomag-introduce{
     width: 600px;
 }
-.input-genre{
+.genre{
     width: 600px;
 }
 
@@ -60,7 +64,12 @@ p{
 a{
     text-decoration: none;
 }
+/* 
+body > form > p:nth-child(7)
+.sef>p:nth-child(1)>d>s>{
+    flex:sdf;
 
+} */
 /* 파일업로드 버튼 */
 .plus_btn label {
     display: inline-block;
@@ -86,4 +95,13 @@ a{
     overflow: hidden;
     clip: rect(0, 0, 0, 0);
     border: 0;
+  }
+
+  /* 토막글 제목 */
+body > form > div.text-form > p:nth-child(1) > label{
+    white-space: nowrap;
+  }
+
+  .label{
+    white-space: nowrap;
   }

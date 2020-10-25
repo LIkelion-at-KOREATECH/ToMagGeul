@@ -5,14 +5,14 @@
 
 html, body{
     margin: 0;
-    height: 100vh;
+    min-height: 100vh;
     width: 100%;
 }
 
-#main{
+/* #main{
     margin-left: 50vh;
     margin-right: 50vh;
-}
+} */
 
 header{
     margin: 0;

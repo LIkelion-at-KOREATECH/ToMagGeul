@@ -1,4 +1,7 @@
-html { font-size:16px; }
+html { 
+  font-size:1vw; 
+  
+}
 
 body {
   margin: 20px;
@@ -98,10 +101,9 @@ body {
 }
 
 
-
 #TM_title {
   font-weight: bold;
-  font-size: 1em;
+  font-size: 1rem;
   margin-top: 3%;
   margin-left: 1.5%;
   text-align: left;
@@ -109,6 +111,7 @@ body {
 
 #TM_main_content {
   margin-left: 1.5%;
+  font-size: 1rem;
   text-align: left;
 }
 
@@ -219,4 +222,33 @@ div.right {
   padding-top: 1%;
   padding-left: 5%;
   font-size: 1em;
+}
+
+#toast {
+  position: fixed;
+  bottom: 30px;
+  left: 50%;
+  padding: 15px 20px;
+  transform: translate(-50%, 10px);
+  border-radius: 30px;
+  overflow: hidden;
+  visibility: hidden;
+  font-size: .8rem;
+  opacity: 0;
+  font-weight: bold;
+  transition: opacity .5s, visibility .5s, transform .5s;
+  background: rgba(224, 109, 109, 0.35);
+  color: #fff;
+  z-index: 10000;
+}
+
+#toast.reveal {
+  opacity: 1;
+  visibility: visible;
+  transform: translate(-50%, 0)
+}
+
+.a_tag {
+  text-decoration:none; 
+  color:#000000;
 }

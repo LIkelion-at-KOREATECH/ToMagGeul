@@ -10,66 +10,69 @@ class TMtextCreationForm(forms.ModelForm):
         widget=forms.TextInput(
             attrs={
                 'required' : ' True',
-                'placeholder' : "Title",
-                'class':"input-title-label",
+                'placeholder' : "토막글 제목",
+                'class':"input-title",
             }
         ))
     main_sentence = forms.CharField(
         max_length=200,
         label=('토막글 소개'),
-        widget=forms.TextInput(
+        widget=forms.Textarea(
             attrs={
                 'required' : 'True',
-                'placeholder' : 'Introduce',
+                'placeholder' : '토막글 소개',
                 'class': 'tomag-introduce',
+                'rows':'5',
             }
         )
     )
     text_content = forms.CharField(
-        max_length = 500,
+        max_length = 1000,
         label=('토막글 쓰기'),
-        widget= forms.TextInput(
+        widget= forms.Textarea(
             attrs={
                 'required' : 'True',
-                'placeholder': 'Content',
-                'class': 'tomag-write'
+                'placeholder': '토막글 쓰기',
+                'class': 'tomag-write',
+                'rows' : '15',
             }
         )
     )
-    text_genre = forms.ModelMultipleChoiceField(
-        Genre.objects.all(),
-        label = ("토막글 장르"),
-        widget = forms.TextInput(
-            attrs={
-                'required' : 'True',
-                'class': 'input-genre',
-            }
-        )
-    )
+    # text_genre = forms.ModelMultipleChoiceField(
+    #     Genre.objects.all(),
+    #     label = ("토막글 장르"),
+    #     widget = forms.Select(
+    #         attrs={
+    #             'required' : 'True',
+    #             'class': 'input-genre',
+    #         }
+    #     )
+    # )
 
-    text_cover = forms.ImageField(
-        label = ("책 표지 등록"),
-    )
+    # text_cover = forms.ImageField(
+    #     required=False,
+    #     label = ("책 표지 등록"),
+    # )
+
+
 
     series = forms.ModelChoiceField(
         TMSeries.objects.all(),
+        empty_label = "책 선택 안함", 
         label= ("책 선택하기"),
         widget=forms.Select(
             attrs ={
-                'required' : 'True',
+                'required' : 'False',
                 'class': 'book-choice',
                 'id' : 'book-choice',
             }
     )
     )
-    # writer = forms.ModelChoiceField()
-        # 글 생성 Form
     class Meta:
         model = TMText
-        fields = (  'series',
+        fields = (
                     'text_title', 
                     'main_sentence', 
                     'text_content', 
-                    'text_genre', 
-                    'writer',
-                    'text_cover',)
+                    )
+                    

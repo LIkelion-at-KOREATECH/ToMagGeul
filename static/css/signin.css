@@ -2,21 +2,27 @@
     text-align : left;
 }
 .center{
-        text-align : center;
-        display:inline-block;
-        margin-top: 80px;
-    }   
+    
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width:100%;
+    height: 90vh;  
+
+}   
     
 .TopHeader{
-    width:100%;
+    width:100vw;
+    height:30%;
     background:white;
     /* display:flex; */
     text-align:left;
 }
 
 .blank{
-width : 90px;
-height : 5px;
+width : 200%;
+height : 80%;
+background:white;
 }
 
 .smallblank{
@@ -24,7 +30,9 @@ width : 10%;
 height : 10%; 
 background:white;
 }   
-
+.bottom-line{
+    border-bottom: 0.5px #979797 solid;
+}
 
 #topMenu {    
     position: fixed;
@@ -54,21 +62,13 @@ background:white;
     text-align : center;     
     color: black;               
     display: block;             
-    width: 68px;             
-    font-size: 16px;           
+    width: 100%;             
+    font-size: 100%;           
     font-weight: bold;           
     font-family: "Trebuchet MS", Dotum, Arial;              
     /* background-color: red; */
 }
-    
-#topMenu .menuLink:hover {            
-    color: black;                   
-    background-color: white; 
-}
 
-#topMenu .menuLink:active {            
-    color: red;
-}
 
 .signup_button{
     background-color:#F7F7F7; 
@@ -132,6 +132,7 @@ login{
     height: 30px;
 }
 
+
 #submit_signup{
     height: 300%; 
     width: 120%;
@@ -149,4 +150,71 @@ login{
 
 .underunder {
     padding : 15px;
+}
+
+.wrap-search{
+    width:180px;
+    position: relative;
+    margin-right:-8%;
+}
+
+.search-box{
+	position: absolute;
+	top:50%;
+	/* left: 0%; */
+	transform: translate(-50%,-50%);
+	background : #C28B64;
+	height: 30px;
+	border-radius: 50px;
+	padding: 5px;
+}
+
+.search-box:hover .search-txt{
+	width: 150px;
+	padding: 0 3px;
+}
+
+.search-box:hover .search-btn{
+	background: #fff;
+}
+
+
+.search-btn{
+	color:#e84118;
+	float: right;
+	width: 20px;
+	height: 20px;
+	border-radius: 50%;
+	background: #F7F7F7;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+    border:none;
+}
+
+.search-txt{
+	border:none;
+	outline: none;
+	background: none;
+	float: left;
+	padding: 0;
+	color:#fff;
+	font-size: 10px;
+	line-height: 20px;
+	width: 0;
+	transition: width 400ms;
+
+}
+
+.btn-yellow{
+    background : #C28B64;
+    border: #8C4E30;
+    color:white;
+}
+/* .collapse:not(.show) {
+    display: block;
+} */
+
+.login-content{
+    display:inline-block;
 }

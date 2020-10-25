@@ -2,10 +2,20 @@
     text-align : left;
 }
 .center{
-        text-align : center;
-        display:inline-block;
-    }   
-    
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width:100%;
+    min-height: 70vh;  
+    position: relative;
+}     
+@media screen and (max-height: 950px) {
+    .center{
+        margin-top:100px;
+        margin-bottom:100px;
+    }
+}
+   
 .TopHeader{
     width:100%;
     height:300px;
@@ -24,7 +34,7 @@ width : 10px;
 height : 35px; 
 }   
 .box{
-    position: absolute;
+    /* position: absolute; */
     text-align: left;
 }
 
@@ -52,7 +62,7 @@ height : 35px;
     top: 0;
     left: 0;
     right: 0;
-    display:inline-block;
+    display:inline-block;    
     height: 70px; 
     width: 100%; 
     border-bottom: 0.1px solid #979797;
@@ -142,3 +152,10 @@ login{
     height: 30px;
 }
 
+.login-content{
+    display:inline-block;
+}
+
+.box input[type = 'text'], .box input[type = 'password'], .box input[type = 'email']{
+    margin:5px auto;
+}
