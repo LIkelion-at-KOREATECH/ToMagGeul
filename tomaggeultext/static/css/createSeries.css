@@ -1,6 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Do+Hyeon&display=swap');
-.Do Hyeon * { 
-    font-family: 'Do Hyeon', sans-serif; 
+
+body{
+    font-family: 'Do Hyeon', sans-serif;
 }
 
 .help{
