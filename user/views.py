@@ -13,27 +13,29 @@ def signup(request):
             user = user_form.save()
             if request.POST.get('is_author', ''):
                 author_form = AuthorCreationForm()
-                return render(request, 'createauthor.html', {'author_form':author_form, 'user':user})
+                return render(request, 'createauthor.html', {'author_form':author_form, 'auser':user})
             return redirect('signin')
     return render(request, 'signup.html', {'regi_form':user_form})
 
-@login_required
 def createauthor(request):
-    username = request.GET.get('name', '')
+    username = request.POST.get('name', '')
+    if username =='':
+        user = request.user
+    else:
+        user = get_object_or_404(TMUser, nickname=username)
     author_form = AuthorCreationForm()
     if request.method == "POST":
         author_form = AuthorCreationForm(request.POST)
         if author_form.is_valid():
             author = author_form.save(commit=False)
             username = request.POST.get('name', '')
-            user = get_object_or_404(TMUser, nickname=username)
             author.user = user
             user.is_author = True
             user.save()
             author.save()
             return redirect('thank')
  
-    return render(request, 'createauthor.html', {'author_form':author_form})
+    return render(request, 'createauthor.html', {'author_form':author_form, 'auser':user})
 
 def thankyou(request):
     return render(request, 'thankyou.html')

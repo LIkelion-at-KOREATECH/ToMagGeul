@@ -302,7 +302,7 @@ html, body{
 }
 
 .content {
-    width: auto;
+    width: 90vw;
 }
 
 .tmtext{
@@ -382,5 +382,8 @@ html, body{
 }
 
 .heart_puls{
-    margin-left: 95vh;
+    position: relative;
+    right:0px;
+    /* float: right; */
+    /* margin-left: 95vh; */
 }

@@ -49,7 +49,7 @@ class TMText(models.Model):
     # heart_num = models.PositiveIntegerField(default=0)     #공감 수
     # comment_num = models.PositiveIntegerField(default=0)   #댓글 수
     views_num = models.PositiveIntegerField(default=0)     #조회 수
-    date_of_write = models.DateField(default = timezone.now)
+    date_of_write = models.DateField(auto_now_add=True)
     writer = models.ForeignKey(TMAuthor, on_delete=models.CASCADE, related_name='text')
     series = models.ForeignKey(TMSeries, on_delete=models.CASCADE, null=True, blank=True, related_name='text')
     text_cover = models.ImageField(upload_to='covers',default='../static/img/no-image.png')
@@ -67,7 +67,7 @@ class TMText(models.Model):
         return self.text_title
 
 class Comment(models.Model):
-    date_of_comment = models.DateField(default = timezone.now)
+    date_of_comment = models.DateField(auto_now_add=True)
     comment_content = models.CharField(max_length=100)
     is_report = models.BooleanField(default=False)
     tmtext = models.ForeignKey(TMText, on_delete=models.CASCADE, related_name='comment')
