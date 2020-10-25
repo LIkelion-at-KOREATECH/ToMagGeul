@@ -1,5 +1,6 @@
 from django.shortcuts import get_object_or_404, redirect, render,redirect
 from django.contrib.auth.decorators import login_required
+from django.contrib.auth import authenticate, login
 from .models import Subscription, TMSeries, TMText, Comment
 from .models import Genre
 from django.core.paginator import Paginator
@@ -133,4 +134,17 @@ def tmtext_detail(request, tmt_id):
     return render(request, 'tomaggeul_detail.html', {'tmtext':tmtext})
 
 def popup(request):
+    if request.method == "POST":
+        if not request.user.is_authenticated:
+            email = request.POST.get('email','')
+            password = request.POST.get('password','')
+            user = authenticate(request, email=email, password=password)
+            if user is not None:
+                login(request, user)
+        else:
+            text = get_object_or_404(TMText, text_id = request.POST.get('select',0))
+            print(text)
+            #####해당 토막글 데이터 전송####
+            ##############################
+            pass
     return render(request, 'popup.html')

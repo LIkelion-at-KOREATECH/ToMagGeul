@@ -17,7 +17,6 @@ def signup(request):
             return redirect('signin')
     return render(request, 'signup.html', {'regi_form':user_form})
 
-@login_required
 def createauthor(request):
     username = request.GET.get('name', '')
     author_form = AuthorCreationForm()
@@ -31,7 +30,7 @@ def createauthor(request):
             user.is_author = True
             user.save()
             author.save()
-            return redirect('thank')
+            return redirect('main')
  
     return render(request, 'createauthor.html', {'author_form':author_form})
 
