@@ -3,6 +3,12 @@
     font-family: 'Do Hyeon', sans-serif;
 }
 
+html, body{
+    /* margin: 0; */
+    /* width: 100%; */
+    font-family: 'Do Hyeon', sans-serif;
+}
+
 #toast {
     position: fixed;
     bottom: 30px;
