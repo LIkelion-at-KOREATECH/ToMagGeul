@@ -1,16 +1,25 @@
+@import url(//fonts.googleapis.com/earlyaccess/nanumgothic.css); 
+.Do Hyeon * { 
+    font-family: 'Do Hyeon', sans-serif;; 
+}
+
 .left{
     text-align : left;
 }
 .center{
-    
     display: flex;
     justify-content: center;
     align-items: center;
     width:100%;
-    height: 90vh;  
-
-}   
-    
+    min-height: 70vh;  
+    position: relative;
+}     
+@media screen and (max-height: 950px) {
+    .center{
+        margin-top:100px;
+        margin-bottom:100px;
+    }
+}
 .TopHeader{
     width:100vw;
     height:30%;
@@ -101,7 +110,7 @@ background:white;
 #button_signup{
     height: 300%; 
     width: 120%;
-    background-color: #deb887;
+    background-color:#deb887;
     border-radius: 5px;
     color: white;
     border-color: #8C4E30;
@@ -163,7 +172,7 @@ login{
 	top:50%;
 	/* left: 0%; */
 	transform: translate(-50%,-50%);
-	background : #C28B64;
+	background :#deb887;
 	height: 30px;
 	border-radius: 50px;
 	padding: 5px;
@@ -207,7 +216,7 @@ login{
 }
 
 .btn-yellow{
-    background : #C28B64;
+    background :#deb887;
     border: #8C4E30;
     color:white;
 }
@@ -217,4 +226,10 @@ login{
 
 .login-content{
     display:inline-block;
+}
+.box > table > tbody >tr>td>input{
+    color:black !important;
+}
+.box input[type = 'text'], .box input[type = 'password'], .box input[type = 'email']{
+    color:black !important;
 }

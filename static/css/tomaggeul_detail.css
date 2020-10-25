@@ -1,12 +1,13 @@
 @import url(//fonts.googleapis.com/earlyaccess/nanumgothic.css); 
-.nanumgothic * { 
-    font-family: 'Nanum Gothic', sans-serif; 
+.Do Hyeon * { 
+    font-family: 'Do Hyeon', sans-serif;; 
 }
 
 html, body{
     margin: 0;
     min-height: 100vh;
     width: 100%;
+    font-family: 'Do Hyeon', sans-serif;
 }
 
 /* #main{
