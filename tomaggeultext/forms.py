@@ -59,16 +59,15 @@ class TMtextCreationForm(forms.ModelForm):
                     )
 class TMSeriesCreationForm(forms.ModelForm):
     series_title = forms.CharField(
-        label = "책 제목 : ",
+        label = "책 제목 ",
         max_length=30,
         widget=forms.TextInput(
             attrs = {
             'required' : 'True',
         }
         ))
-
     introduce = forms.CharField(
-        label = "책 소개 : ",
+        label = "책 소개 ",
         max_length=30,
         widget=forms.TextInput(
             attrs = {
@@ -76,7 +75,6 @@ class TMSeriesCreationForm(forms.ModelForm):
             }
         )
     )
-    
     class Meta:
         model = TMSeries
         fields = (

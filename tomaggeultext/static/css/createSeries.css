@@ -3,3 +3,8 @@
     font-family: 'Nanum Gothic', sans-serif; 
 }
 
+body{
+    margin: 0 auto;
+    padding: 50px;
+    width: 700px;
+}

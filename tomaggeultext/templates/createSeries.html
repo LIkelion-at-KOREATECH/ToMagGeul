@@ -20,9 +20,9 @@
                             <div>
                                 <fieldset class="module aligned ">
                                     {{series_form.as_p}}
-                            </div>
                             <div class="form-row field-series_genre">
                                 <div>
+                                    <p>
                                     <label class="required" for="id_series_genre">책 장르:</label>
                                     <div class="related-widget-wrapper">
                                         <select name="series_genre" required id="id_series_genre" multiple = "multiple">
@@ -30,17 +30,22 @@
                                             <option value={{value.id}}>{{value}}</option>
                                             {% endfor %}
                                         </select>
+                                    </p>
                                         <!-- <a class="related-widget-wrapper-link add-related" id="add_id_series_genre"
                                             href="/admin/genre/genre/add/?_to_field=id&amp;_popup=1"
                                             title="genre 추가"><img src="/static/admin/img/icon-addlink.svg" alt="추가"></a> -->
                                     </div>
-                                    <div class="help">하나 이상을 선택하려면 "Control" 키를 누른 채로 선택해주세요. Mac의 경우에는
-                                        "Command" 키를 눌러주세요.</div>
+                                    <div class="help">
+                                        <p>하나 이상을 선택하려면 "Control" 키를 누른 채로 선택해주세요. 
+                                        Mac의 경우에는 "Command" 키를 눌러주세요.
+                                    </p></div>
                                 </div>
                             </div>
                             <div class="submit-row">
                                 <input type="submit" value="시리즈 생성">
                             </div>
+                        </fieldset>
+                    </div>
                     </div>
                     </form>
                 </div>
