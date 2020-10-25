@@ -1,4 +1,4 @@
-from user.models import TMUser
+from user.models import TMAuthor, TMUser
 from django.shortcuts import get_object_or_404, render, redirect
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth import authenticate, login, logout
@@ -24,7 +24,6 @@ def createauthor(request):
         if author_form.is_valid():
             author = author_form.save(commit=False)
             username = request.POST.get('name', '')
-            print(username)
             user = get_object_or_404(TMUser, nickname=username)
             author.user = user
             user.is_author = True
@@ -40,7 +39,7 @@ def thankyou(request):
 
 def signin(request):
     if str(request.user) != 'AnonymousUser':
-        return redirect('profile')  #로그인 한 상태에는 프로필 페이지로 감
+        return redirect('mypage')  #로그인 한 상태에는 프로필 페이지로 감
 
     if request.method == "POST":
         email = request.POST.get('email','')
@@ -48,12 +47,32 @@ def signin(request):
         user = authenticate(request, email=email, password=password)
         if user is not None:
             login(request, user)
-            return redirect('profile')
+            return redirect('mypage')
     return render(request, 'signin.html')
 
 def signout(request):
     logout(request)
     return redirect('thank')
 
-def profile(request):
-    return render(request, 'profile.html')
+def profile(request,author):
+    column = int(request.GET.get('column', '0'))
+    isText = column == 0
+    author = get_object_or_404(TMAuthor, author_name=author)
+    return render(request, 'profile.html',{'author':author,'isText':isText})
+
+def mypage(request):
+    column = int(request.GET.get('column', '0'))
+    user = request.user
+    series = []
+    isText = False
+    if column == 0:
+        if user.is_author:
+            series = user.tmauthor.series.all()
+    elif column == 1:
+        series = map(lambda x:x.tmseries,user.subs.all())
+    elif column == 2:
+        isText = True
+        if user.is_author:
+            series = user.tmauthor.text.all()
+
+    return render(request, 'mypage.html', {'series':series, 'isText':isText})

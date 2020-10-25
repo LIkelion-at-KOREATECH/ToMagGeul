@@ -48,16 +48,16 @@
                   </button>
               </div>
           </form>
-          {% if False %}
+          {% if user.is_authenticated %}
           <ul class="navbar-nav my-2 my-lg-0">
               <li class="nav-item">
-              <a class="nav-link"  href="{% url 'signin' %}">
+              <a class="nav-link"  href="{% url 'signout' %}">
                   <button type="button" class="btn btn-outline-dark">로그아웃</button>
               </a>
               </li>
               <li class="nav-item">
-              <a class="nav-link" href="{% url 'user_register' %}">
-                  <button type="button" class="btn btn-light" style="width:38px; height:38px; border-radius: 38px; font-size:12px; padding:0;">혜현</button>
+              <a class="nav-link" href="{% url 'mypage' %}">
+                  <button type="button" class="btn btn-light" style="width:38px; height:38px; border-radius: 38px; font-size:12px; padding:0;">{{user.nickname}}</button>
               </a>
               </li>
           </ul>

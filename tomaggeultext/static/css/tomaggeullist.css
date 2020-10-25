@@ -102,7 +102,7 @@ header{
 
 .author-info{
     box-sizing: border-box;
-    margin-left: 45vh;
+    margin-left: 12vw;
     margin-top: 25px;
     width: 250px;
     height: 250px;
@@ -303,7 +303,7 @@ header{
 }
 
 .sort_way{
-    margin-left: 88vh;
+    margin-left: 38vw;
     margin-top: 45px;
     width: 150px;
     font-size: 13px;

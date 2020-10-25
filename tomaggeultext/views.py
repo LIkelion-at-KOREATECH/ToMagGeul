@@ -1,7 +1,6 @@
-from django.shortcuts import get_object_or_404, render, redirect
-from .models import Subscription, TMSeries, TMText
+from django.shortcuts import get_object_or_404, redirect, render,redirect
+from .models import Subscription, TMSeries, TMText, Comment
 from .models import Genre
-from genre.models import Genre
 from django.core.paginator import Paginator
 import math
 from django.http import HttpResponse
@@ -14,7 +13,6 @@ def tmtext(request):
     all_tmtext = TMText.objects.all().order_by('-date_of_write')
     popular_tmts = TMText.objects.all().order_by('-heart_num')[:5] # 좋아요 많은 순으로 5개 
     all_genre = Genre.objects.all()
-    
     paginator = Paginator(all_tmtext,5)
     page=1 if(request.GET.get('page') == None) else int(request.GET.get('page'))
     posts = paginator.get_page(page)
@@ -28,11 +26,10 @@ def tmtext(request):
 def tmlist(request, pk):
     user = request.user
     series = get_object_or_404(TMSeries, series_id = pk)
-    isSubs = user.subs.filter(tmseries=series)
+    isSubs = False
+    if user.is_authenticated:
+        isSubs = user.subs.filter(tmseries=series)
     return render(request, 'tomaggeullist.html', {'series':series, 'isSubs':isSubs})
-
-def popup(request):
-    return render(request, 'popup.html')
     
 
 def it_sounds_good(request,tmt_id): # test
@@ -52,13 +49,10 @@ def tmtextcreate(request):
         data = request.POST
         # 입력받은 값을 Form에 넣은 형태로 새로 저장
         tmtext_form = TMtextCreationForm(data)
-        print("Form 전달")
         # 입력받은 폼의 유효성 검사
         if tmtext_form.is_valid():
             # 객체를 생성하지 않고 저장
-            print("valid")
             tmtext = tmtext_form.save(commit=False)
-            print(data)
             # series의 data를 get하는데 입력값이 없으면 None
             series = data.get('series',None)
             # series 값이 있다면
@@ -72,7 +66,6 @@ def tmtextcreate(request):
             # 입력받은 장르 값을 get한다.
             genres = data.get('text_genre',[])
             # 장르는 다중 값임으로 모든 값에 대하여
-            print(genres)
             for i in genres:
                 genre = Genre.objects.get(id = int(i))
                 # 장르의 id 값으로 접근하여 값을 호출하여 add한다.
@@ -80,17 +73,29 @@ def tmtextcreate(request):
             # 다시 객체를 저장한다.
             tmtext.save()
             return redirect('tmlist')
-        
-        print("실패")
     return render(request, 'createText.html', {'tmtext_form':tmtext_form, 'genre':genre})
     
 def tmseriescreate(request):
-    # if request.method == "POST":
-    return render(request, 'createSeries.html')
+    genre = Genre.objects.all()
+    series_form = TMSeriesCreationForm()
+    if request.method == "POST":
+        data = request.POST
+        series_form = TMSeriesCreationForm(data)
+        if series_form.is_valid():
+            series = series_form.save(commit=False)
+            series.writer = request.user.tmauthor
+            series.save()
+            genres = data.get('series_genre',[])
+            for i in genres:
+                g = Genre.objects.get(id = int(i))
+                series.series_genre.add(g)
+            series.save()
+            
+    return render(request, 'createSeries.html',{'genre':genre, 'series_form':series_form})
 
 def tmlist(request):
     return render(request, 'tomaggeullist.html')
-    
+
 def subscribe(request,series): # test
     user = request.user
     tmseries = get_object_or_404(TMSeries, series_id=series)
@@ -108,4 +113,16 @@ def subscribe(request,series): # test
 
 def tmtext_detail(request, tmt_id):
     tmtext=get_object_or_404(TMText, text_id=tmt_id)
+    if request.method == 'POST':
+        isDelete = request.POST.get('id',None)
+        if not isDelete:
+            comment = request.POST.get('comment','')
+            cmt = Comment(comment_content=comment, tmtext = tmtext, tmuser = request.user)
+            cmt.save()
+        else:
+            Comment.objects.get(id=isDelete).delete()
+
+
+        return redirect('tmtext_detail', tmtext.text_id)
+
     return render(request, 'tomaggeul_detail.html', {'tmtext':tmtext})

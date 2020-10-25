@@ -1,5 +1,6 @@
 from django.db import models
 from django.utils import timezone
+from django.db.models import Count, Sum
 
 from genre.models import Genre
 
@@ -14,12 +15,19 @@ class TMSeries(models.Model):
     last_uploaded_date = models.DateTimeField(default = timezone.now)
     # tomag_num_total = models.PositiveIntegerField(default=0)     #토막글 수 종합
     heart_num_total = models.PositiveIntegerField(default=0)     #공감 수 #property로 바꾸기
-    comment_num_total = models.PositiveIntegerField(default=0)   #댓글 수 종합 #property로 바꾸기
+    # comment_num_total = models.PositiveIntegerField(default=0)   #댓글 수 종합 #property로 바꾸기
     views_num_total = models.PositiveIntegerField(default=0)     #조회 수 종합 #property로 바꾸기
     writer = models.ForeignKey(TMAuthor, on_delete=models.CASCADE, related_name='series')
 
     def __str__(self):
         return self.series_title
+
+    @property
+    def comment_num_total(self):
+        result = self.text.all().annotate(totalcomm=Count('comment')).aggregate(result=Sum('totalcomm'))['result']
+        if not result:
+            result = 0
+        return result
 
     @property
     def tomag_num_total(self):
