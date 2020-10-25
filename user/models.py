@@ -2,7 +2,7 @@ from django.db import models
 from django.contrib.auth.models import AbstractBaseUser, PermissionsMixin
 from django.utils import timezone
 from django.utils.translation import ugettext_lazy as _
-
+from django.db.models import Count, Sum
 from .managers import TMUserManager
 
 from genre.models import Genre
@@ -46,6 +46,11 @@ class TMUser(AbstractBaseUser, PermissionsMixin):
         "Is the user a member of staff?"
         # Simplest possible answer: All admins are staff
         return self.is_superuser
+    
+    @property
+    def following_num(self):
+        return self.subs.count()
+        
 
 class TMAuthor(models.Model):
     author_name = models.CharField(verbose_name="작가명", max_length = 50, unique=True, error_messages={'unique' : "이미 존재하는 작가명입니다."})
@@ -54,13 +59,20 @@ class TMAuthor(models.Model):
     sns_link = models.TextField(max_length = 300, null=True, blank=True)
     portfolio = models.FileField(upload_to='portfolios',null=True, blank=True)
     opening_date = models.DateField(default = timezone.now)
-    follower_num = models.PositiveIntegerField(default=0)
+    # follower_num = models.PositiveIntegerField(default=0)
     tomag_num = models.PositiveIntegerField(default=0)  
     user = models.OneToOneField(
         TMUser,
         on_delete=models.CASCADE,
         primary_key=True,
     )
+
+    @property
+    def follower_num(self):
+        result = self.series.all().annotate(totalsubs=Count('subs')).aggregate(result=Sum('totalsubs'))['result']
+        if not result:
+            result = 0
+        return result
 
     def __str__(self):
         return self.author_name

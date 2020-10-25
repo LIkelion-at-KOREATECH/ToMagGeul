@@ -13,7 +13,6 @@ def tmtext(request):
     all_tmtext = TMText.objects.all().order_by('-date_of_write')
     popular_tmts = TMText.objects.all().order_by('-heart_num')[:5] # 좋아요 많은 순으로 5개 
     all_genre = Genre.objects.all()
-    
     paginator = Paginator(all_tmtext,5)
     page=1 if(request.GET.get('page') == None) else int(request.GET.get('page'))
     posts = paginator.get_page(page)
@@ -27,11 +26,10 @@ def tmtext(request):
 def tmlist(request, pk):
     user = request.user
     series = get_object_or_404(TMSeries, series_id = pk)
-    isSubs = user.subs.filter(tmseries=series)
+    isSubs = False
+    if user.is_authenticated:
+        isSubs = user.subs.filter(tmseries=series)
     return render(request, 'tomaggeullist.html', {'series':series, 'isSubs':isSubs})
-
-def popup(request):
-    return render(request, 'popup.html')
     
 
 def it_sounds_good(request,tmt_id): # test

@@ -1,0 +1,255 @@
+{% extends 'navbar.html' %}
+{% load static %}
+{% block content %}
+<!-- <!DOCTYPE html>
+<html lang="ko-kr"> -->
+
+<head>
+    <title>프로필</title>
+    <link href="../static/css/profile.css" rel="stylesheet">
+    
+</head>
+
+<body>
+    <div style="border-bottom :1px solid burlywood;">
+        <div id="nav">
+
+            <div class="tm-series-name">
+                마이페이지
+            </div>
+        </div>
+    </div>
+
+    <section class="container">
+        <div>
+            <div class="profile">
+                <img src={% static "img/no-image.png" %} alt="..." />
+                <div class="tm-profile-text">
+                    <div class="user-name">
+                        
+                        <h1>{{user.tmauthor}}</h1>
+                        <h1>({{user.nickname}})</h1>
+                        <button type="button" class="btn btn-outline-dark">프로필 편집</button>
+                        
+                        {% if not user.is_author %}
+                        <a href={% url 'author_register' %}>
+                            <button type="button" class="btn btn-outline-dark">작가 등록</button>
+                        </a>
+                        {%endif%}
+                        
+                    </div>
+
+                    <div class="tm-profile-num-info">
+                        <div class="series_count">
+                            <h6>시리즈</h6>
+                            {% if user.is_author %}
+                                <p> {{user.tmauthor.series.count}} </p>
+                            {% else %}
+                                <p> - </p>
+                            {%endif%}
+                        </div>
+                        <div class="text_count">
+                            <h6>토막글</h6>
+                            {% if user.is_author %}
+                                <p> {{user.tmauthor.text.count}} </p>
+                            {% else %}
+                                <p> - </p>
+                            {%endif%}
+                        </div>
+                        <div class="follower">
+                            <h6>팔로워</h6>
+                            <!--팔로워 수로 수정 필요-->
+                            {% if user.is_author %}
+                                <p> {{user.tmauthor.follower_num}} </p>
+                            {% else %}
+                                <p> - </p>
+                            {%endif%}
+                        </div>
+                        <div class="following">
+                            <h6>구독 수</h6>
+                            <p> {{user.following_num}} </p>
+                        </div>
+                        
+                    </div>
+                    <div class="date-of-make">
+                        <img src={% static "img/calendar.png" %} alt="..." /> 
+                        <div class="date">
+                            개설일 : {% if user.is_author %}{{user.tmauthor.opening_date|date:"Y.m.d"}}
+                            {% else %}-
+                            {%endif%}
+                        </div>
+                    </div>
+                    
+                    <div class="sns">
+                        <img src={% static "img/cloud-computing.png" %} alt="..." /> 
+                        <div class="sns-link">
+                            PAGE : {% if user.is_author %}{{user.tmauthor.page_link}}
+                            {% else %}-
+                            {%endif%}
+                        </div>
+                    </div>
+
+                    <div class="sns">
+                        <img src={% static "img/instagram.png" %} alt="..." /> 
+                        <div class="sns-link">
+                            SNS : {% if user.is_author %}{{user.tmauthor.sns_link}}
+                            {% else %}-
+                            {%endif%}
+                        </div>
+                    </div>
+                    <div class="prefer_genre">
+                        {%for genre in user.prefer_genre.all %}
+                        <button type="button" class="btn btn-light">#{{genre}}</button>
+                        {%endfor%}
+                    </div>
+
+                    <div class="introduce">
+                        {{user.tmauthor.introduce}}
+                    </div>
+                </div>
+            </div>
+
+            <div class="list">
+                <div class="all_list_title">
+                    <a href="?column=2"
+                        style="text-decoration:none; color:#000000;">
+                        <span>모든 토막글</span>
+                    </a>
+                    <a href="?column=0"
+                        style="text-decoration:none; color:#000000;">
+                        <span>시리즈</span>
+                    </a>
+                    <a href="?column=1"
+                        style="text-decoration:none; color:#000000;">
+                        <span>구독</span>
+                    </a>
+                    <a href="?column=3"
+                        style="text-decoration:none; color:#000000;">
+                        <span>좋아요</span>
+                    </a>
+                </div>
+            </div>
+            {% if isText %}
+                {%for t in series %}
+                <div class="all_TMtext">
+                    <div class="tmtext_list">
+                        <img src="{% get_static_prefix %}{{t.text_cover}}"  alt="Hi!">
+                        <div class="content">
+                            <div class="tmtext">
+                                <a href={% url 'tmtext_detail' t.text_id %}
+                style="text-decoration:none; color:#000000;"><p id="series_name">{{t}}</p></a>
+                                <div class="tmtext_info">
+                                    {% if t.main_sentence %}
+                                    <P>{{t.main_sentence}}</P>
+                                    <P> | </P>
+                                    {% endif%}
+                                    {% if t.series %}
+                                    <a href={% url 'series' t.series.series_id %}
+                style="text-decoration:none; color:#000000;"><P>{{t.series}}</P></a>
+                                    {% endif%}
+                                </div>
+                            </div>
+                            <div class="author_info_box">
+                                <img src={% static "img/writer.png" %} alt="..." />
+                                <div class="author-info-text-2">
+                                    <p id="author-name2"><p id="author-name2"> <a href={% url 'profile' t.writer %}
+                                        style="text-decoration:none; color:#000000;">{{t.writer}}</a></p>
+                                    <div class="k">
+                                        <p>{{t.date_of_write|date:"Y.m.d"}}</p>
+                                        <p><img id="view" src={% static "img/view.png" %} alt="..." /> {{t.views_num}} </p>
+                                    </div>                        
+                                </div>
+                                <div class="heart_puls">
+                                    <img src={% static "img/heart.png" %} alt="..." />
+                                    <img src={% static "img/ellipsis.png" %} alt="..." />
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                {% empty %}
+                <div class="all_TMtext">
+                    <div class="tmtext">
+                        <p id="series_name">아직 시리즈가 없습니다...</p>
+                        <div class="tmtext_info">
+                            <P>당신의 첫 토막글</P>
+                            <P> | </P>
+                            <P>오늘 여기 작성해 보세요!</P>
+                        </div>
+                    </div>
+                    <div class="author_info_box">
+                        <img src={% static "img/writer.png" %} alt="..." />
+                        <div class="author-info-text-2">
+                            <p id="author-name2">토막글</p>
+                            <div class="k">
+                                <p>2020.00.00</p>
+                                <p><img id="view" src={% static "img/view.png" %} alt="..." /> ! </p>
+                            </div>                        
+                        </div>
+                        <div class="heart_puls">
+                            <img src={% static "img/heart.png" %} alt="..." />
+                            <img src={% static "img/ellipsis.png" %} alt="..." />
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+            {%else%}
+                {%for s in series %}
+                <div class="all_TMtext">
+                    <div class="tmtext_list">
+                        <img src="{% get_static_prefix %}{{s.text.last.text_cover}}"  alt="Hi!">
+                        <div class="content">
+                            <div class="tmtext">
+                                <p id="series_name"><a href={% url 'series' s.series_id %}
+                                    style="text-decoration:none; color:#000000;">{{s}}</a></p>
+                                <div class="tmtext_info">
+                                    <P>{{s.text.last.text_title}} 등 {{s.text.count}}토막글 </P>
+                                </div>
+                            </div>
+                            <div class="author_info_box">
+                                <img src={% static "img/writer.png" %} alt="..." />
+                                <div class="author-info-text-2">
+                                    <p id="author-name2"> <a href={% url 'profile' s.writer %}
+                                        style="text-decoration:none; color:#000000;">{{s.writer}}</a></p>
+                                    <div class="k">
+                                        <p>Last update {{s.text.last.date_of_write|date:"Y.m.d"}}</p>
+                                        <p><img id="view" src={% static "img/view.png" %} alt="..." /> {{s.views_num_total}} </p>
+                                    </div>                        
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                {% empty %}
+                <div class="all_TMtext">
+                    <div class="tmtext">
+                        <p id="series_name">아직 시리즈가 없습니다...</p>
+                        <div class="tmtext_info">
+                            <P>당신의 첫 토막글</P>
+                            <P> | </P>
+                            <P>오늘 여기 작성해 보세요!</P>
+                        </div>
+                    </div>
+                    <div class="author_info_box">
+                        <img src={% static "img/writer.png" %} alt="..." />
+                        <div class="author-info-text-2">
+                            <p id="author-name2">토막글</p>
+                            <div class="k">
+                                <p>2020.00.00</p>
+                                <p><img id="view" src={% static "img/view.png" %} alt="..." /> ! </p>
+                            </div>                        
+                        </div>
+                        <div class="heart_puls">
+                            <img src={% static "img/heart.png" %} alt="..." />
+                            <img src={% static "img/ellipsis.png" %} alt="..." />
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+            {%endif%}
+        </div>
+    </section>
+</body>
+
+<!-- </html> -->
+{% endblock %}

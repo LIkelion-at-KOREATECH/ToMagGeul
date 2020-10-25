@@ -3,10 +3,18 @@
 <html lang="ko-kr">
 
 <head>
-    
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>토막글 리스트</title>
     <link href="../static/css/tomaggeullist.css" rel="stylesheet">
-    
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+    integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+    integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous">
+    </script>
+    <!-- fontawesome cdn 아이콘 폰트 사용하기 위해서 필요합니다. -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.1/css/all.min.css" rel="stylesheet">
 </head>
 
 <body>
@@ -116,7 +124,8 @@
                 <div class="author_info_box">
                     <img src={% static "img/writer.png" %} alt="..." />
                     <div class="author-info-text-2">
-                        <p id="author-name2">{{series.writer}}</p>
+                        <a href={% url 'profile' series.writer.author_name %}
+            style="text-decoration:none; color:#000000;"><p id="author-name2">{{series.writer}}</p></a>
                         <div class="k">
                             <p>{{tmg.date_of_write|date:"Y.m.d"}}</p>
                             <p><img id="view" src={% static "img/view.png" %} alt="..." /> {{tmg.views_num}} </p>
@@ -131,17 +140,17 @@
             {% empty %}
             <div class="all_TMtext">
                 <div class="tmtext">
-                    <p id="series_name">아직 글이 없습니다...</p>
+                    <p id="series_name">아직 시리즈가 없습니다...</p>
                     <div class="tmtext_info">
-                        <P>1화 이름</P>
+                        <P>당신의 첫 토막글</P>
                         <P> | </P>
-                        <P>내용 중심문장 어쩌구</P>
+                        <P>오늘 여기 작성해 보세요!</P>
                     </div>
                 </div>
                 <div class="author_info_box">
                     <img src={% static "img/writer.png" %} alt="..." />
                     <div class="author-info-text-2">
-                        <p id="author-name2">작가이름</p>
+                        <p id="author-name2">토막글</p>
                         <div class="k">
                             <p>2020.00.00</p>
                             <p><img id="view" src={% static "img/view.png" %} alt="..." /> 7 </p>
