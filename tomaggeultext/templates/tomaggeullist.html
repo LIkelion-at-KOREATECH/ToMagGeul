@@ -21,7 +21,7 @@
     <section>
         <div id="main">
             <div class="tm-series-info">
-                <img src={% static "img/no-image.png" %} alt="..." />
+                <img src="{% get_media_prefix %}{{series.text.last.text_cover}}" alt="..." />
                 <div class="tm-series-info-text">
                     <h2>{{series.series_title}}</h2>
                     <h6>{{series.writer}} | 총 {{series.tomag_num_total}}화</h6>

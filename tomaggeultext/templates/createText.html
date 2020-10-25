@@ -3,14 +3,13 @@
 {% load static %}
 {% block content %}
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
   <link rel="stylesheet" href="{% static 'css/createText.css' %}">
   <title>토막글 글생성</title>
 </head>
 
 <body>
+  <div class='container make--center'>
+    <div>
   <form method="POST" action="" enctype="multipart/form-data">
     {% csrf_token %}
 
@@ -54,6 +53,8 @@
     popup.onclick = null;
     }
   </script>
-
+  </div>
+</div>
+</body>
 {% endblock %}
   
