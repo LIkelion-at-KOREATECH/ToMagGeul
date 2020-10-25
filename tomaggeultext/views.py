@@ -47,7 +47,6 @@ def it_sounds_good(request,tmt_id): # test
     context = {'heart_count' : tmtext.heart_num}
     return HttpResponse(json.dumps(context), content_type='application/json')
 
-<<<<<<< HEAD
 def tmtextcreate(request):
     genre = Genre.objects.all()
     # form 불러오기
@@ -105,9 +104,7 @@ def tmseriescreate(request):
 def tmlist(request):
     return render(request, 'tomaggeullist.html')
 
-=======
 @login_required
->>>>>>> master
 def subscribe(request,series): # test
     user = request.user
     tmseries = get_object_or_404(TMSeries, series_id=series)
