@@ -1,6 +1,6 @@
 from django.shortcuts import get_object_or_404, render, redirect
 from .models import TMSeries, TMText
-from .models import Genre
+from genre.models import Genre
 from django.core.paginator import Paginator
 import math
 from django.http import HttpResponse
@@ -35,6 +35,7 @@ def it_sounds_good(request,tmt_id): # test
     return HttpResponse(json.dumps(context), content_type='application/json')
 
 def tmtextcreate(request):
+    genre = Genre.objects.all()
     # form 불러오기
     tmtext_form = TMtextCreationForm()
     # request의 Method가 POST로 주어졌다면
@@ -43,14 +44,15 @@ def tmtextcreate(request):
         data = request.POST
         # 입력받은 값을 Form에 넣은 형태로 새로 저장
         tmtext_form = TMtextCreationForm(data)
+        print("Form 전달")
         # 입력받은 폼의 유효성 검사
         if tmtext_form.is_valid():
             # 객체를 생성하지 않고 저장
+            print("valid")
             tmtext = tmtext_form.save(commit=False)
-            
+            print(data)
             # series의 data를 get하는데 입력값이 없으면 None
             series = data.get('series',None)
-
             # series 값이 있다면
             if series:
                 # 저장된 값의 seires를 입력받은 value값에서 객체를 접근하여 값을 호출하여 저장
@@ -62,13 +64,17 @@ def tmtextcreate(request):
             # 입력받은 장르 값을 get한다.
             genres = data.get('text_genre',[])
             # 장르는 다중 값임으로 모든 값에 대하여
-            for g in genres:
+            print(genres)
+            for i in genres:
+                genre = Genre.objects.get(id = int(i))
                 # 장르의 id 값으로 접근하여 값을 호출하여 add한다.
-                tmtext.text_genre.add(Genre.objects.get(id=int(g)))
+                tmtext.text_genre.add(genre)
             # 다시 객체를 저장한다.
             tmtext.save()
             return redirect('tmlist')
-    return render(request, 'createText.html', {'tmtext_form':tmtext_form})
+        
+        print("실패")
+    return render(request, 'createText.html', {'tmtext_form':tmtext_form, 'genre':genre})
     
 def tmseriescreate(request):
     # if request.method == "POST":
