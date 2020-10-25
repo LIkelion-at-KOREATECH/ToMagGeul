@@ -62,20 +62,6 @@
               </li>
           </ul>
           {%else%}
-          {% if user.is_authenticated %}
-          <ul class="navbar-nav my-2 my-lg-0 nav-login--wrap">
-              <li class="nav-item">
-              <a class="nav-link"  href="{% url 'profile' %}">
-                  <button type="button" class="btn btn-outline-dark">{{user.nickname}}</button>
-              </a>
-              </li>
-              <li class="nav-item">
-              <a class="nav-link"  href="{% url 'signout' %}">
-                  <button type="button" class="btn btn-outline-dark">로그아웃</button>
-              </a>
-              </li>
-          </ul>
-          {%else%}
           <ul class="navbar-nav my-2 my-lg-0 nav-login--wrap">
               <li class="nav-item">
               <a class="nav-link"  href="{% url 'signin' %}">
@@ -88,7 +74,6 @@
               </a>
               </li>
           </ul>
-          {%endif%}
           {%endif%}
           </div>
       </div>
@@ -129,10 +114,15 @@
           else
             $('#heart_'+id).css('color', 'red');
             
-          if ($('#heart_'+id).attr("src") == "{% static 'img/redheart.png' %}")
+          var num = $('#heartnum').text()
+          if ($('#heart_'+id).attr("src") == "{% static 'img/redheart.png' %}"){
+            $('#heartnum').text(parseInt(num)-1)
             $('#heart_'+id).attr("src","{% static 'img/heart.png' %}");
-          else
+          }
+          else{
+            $('#heartnum').text(parseInt(num)+1)
             $('#heart_'+id).attr("src","{% static 'img/redheart.png' %}");
+          }
           // 해당 좋아요 바꾸는 부분
           //$('#heart_'+id).css('color', 'red');
         },
