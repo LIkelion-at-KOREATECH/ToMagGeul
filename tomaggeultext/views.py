@@ -100,9 +100,6 @@ def tmseriescreate(request):
             
     return render(request, 'createSeries.html',{'genre':genre, 'series_form':series_form})
 
-def tmlist(request):
-    return render(request, 'tomaggeullist.html')
-
 @login_required
 def subscribe(request,series): # test
     user = request.user
