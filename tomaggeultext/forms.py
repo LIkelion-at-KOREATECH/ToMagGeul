@@ -40,11 +40,11 @@ class TMtextCreationForm(forms.ModelForm):
     )
     series = forms.ModelChoiceField(
         TMSeries.objects.all(),
+        required=False,
         empty_label = "책 선택 안함", 
         label= ("책 선택하기"),
         widget=forms.Select(
             attrs ={
-                'required' : 'False',
                 'class': 'book-choice',
                 'id' : 'book-choice',
             }

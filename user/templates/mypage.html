@@ -137,7 +137,7 @@
                 {%for t in series %}
                 <div class="all_TMtext">
                     <div class="tmtext_list">
-                        <img src="{% get_static_prefix %}{{t.text_cover}}"  alt="Hi!">
+                        <img src="{% get_media_prefix %}{{t.text_cover}}"  alt="Hi!">
                         <div class="content">
                             <div class="tmtext">
                                 <a href={% url 'tmtext_detail' t.text_id %}
@@ -209,7 +209,7 @@
                 {%for s in series %}
                 <div class="all_TMtext">
                     <div class="tmtext_list">
-                        <img src="{% get_static_prefix %}{{s.text.last.text_cover}}"  alt="Hi!">
+                        <img src="{% get_media_prefix %}{{s.text.last.text_cover}}"  alt="Hi!">
                         <div class="content">
                             <div class="tmtext">
                                 <p id="series_name"><a href={% url 'series' s.series_id %}

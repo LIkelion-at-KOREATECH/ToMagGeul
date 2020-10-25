@@ -74,6 +74,7 @@ def tmtextcreate(request):
             # 객체를 생성하여 저장
             tmtext.save()
             photo = request.FILES.get('text_cover')
+            print(photo)
             tmtext.text_cover = photo
             # 입력받은 장르 값을 get한다.
             genres = data.get('text_genre',[])
