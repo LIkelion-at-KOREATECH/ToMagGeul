@@ -101,12 +101,12 @@ html, body{
 
 .author-info{
     box-sizing: border-box;
-    margin-left: 18%;
-    margin-right: 100px;
     margin-top: 25px;
     width: 250px;
     height: 250px;
     border-radius: 30px;
+    position: absolute;
+    right: 0;
 }
 .info{
     box-sizing: border-box;
