@@ -105,3 +105,18 @@ a{
     white-space: pre;
     display: flex;
   }
+  .popup{
+      text-align: right;
+      margin-right: 40%;
+      margin-top: -15px;
+      color: navy;
+  }
+
+  /* 토막글 제목 */
+body > form > div.text-form > p:nth-child(1) > label, body > form > div.text-form > p:nth-child(2) > label, body > form > div.text-form > p:nth-child(3) > label, body > form > div.text-form > p:nth-child(4) > label{
+    white-space: nowrap;
+  }
+
+.label{
+    white-space: nowrap;
+  }

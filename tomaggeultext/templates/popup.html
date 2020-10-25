@@ -22,6 +22,9 @@
             <div class="row">
                 <div class="col-5">
                     <div>
+                        {%if user.is_authenticated %}
+                        <h4>{{user}}</h4>
+                        {%else%}
                         <h3> 토막글 로그인</h3>
                         <form method="POST" action="">
                             {% csrf_token %}
@@ -32,16 +35,21 @@
                             
                             <input id="submit_signup" class="btn btn-primary btn-lg btn-block btn-yellow" type="submit" size="34" name="button2" value="로그인" style="width:310px;">
                         </form>
-                            <a class="navbar-brand" href="/" style="text-align: center; width:100%; font-size:13px;">* 토막글 페이지로 가기*</a>
+                        {%endif%}
+                        <a class="navbar-brand" href="/" style="text-align: center; width:100%; font-size:13px;">* 토막글 페이지로 가기*</a>    
                     </div>
                 </div>
+
+                
                 <div class="col-7">
                     <div>
                     <div>
-                    {% for tmg in series.text.all %}
+                        <form method="POST" action="">
+                            {% csrf_token %}
+                    {% for tmg in user.like.all %}
                     <div class="all_TMtext">
                         <div class="tmtext">
-                            <p id="series_name">{{series}}</p>
+                            <p id="series_name">{{tmg.series}}</p>
                             <div class="tmtext_info">
                                 <P>{{tmg.text_title}}</P>
                                 {% if tmg.main_sentence %}
@@ -53,15 +61,15 @@
                         <div class="author_info_box">
                             <img src={% static "img/writer.png" %} alt="..." />
                             <div class="author-info-text-2">
-                                <p id="author-name2">{{series.writer}}</p>
+                                <p id="author-name2">{{tmg.writer}}</p>
                                 <div class="k">
                                     <p>{{tmg.date_of_write|date:"Y.m.d"}}</p>
                                     <p><img id="view" src={% static "img/view.png" %} alt="..." /> {{tmg.views_num}} </p>
                                 </div>                        
                             </div>
                             <div class="heart_puls">
-                                <img src={% static "img/heart.png" %} alt="..." />
-                                <img src={% static "img/ellipsis.png" %} alt="..." />
+                                <input type="radio" id="text_{{tmg.text_id}}" name="select" value={{tmg.text_id}}>
+                                <img src={% static "img/redheart.png" %} alt="..." />
                             </div>
                         </div>
                     </div>
@@ -88,7 +96,7 @@
                                 <p> 멈추면, 비로소 보이는 것들</p>                    
                             </div>
                             <div class="heart_puls">
-                                <img src={% static "img/heart.png" %} alt="..." />
+                                <img src={% static "img/redheart.png" %} alt="..." />
                                 <!-- <img src={% static "img/ellipsis.png" %} alt="..." /> -->
                             </div>
                         </div>
@@ -96,8 +104,10 @@
                     {% endfor %}
                     </div>
                         <div>
-                            <button type="button" class="btn btn-secondary btn-lg btn-block">전송하기</button>
+                            <button type="summit" class="btn btn-secondary btn-lg btn-block">전송하기</button>
                         </div>
+                        
+                    </form>
                     </div>
                 </div>
             </div>

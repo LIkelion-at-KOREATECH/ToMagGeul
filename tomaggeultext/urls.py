@@ -6,9 +6,7 @@ from django.conf.urls.static import static
 urlpatterns = [
     path('', views.tmtext, name='main'),
     path('create/', views.tmtextcreate, name='create'),
-    path('tmlist', views.tmlist, name='tmlist'),
     path('createseries/',views.tmseriescreate, name='createseries'),
-    path('series/<int:pk>', views.tmlist, name='tmlist'),
     path('series/<int:pk>', views.tmlist, name='series'),
     path('it_sounds_good/<int:tmt_id>',views.it_sounds_good, name='it_sounds_good'),
     path('subscribe/<int:series>',views.subscribe, name='subscribe'),
