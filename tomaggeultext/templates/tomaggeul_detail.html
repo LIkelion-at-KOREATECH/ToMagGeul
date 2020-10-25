@@ -1,25 +1,98 @@
+{% extends 'navbar.html' %}
 {% load static %}
+{% block content %}
 <!DOCTYPE html>
-
-<html>
+<html lang="ko-kr">
 
 <head>
-
-    <meta charset="utf-8">
-
-    <title>detail</title>
-
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{tmtext.text_title}}</title>
+    <link href="../static/css/tomaggeul_detail.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+    integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+    integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous">
+    </script>
+    <!-- fontawesome cdn 아이콘 폰트 사용하기 위해서 필요합니다. -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.1/css/all.min.css" rel="stylesheet">
 </head>
 
 <body>
+    <header>
+        <div id="nav" style="border-bottom :1px solid burlywood;">
 
-    <h2>토막글 상세 페이지</h2>
-    {% for tm in tmtext %}
-    <p>{{tm.text_title}}</p>
-    <p>{{tm.main_sentence}}</p>
-    <p>{{tm.writer}}</p>
-    {% endfor %}
+            <div class="tm-series-name">
+                {{tmtext.text_title}}
+            </div>
+        </div>
+    </header>
+    <section>
+        <div id="main">
+            <div class="tmtext_info">
+                <h6>{{tmtext.series}}</h6>
+                <h3>{{tmtext.text_title}}</h3>
+                <div class="author_info_box">
+                    <!--작가 이미지 넣어줘야함-->
+                    <img src={% static "img/writer.png" %} alt="..." />
+                    <div class="author-info-text-2">
+                        <p id="author-name2">{{tmtext.writer}}</p>
+                        <div class="k">
+                            <p>{{tmtext.date_of_write|date:"Y.m.d"}}</p>
+                            <p><img id="view" src={% static "img/view.png" %} alt="..." /> {{tmtext.views_num}} </p>
+                        </div>                        
+                    </div>
+                </div>
+            </div>
+
+            <div class="tmtext_content">
+                {{tmtext.text_content}}
+            </div>
+
+            <div class="tmtext_genre">
+                {%for genre in tm.text_genre.all%}
+                <button type="button" class="btn btn-light">#{{genre}}</button>
+                {% endfor %}
+            </div>
+
+            
+            <div class="comment">
+                <div class="comment_title">
+                    <p>{{tmtext.comment.count}}개의 댓글</p>
+                </div>
+                {%for tmt_c in tmtext.comment.all%}
+                <div class="comment_user">
+                    <div class="row" style="width:100%;">
+                        <div class="col-1">
+                            <!--댓글 쓴 사용자 사진 넣기-->
+                            <img src={% static "img/writer.png" %} alt="..." />
+                        </div>
+                        <div class="col-8">
+                            <div class="comment_user_info">
+                                <p id="comment_user_name">{{tmt_c.tmuser}}</p>
+                                <!--댓글 내용 넣기-->
+                                <p id="comment">{{tmt_c.comment_content}}</p>
+                            </div>
+                        </div>
+                        <div class="col-3">
+                            <p id="comment_time">{{tmt_c.date_of_comment}}</p>
+                            <button type="button" class="btn btn-outline-danger">삭제</button>
+                        </div>
+                    </div>                    
+                </div>
+                {%endfor%}
+                <!--댓글 달았을 때 DB에 연결 필요-->
+                <div class="new_comment">
+                        <input class="new_comment_input" type="text" name="댓글" size="100" maxlength="100"  value=" 댓글을 입력하세요.">
+                        <button id="new_comment_btn" type="button" class="btn btn-outline-secondary">입력</button>
+                </div>
+                
+            </div>
+        </div>
+    </section>
+    
 
 </body>
 
 </html>
+{% endblock %}

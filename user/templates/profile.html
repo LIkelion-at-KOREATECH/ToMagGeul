@@ -1,4 +1,6 @@
+{% extends 'navbar.html' %}
 {% load static %}
+{% block content %}
 <!DOCTYPE html>
 <html lang="ko-kr">
 
@@ -17,17 +19,14 @@
 </head>
 
 <body>
-    <header>
+    <div style="border-bottom :1px solid burlywood;">
         <div id="nav">
-            <div class="back-btn-wrapper">
-                <i class="fa fa-chevron-left" aria-hidden="true"></i>
-            </div>
 
             <div class="tm-series-name">
                 프로필
             </div>
         </div>
-    </header>
+    </div>
 
     <section>
         <div id="main">
@@ -70,14 +69,14 @@
                     <div class="sns">
                         <img src={% static "img/cloud-computing.png" %} alt="..." /> 
                         <div class="sns-link">
-                            SNS : {{user.tmauthor.page_link}}
+                            PAGE : {{user.tmauthor.page_link}}
                         </div>
                     </div>
 
                     <div class="sns">
                         <img src={% static "img/instagram.png" %} alt="..." /> 
                         <div class="sns-link">
-                            PAGE : {{user.tmauthor.sns_link}}
+                            SNS : {{user.tmauthor.sns_link}}
                         </div>
                     </div>
 
@@ -95,9 +94,8 @@
 
             <div class="list">
                 <div class="all_list_title">
-                    <span>내가 쓴 글</span>
+                    <span>시리즈 글</span>
                     <span>구독</span>
-                    <span>배송 현황</span>
                 </div>
             </div>
 
@@ -110,7 +108,7 @@
                         <div class="tmtext_info">
                             <span>{{tmg.text_title}}</span>
                         </div>
-                        <span id="author-name2">{{tmg.date_of_write}}</span>
+                        <span id="author-name2">{{tmg.date_of_write|date:"Y.m.d"}}</span>
                     </div>
                     <div class="author_info_box">
                         <div class="heart_puls">
@@ -120,12 +118,22 @@
                     </div>
                 </div>
             </div>
+            {%empty%}
+            <div class="all_TMtext">
+                <div class="tmtext_list">
+                    <img src="{% static "img/no-image.png" %}"  alt="Hi!">
+                    <div class="tmtext">
+                        <span id="series_name">아직 쓴 시리즈가 없습니다!</span>
+                        <div class="tmtext_info">
+                            <span>아직 쓴 책도 없습니다!</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
             {%endfor%}
         </div>
     </section>
-
-<a href={% url 'signout' %}><span>to Logout</span></a>
-<a href={% url 'main' %}><span>to main</span></a>
 </body>
 
 </html>
+{% endblock %}
