@@ -93,7 +93,8 @@
                 <div class="tmtext">
                     <p id="series_name">{{series}}</p>
                     <div class="tmtext_info">
-                        <P>{{tmg.text_title}}</P>
+                        <P><a href={% url 'tmtext_detail' tmg.text_id %}
+                style="text-decoration:none; color:#000000;">{{tmg.text_title}}</a></P>
                         {% if tmg.main_sentence %}
                         <P> | </P>
                         <P>{{tmg.main_sentence}}</P>
