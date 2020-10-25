@@ -22,7 +22,12 @@
     <section class="container">
         <div class="container_padding">
             <div class="tmtext_info">
+                <div style="width:100%; height:300px; display:flex; justify-content : center; align-items:center; padding: 10px;">
+                    <img src="{% get_static_prefix %}{{tmtext.text_cover}}"  alt="Hi!" style="max-width:100%; max-height:100%;" >
+                </div>
+                {% if tmtext.series %}
                 <h6>{{tmtext.series}}</h6>
+                {% endif %}
                 <h3>{{tmtext.text_title}}</h3>
                 <div class="author_info_box">
                     <!--작가 이미지 넣어줘야함-->
@@ -71,7 +76,7 @@
                         </div>
                         <div class="col-8">
                             <div class="comment_user_info">
-                                <p id="comment_user_name">{{tmt_c.tmuser}}</p>
+                                <p id="comment_user_name">{{tmt_c.tmuser.nickname}}</p>
                                 <!--댓글 내용 넣기-->
                                 <p id="comment">{{tmt_c.comment_content}}</p>
                             </div>
@@ -88,6 +93,7 @@
                     </div>                    
                 </div>
                 {%endfor%}
+                {% if user.is_authenticated %}
                 <form method='post' action=''>
                     {% csrf_token %}
                     <div class="new_comment">
@@ -95,6 +101,7 @@
                         <button id="new_comment_btn" type="summit" class="btn btn-outline-secondary">입력</button>
                     </div>
                 </form>
+                {% endif%}
             </div>
         </div>
     </section>

@@ -11,6 +11,10 @@ body{
 	/* font-family: 'Nanum Gothic Coding', monospace; */
 	font-family: 'Nanum Myeongjo', serif;
 }
+.tm-series-name{
+	font-family: 'Do Hyeon', sans-serif;
+	font-weight: 900;
+}
 .card_area > p{
 	font-family: 'Nanum Gothic Coding', monospace;
 }
