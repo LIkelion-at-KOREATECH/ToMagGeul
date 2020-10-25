@@ -70,6 +70,7 @@ p{
   float: left; 
   width: 12%; 
   height:13rem;
+  margin-left: 20px;
 }
 
 .all_TMtext > .second_area{
@@ -81,9 +82,10 @@ p{
 
 .all_TMtext > .third_area{
   float: left; 
-  width: 40%;
+  width: 10%;
   font-size: 2em;
-  margin-top: 8%;
+  margin-top: 10%;
+  margin-left: 28%;
 }
 
 .all_TMtext > .third_area > .heart_icon{
