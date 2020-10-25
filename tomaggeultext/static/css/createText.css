@@ -1,27 +1,21 @@
-/* 글꼴 */
-@import url('https://fonts.googleapis.com/css2?family=Do+Hyeon&display=swap');
 
-body{
-    margin: 0 auto;
-    width: 100%;
+@import url(//fonts.googleapis.com/earlyaccess/nanumgothic.css); 
+.DoHyeon * { 
     font-family: 'Do Hyeon', sans-serif;
 }
 
-p{
+body{
+    margin: 0 auto;
+    padding: 50px;
+    width: 700px;
     font-family: 'Do Hyeon', sans-serif;
 }
 
 /* 클래스 */
-
-.createText_form{
-    margin-left: 27%;
-    margin-top: 30px;
-}
-
-.form-check, .book-choice, .input-title, .tomag-introduce, .tomag-write, .genre, .enroll-cover{
+.form-check, .book-choice, .input-title, .tomag-introduce, .tomag-write, .input-genre, .enroll-cover{
     padding: 3px;
     margin-bottom: auto;
-    font-family: 'Do Hyeon', sans-serif;
+
 }
 
 .book-choice{
@@ -30,7 +24,6 @@ p{
 
 .input-title{
     margin-bottom: auto;
-    font-family: 'Do Hyeon', sans-serif;
 }
 .input-title-label{
     width: 600px;
@@ -43,7 +36,7 @@ p{
 .tomag-introduce{
     width: 600px;
 }
-.genre{
+.input-genre{
     width: 600px;
 }
 
@@ -75,12 +68,7 @@ p{
 a{
     text-decoration: none;
 }
-/* 
-body > form > p:nth-child(7)
-.sef>p:nth-child(1)>d>s>{
-    flex:sdf;
 
-} */
 /* 파일업로드 버튼 */
 .plus_btn label {
     display: inline-block;
@@ -108,18 +96,12 @@ body > form > p:nth-child(7)
     border: 0;
   }
 
-  .popup{
-      text-align: right;
-      margin-right: 40%;
-      margin-top: -15px;
-      color: navy;
+  label{
+    white-space: pre;
+    display: flex;
   }
 
-  /* 토막글 제목 */
-body > form > div.text-form > p:nth-child(1) > label{
-    white-space: nowrap;
-  }
-
-  .label{
-    white-space: nowrap;
+  body > form > div.text-form > p:nth-child(1) > label, body > form > div.text-form > p:nth-child(2) > label{
+    white-space: pre;
+    display: flex;
   }

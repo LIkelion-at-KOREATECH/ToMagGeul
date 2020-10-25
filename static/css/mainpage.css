@@ -1,20 +1,12 @@
-@import url(//fonts.googleapis.com/earlyaccess/nanumgothic.css); 
-.Do Hyeon * { 
-    font-family: 'Do Hyeon', sans-serif;; 
+@import url('https://fonts.googleapis.com/css2?family=Do+Hyeon&display=swap');
+
+body{
+  font-family: 'Do Hyeon', sans-serif;
 }
 
-html { 
-  font-size:1vw; 
-  
+p{
+  font-family: 'Do Hyeon', sans-serif;
 }
-
-body {
-  margin: 20px;
-  padding: 30px;
-}
-
-
-
 .TMtext_table {
   font-weight: bold;
   color: gray;
@@ -51,29 +43,34 @@ body {
 }
 
 .all_TMtext_title {
-  width: 80%;
+  /* width: 80%; */
   height: 30px;
   border-bottom: 2px solid #D3D3D3;
   flex-direction: column;
   align-items: left;
   margin-top: 5rem;
-  margin-left: 10%;
+  /* margin-left: 10%; */
+}
+
+
+.all_subscribe {
 }
 
 .all_TMtext {
-  width: 80%;
+  width: 100%;
   height: 13rem;
   border-bottom: 2px solid #D3D3D3;
   flex-direction: column;
   align-items: left;
   text-align: left;
-  margin-left: 10%;
+  /* margin-left: 10%; */
 }
 
 .all_TMtext > .first_area{
   float: left; 
   width: 12%; 
   height:13rem;
+  margin-left: 20px;
 }
 
 .all_TMtext > .second_area{
@@ -85,18 +82,15 @@ body {
 
 .all_TMtext > .third_area{
   float: left; 
-  width: 40%;
+  width: 10%;
   font-size: 2em;
-  margin-top: 8%;
+  margin-top: 10%;
+  margin-left: 28%;
 }
 
 .all_TMtext > .third_area > .heart_icon{
   float: left;
   color: black;
-}
-
-.all_TMtext > .third_area > .heart_icon:hover{
-  color: red;
 }
 
 
@@ -135,25 +129,34 @@ body {
   text-align: center;
   margin-bottom: 0px;
 }
-
-.search {
-  margin-left: 50rem;
+.genre_section{
+  width:100%;
+  display:flex;
+  justify-content: space-around;
+  flex-direction: row;
+  align-content: center;
+  height: 70px;
+  padding-top:20px;
 }
-
-.nav-link {
-  margin-left: 5rem;
-  margin-right: 5rem;
+.main-nav-link--wrap{
+ display: inline-block;
+}
+.main-nav-link {
+  /* margin-left: 5vw;
+  margin-right: 5vw;
   margin-top: 1rem;
-  margin-bottom: 1rem;
+  margin-bottom: 1rem; */
   font-weight: bold;
   cursor: pointer;
   height: 50%;
+  font-size:100%;
 }
 
 .nav-link:hover {
   color: #deb887;
   border-bottom: 2px solid #deb887;
 }
+
 
 
 #topMenu {

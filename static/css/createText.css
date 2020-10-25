@@ -1,6 +1,7 @@
+
 @import url(//fonts.googleapis.com/earlyaccess/nanumgothic.css); 
-.Do Hyeon * { 
-    font-family: 'Do Hyeon', sans-serif;; 
+.DoHyeon * { 
+    font-family: 'Do Hyeon', sans-serif;
 }
 
 body{
@@ -14,6 +15,7 @@ body{
 .form-check, .book-choice, .input-title, .tomag-introduce, .tomag-write, .input-genre, .enroll-cover{
     padding: 3px;
     margin-bottom: auto;
+
 }
 
 .book-choice{
@@ -92,4 +94,14 @@ a{
     overflow: hidden;
     clip: rect(0, 0, 0, 0);
     border: 0;
+  }
+
+  label{
+    white-space: pre;
+    display: flex;
+  }
+
+  body > form > div.text-form > p:nth-child(1) > label, body > form > div.text-form > p:nth-child(2) > label{
+    white-space: pre;
+    display: flex;
   }

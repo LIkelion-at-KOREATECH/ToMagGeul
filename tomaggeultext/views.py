@@ -46,6 +46,7 @@ def it_sounds_good(request,tmt_id): # test
     context = {'heart_count' : tmtext.heart_num}
     return HttpResponse(json.dumps(context), content_type='application/json')
 
+@login_required
 def tmtextcreate(request):
     genre = Genre.objects.all()
     # form 불러오기
@@ -56,6 +57,7 @@ def tmtextcreate(request):
         data = request.POST
         # 입력받은 값을 Form에 넣은 형태로 새로 저장
         tmtext_form = TMtextCreationForm(data)
+        print(data)
         # 입력받은 폼의 유효성 검사
         if tmtext_form.is_valid():
             # 객체를 생성하지 않고 저장
@@ -70,6 +72,8 @@ def tmtextcreate(request):
             tmtext.writer = request.user.tmauthor
             # 객체를 생성하여 저장
             tmtext.save()
+            photo = request.FILES.get('text_cover')
+            tmtext.text_cover = photo
             # 입력받은 장르 값을 get한다.
             genres = data.get('text_genre',[])
             # 장르는 다중 값임으로 모든 값에 대하여
@@ -79,7 +83,7 @@ def tmtextcreate(request):
                 tmtext.text_genre.add(genre)
             # 다시 객체를 저장한다.
             tmtext.save()
-            return redirect('tmlist')
+            return redirect('mypage')
     return render(request, 'createText.html', {'tmtext_form':tmtext_form, 'genre':genre})
     
 def tmseriescreate(request):
