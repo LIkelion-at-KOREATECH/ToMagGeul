@@ -19,14 +19,16 @@
                     <img src="{% get_media_prefix %}{{tmtext.text_cover}}"  alt="Hi!" style="max-width:100%; max-height:100%;" >
                 </div>
                 {% if tmtext.series %}
-                <h6>{{tmtext.series}}</h6>
+                <h6><a href={% url 'series' tmtext.series.series_id %}
+                    style="text-decoration:none; color:#000000;">{{tmtext.series}}</a></h6>
                 {% endif %}
                 <h3>{{tmtext.text_title}}</h3>
                 <div class="author_info_box">
                     <!--작가 이미지 넣어줘야함-->
                     <img src={% static "img/writer.png" %} alt="..." />
                     <div class="author-info-text-2">
-                        <p id="author-name2">{{tmtext.writer}}</p>
+                        <p id="author-name2"><a href={% url 'profile' tmtext.writer %}
+                            style="text-decoration:none; color:#000000;">{{tmtext.writer}}</a></p>
                         <div class="k">
                             <p>{{tmtext.date_of_write|date:"Y.m.d"}}</p>
                             <p><img id="view" src={% static "img/view.png" %} alt="..." /> {{tmtext.views_num}} </p>
