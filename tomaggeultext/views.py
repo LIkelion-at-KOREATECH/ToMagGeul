@@ -14,7 +14,6 @@ from .forms import *
 def tmtext(request):
     all_tmtext = TMText.objects.all().order_by('-date_of_write')
     popular_tmts = TMText.objects.annotate(like_num=Count('like_users')).order_by('-like_num')[:5] # 좋아요 많은 순으로 5개 
-    print(popular_tmts)
     all_genre = Genre.objects.all()
     paginator = Paginator(all_tmtext,5)
     page=1 if(request.GET.get('page') == None) else int(request.GET.get('page'))
@@ -135,3 +134,6 @@ def tmtext_detail(request, tmt_id):
         return redirect('tmtext_detail', tmtext.text_id)
 
     return render(request, 'tomaggeul_detail.html', {'tmtext':tmtext})
+
+def popup(request):
+    return render(request, 'popup.html')
