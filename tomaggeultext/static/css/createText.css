@@ -3,8 +3,7 @@
 
 body{
     margin: 0 auto;
-    padding: 50px;
-    width: 700px;
+    width: 100%;
     font-family: 'Do Hyeon', sans-serif;
 }
 
@@ -13,6 +12,12 @@ p{
 }
 
 /* 클래스 */
+
+.createText_form{
+    margin-left: 27%;
+    margin-top: 30px;
+}
+
 .form-check, .book-choice, .input-title, .tomag-introduce, .tomag-write, .genre, .enroll-cover{
     padding: 3px;
     margin-bottom: auto;
@@ -101,6 +106,13 @@ body > form > p:nth-child(7)
     overflow: hidden;
     clip: rect(0, 0, 0, 0);
     border: 0;
+  }
+
+  .popup{
+      text-align: right;
+      margin-right: 40%;
+      margin-top: -15px;
+      color: navy;
   }
 
   /* 토막글 제목 */
