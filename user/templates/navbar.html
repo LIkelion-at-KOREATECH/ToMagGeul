@@ -120,10 +120,15 @@
           else
             $('#heart_'+id).css('color', 'red');
             
-          if ($('#heart_'+id).attr("src") == "{% static 'img/redheart.png' %}")
+          var hnum = parseInt($('#heartnum').text())
+          if ($('#heart_'+id).attr("src") == "{% static 'img/redheart.png' %}"){
+            $('#heartnum').text(hnum-1)
             $('#heart_'+id).attr("src","{% static 'img/heart.png' %}");
-          else
+          }
+          else{
+            $('#heartnum').text(hnum+1)
             $('#heart_'+id).attr("src","{% static 'img/redheart.png' %}");
+          }
           // 해당 좋아요 바꾸는 부분
           //$('#heart_'+id).css('color', 'red');
         },

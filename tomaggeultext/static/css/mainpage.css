@@ -152,7 +152,7 @@ p{
   font-size:100%;
 }
 
-.nav-link:hover {
+.main-nav-link:hover {
   color: #deb887;
   border-bottom: 2px solid #deb887;
 }

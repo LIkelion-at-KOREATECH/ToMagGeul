@@ -84,7 +84,7 @@
                         </div>
                         <div class="heart">
                             <img src={% static "img/heart.png" %} alt="..." /> 
-                            <p> {{series.heart_num_total}} </p>
+                            <p id='heartnum'> {{series.heart_num_total}} </p>
                         </div>
                         <div class="comment">
                             <img src={% static "img/comment.png" %} alt="..." /> 
@@ -125,10 +125,10 @@
                         </div>                        
                     </div>
                     <div class="heart_puls">
-                        <img id="heart_{{t.text_id}}" 
-                        onclick="it_sounds_good({{t.text_id}},'{{user.nickname}}')"
+                        <img id="heart_{{tmg.text_id}}" 
+                        onclick="it_sounds_good({{tmg.text_id}},'{{user.nickname}}')"
                         src=
-                        {% if user in t.like_users.all %}
+                        {% if user in tmg.like_users.all %}
                             {% static "img/redheart.png" %}
                         {% else %}
                             {% static "img/heart.png" %}
