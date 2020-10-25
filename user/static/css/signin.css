@@ -1,6 +1,12 @@
 @import url(//fonts.googleapis.com/earlyaccess/nanumgothic.css); 
 .Do Hyeon * { 
-    font-family: 'Do Hyeon', sans-serif;; 
+    font-family: 'Do Hyeon', sans-serif;
+}
+body{
+    font-family: 'Do Hyeon', sans-serif;
+}
+.p{
+    font-family: 'Do Hyeon', sans-serif;
 }
 
 .left{
@@ -74,7 +80,7 @@ background:white;
     width: 100%;             
     font-size: 100%;           
     font-weight: bold;           
-    font-family: "Trebuchet MS", Dotum, Arial;              
+    font-family: 'Do Hyeon', sans-serif;              
     /* background-color: red; */
 }
 
@@ -132,7 +138,7 @@ main{
     text-align:center;
 }
 
-login{
+.login{
     background-color:#F7F7F7; 
     border: 2px solid #979797;
     border-radius: 7px;
@@ -232,4 +238,8 @@ login{
 }
 .box input[type = 'text'], .box input[type = 'password'], .box input[type = 'email']{
     color:black !important;
+}
+
+.login-content{
+    font-family: 'Do Hyeon', sans-serif;
 }

@@ -1,18 +1,20 @@
 @import url(//fonts.googleapis.com/earlyaccess/nanumgothic.css); 
 .DoHyeon * { 
-    font-family: 'Do Hyeon', sans-serif;; 
+    font-family: 'Do Hyeon', sans-serif;
 }
 
 body{
     margin: 0 auto;
     padding: 50px;
     width: 700px;
+    font-family: 'Do Hyeon', sans-serif;
 }
 
 /* 클래스 */
 .form-check, .book-choice, .input-title, .tomag-introduce, .tomag-write, .input-genre, .enroll-cover{
     padding: 3px;
     margin-bottom: auto;
+
 }
 
 .book-choice{
