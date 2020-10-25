@@ -14,27 +14,6 @@ html, body{
     margin-right: 40vh;
 }
 
-header{
-    margin: 0;
-    height: 5vh;
-    width: 100%;
-    border-bottom :1px solid burlywood;
-    border-top :1px solid burlywood;
-    text-align: center;
-    bottom: 5px;
-}
-
-.back-btn-wrapper{
-    /* 위치 설정*/
-    position: absolute;
-    left: 35vh;
-    top: 5px;
-}
-
-.back-btn-wrapper > i{
-    font-size: 30px;
-    color: black;
-}
 
 .tm-series-name{
     font-size: 25px;
@@ -102,7 +81,8 @@ header{
 
 .author-info{
     box-sizing: border-box;
-    margin-left: 12vw;
+    margin-left: 18%;
+    margin-right: 100px;
     margin-top: 25px;
     width: 250px;
     height: 250px;
@@ -303,7 +283,7 @@ header{
 }
 
 .sort_way{
-    margin-left: 38vw;
+    margin-left: 60%;
     margin-top: 45px;
     width: 150px;
     font-size: 13px;
@@ -312,8 +292,7 @@ header{
     display: flex;
     flex-direction: row;
 }
-
-.sort_way > p{
+.bar{
     margin-left: 5px;
     margin-right: 5px;
 }
@@ -404,7 +383,7 @@ header{
 }
 
 .heart_puls{
-    margin-left: 95vh;
+    margin-left: 75%;
 }
 
 #toast {
