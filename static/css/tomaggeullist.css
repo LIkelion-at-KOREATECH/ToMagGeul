@@ -1,6 +1,6 @@
 @import url(//fonts.googleapis.com/earlyaccess/nanumgothic.css); 
-.nanumgothic * { 
-    font-family: 'Nanum Gothic', sans-serif; 
+.Do Hyeon * { 
+    font-family: 'Do Hyeon', sans-serif;; 
 }
 
 html, body{
@@ -8,33 +8,35 @@ html, body{
     height: 100vh;
     width: 100%;
 }
+#toast {
+    position: fixed;
+    bottom: 30px;
+    left: 50%;
+    padding: 15px 20px;
+    transform: translate(-50%, 10px);
+    border-radius: 30px;
+    overflow: hidden;
+    visibility: hidden;
+    font-size: .8rem;
+    opacity: 0;
+    font-weight: bold;
+    transition: opacity .5s, visibility .5s, transform .5s;
+    background: rgba(224, 109, 109, 0.35);
+    color: #fff;
+    z-index: 10000;
+  }
+  
+  #toast.reveal {
+    opacity: 1;
+    visibility: visible;
+    transform: translate(-50%, 0)
+  }
 
 #main{
     margin-left: 40vh;
     margin-right: 40vh;
 }
 
-header{
-    margin: 0;
-    height: 5vh;
-    width: 100%;
-    border-bottom :1px solid burlywood;
-    border-top :1px solid burlywood;
-    text-align: center;
-    bottom: 5px;
-}
-
-.back-btn-wrapper{
-    /* 위치 설정*/
-    position: absolute;
-    left: 35vh;
-    top: 5px;
-}
-
-.back-btn-wrapper > i{
-    font-size: 30px;
-    color: black;
-}
 
 .tm-series-name{
     font-size: 25px;
@@ -102,7 +104,8 @@ header{
 
 .author-info{
     box-sizing: border-box;
-    margin-left: 45vh;
+    margin-left: 18%;
+    margin-right: 100px;
     margin-top: 25px;
     width: 250px;
     height: 250px;
@@ -303,7 +306,7 @@ header{
 }
 
 .sort_way{
-    margin-left: 88vh;
+    margin-left: 60%;
     margin-top: 45px;
     width: 150px;
     font-size: 13px;
@@ -312,8 +315,7 @@ header{
     display: flex;
     flex-direction: row;
 }
-
-.sort_way > p{
+.bar{
     margin-left: 5px;
     margin-right: 5px;
 }
@@ -404,7 +406,7 @@ header{
 }
 
 .heart_puls{
-    margin-left: 95vh;
+    margin-left: 75%;
 }
 
 #toast {

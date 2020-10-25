@@ -1,12 +1,14 @@
-@import url(//fonts.googleapis.com/earlyaccess/nanumgothic.css); 
-.Do Hyeon * { 
-    font-family: 'Do Hyeon', sans-serif;; 
-}
+@import url('https://fonts.googleapis.com/css2?family=Do+Hyeon&display=swap');
 
 body{
     margin: 0 auto;
     padding: 50px;
     width: 700px;
+    font-family: 'Do Hyeon', sans-serif;
+}
+
+p{
+    font-family: 'Do Hyeon', sans-serif;
 }
 
 /* 클래스 */
@@ -27,9 +29,7 @@ body{
     height: 30px;
     margin-bottom: auto;
 }
-.tomag-write{
-    width : 600px;
-}
+
 .tomag-introduce{
     width: 600px;
 }
@@ -41,12 +41,10 @@ body{
 .enroll-cover-box{
     width: 180px;
     height: 230px;
-    border: 1px solid#f1f0f0;
-    border-radius: 10px;
+    border: 1px solid black;
     display: flex;
     flex-direction: column;
     align-items: center;
-    background-color: #f1f0f0;
 }
 
 .plus_btn{
@@ -65,30 +63,3 @@ p{
 a{
     text-decoration: none;
 }
-
-/* 파일업로드 버튼 */
-.plus_btn label {
-    display: inline-block;
-    color: #696161;
-    cursor: pointer;
-    -webkit-transition: background-color 0.2s;
-    transition: background-color 0.2s;
-    text-align: center;
-    
-  }
-  
-  .plus_btn label:hover {
-    color: rgb(243, 204, 74);
-  }
-  
-  
-  .plus_btn input[type="file"] {
-    position: absolute;
-    width: 1px;
-    height: 1px;
-    padding: 0;
-    margin: -1px;
-    overflow: hidden;
-    clip: rect(0, 0, 0, 0);
-    border: 0;
-  }
