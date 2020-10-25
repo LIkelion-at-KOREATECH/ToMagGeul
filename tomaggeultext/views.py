@@ -1,5 +1,5 @@
-from django.shortcuts import get_object_or_404, render
-from .models import Subscription, TMSeries, TMText
+from django.shortcuts import get_object_or_404, redirect, render
+from .models import Subscription, TMSeries, TMText, Comment
 from .models import Genre
 from django.core.paginator import Paginator
 import math
@@ -59,4 +59,16 @@ def subscribe(request,series): # test
 
 def tmtext_detail(request, tmt_id):
     tmtext=get_object_or_404(TMText, text_id=tmt_id)
+    if request.method == 'POST':
+        isDelete = request.POST.get('id',None)
+        if not isDelete:
+            comment = request.POST.get('comment','')
+            cmt = Comment(comment_content=comment, tmtext = tmtext, tmuser = request.user)
+            cmt.save()
+        else:
+            Comment.objects.get(id=isDelete).delete()
+
+
+        return redirect('tmtext_detail', tmtext.text_id)
+
     return render(request, 'tomaggeul_detail.html', {'tmtext':tmtext})
