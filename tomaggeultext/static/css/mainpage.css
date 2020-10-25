@@ -1,12 +1,13 @@
 @import url('https://fonts.googleapis.com/css2?family=Do+Hyeon&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Nanum+Gothic+Coding&display=swap');
 
-body{
+/* body{
   font-family: 'Do Hyeon', sans-serif;
 }
 
 p{
   font-family: 'Do Hyeon', sans-serif;
-}
+} */
 .TMtext_table {
   font-weight: bold;
   color: gray;

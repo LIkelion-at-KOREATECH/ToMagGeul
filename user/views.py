@@ -30,7 +30,7 @@ def createauthor(request):
             user.is_author = True
             user.save()
             author.save()
-            return redirect('thank')
+            return redirect('main')
  
     return render(request, 'createauthor.html', {'author_form':author_form})
 
