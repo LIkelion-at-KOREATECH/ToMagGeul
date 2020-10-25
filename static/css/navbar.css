@@ -1,4 +1,7 @@
-
+@import url(//fonts.googleapis.com/earlyaccess/nanumgothic.css); 
+.Do Hyeon * { 
+    font-family: 'Do Hyeon', sans-serif;; 
+}
 
 .wrap-search{
     width:180px;

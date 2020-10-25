@@ -1,8 +1,12 @@
+@import url(//fonts.googleapis.com/earlyaccess/nanumgothic.css); 
+.Do Hyeon * { 
+    font-family: 'Do Hyeon', sans-serif;; 
+}
+
 .left{
     text-align : left;
 }
 .center{
-    
     display: flex;
     justify-content: center;
     align-items: center;
@@ -217,4 +221,8 @@ login{
 
 .login-content{
     display:inline-block;
+}
+
+.h{
+    font-family: 'Do Hyeon', sans-serif;
 }

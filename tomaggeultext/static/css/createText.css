@@ -1,17 +1,22 @@
-/* header{
-    margin: 0px;
-    padding: 50px;
-} */
+/* 글꼴 */
+@import url('https://fonts.googleapis.com/css2?family=Do+Hyeon&display=swap');
+
 body{
     margin: 0 auto;
     padding: 50px;
     width: 700px;
+    font-family: 'Do Hyeon', sans-serif;
+}
+
+p{
+    font-family: 'Do Hyeon', sans-serif;
 }
 
 /* 클래스 */
 .form-check, .book-choice, .input-title, .tomag-introduce, .tomag-write, .genre, .enroll-cover{
     padding: 3px;
     margin-bottom: auto;
+    font-family: 'Do Hyeon', sans-serif;
 }
 
 .book-choice{
@@ -20,6 +25,7 @@ body{
 
 .input-title{
     margin-bottom: auto;
+    font-family: 'Do Hyeon', sans-serif;
 }
 .input-title-label{
     width: 600px;
