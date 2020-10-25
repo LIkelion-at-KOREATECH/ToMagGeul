@@ -1,4 +1,29 @@
-<h2>thank you</h2>
+{% extends 'navbar.html' %}
+{% load static %}
 
-<a href={% url 'signin' %}><h6>to Login</h6></a>
-<a href={% url 'main' %}><h6>to main</h6></a>
+{% block content %}
+<link rel="stylesheet" href="{% static 'css/signin.css' %}" />
+
+
+<body >
+    <div class="container center" >
+        <div class="login-content">
+            <img src={% static "img/logotomag.png" %} alt="..." style="width: 200px; height: 100px; margin-left: 60px;" />
+                <h1 class="left" style="margin-top: 20px; margin-left: 70px;">thank you</h1>
+                <br />
+                <h5 class="left" style="color: #606060; margin : 10px 0 0 0;">토막글을 이용해주셔서 감사합니다!</h5>
+            {% comment %} </ui> {% endcomment %}
+            <form method="POST" action="" style="position: relative; display: flex; flex-direction: row; margin-top: 30px;">
+                {% csrf_token %}
+                <a href={% url 'signin' %} style="margin-left: 100px;" ><h6>로그인 </h6></a>
+                <a href={% url 'main' %} style="margin-left: 10px;"><h6> 메인 화면</h6></a>
+            </form>
+        </div>
+    </div>
+</body>
+
+{% endblock %}
+
+
+
+
