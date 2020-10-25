@@ -277,9 +277,9 @@ html, body{
     text-align: left;
 }
 
-/* .content {
-    margin-left: 100px;
-} */
+.content {
+    width: auto;
+}
 
 .tmtext{
     margin-left: 25px;
