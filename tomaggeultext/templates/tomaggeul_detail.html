@@ -68,17 +68,24 @@
                         </div>
                         <div class="col-3">
                             <p id="comment_time">{{tmt_c.date_of_comment}}</p>
-                            <button type="button" class="btn btn-outline-danger">삭제</button>
+                            {% if tmt_c.tmuser == user%}
+                            <form method='post' action=''>
+                                {% csrf_token %}
+                                <button type="summit" class="btn btn-outline-danger" name='id' value={{tmt_c.id}}>삭제</button>
+                            </form>
+                            {%endif%}
                         </div>
                     </div>                    
                 </div>
                 {%endfor%}
                 <!--댓글 달았을 때 DB에 연결 필요-->
-                <div class="new_comment">
-                        <input class="new_comment_input" type="text" name="댓글" size="100" maxlength="100"  value=" 댓글을 입력하세요.">
-                        <button id="new_comment_btn" type="button" class="btn btn-outline-secondary">입력</button>
-                </div>
-                
+                <form method='post' action=''>
+                    {% csrf_token %}
+                    <div class="new_comment">
+                        <input required='true' class="new_comment_input" type="text" name="comment" size="100" maxlength="100"  placeholder =" 댓글을 입력하세요.">
+                        <button id="new_comment_btn" type="summit" class="btn btn-outline-secondary">입력</button>
+                    </div>
+                </form>
             </div>
         </div>
     </section>

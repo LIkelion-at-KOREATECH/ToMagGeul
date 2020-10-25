@@ -55,11 +55,13 @@ def signout(request):
     return redirect('thank')
 
 def profile(request,author):
+    column = int(request.GET.get('column', '0'))
+    isText = column == 0
     author = get_object_or_404(TMAuthor, author_name=author)
-    return render(request, 'profile.html',{'author':author})
+    return render(request, 'profile.html',{'author':author,'isText':isText})
 
 def mypage(request):
-    column = int(request.GET.get('column', 0))
+    column = int(request.GET.get('column', '0'))
     user = request.user
     series = []
     isText = False
