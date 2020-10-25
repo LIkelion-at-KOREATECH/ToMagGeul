@@ -14,15 +14,7 @@ html, body{
     margin-right: 40vh;
 }
 
-header{
-    margin: 0;
-    height: 5vh;
-    width: 100%;
-    border-bottom :1px solid burlywood;
-    border-top :1px solid burlywood;
-    text-align: center;
-    bottom: 5px;
-}
+
 
 .back-btn-wrapper{
     /* 위치 설정*/
@@ -98,6 +90,7 @@ header{
     font-size: 10px;
     margin-left: 40px;
     margin-top: 15px;
+    padding:2px 5px;
 }
 
 .tm-profile-num-info{
@@ -106,6 +99,7 @@ header{
     flex-direction: row;   
     width: 400px;
     font-weight: bolder;
+    margin-left:-15px;
 }
 
 .series_count > h6{
@@ -204,7 +198,7 @@ header{
     height: 15px;
     width: 15px;
     margin-top: 10px;
-    margin-left: 25px;
+    /* margin-left: 25px; */
 }
 
 .date{
@@ -225,7 +219,7 @@ header{
     height: 15px;
     width: 15px;
     margin-top: 10px;
-    margin-left: 25px;
+    /* margin-left: 25px; */
 }
 
 .sns-link{
@@ -261,6 +255,7 @@ header{
     align-items: left;
     text-align: left;
 }
+
 .tmtext_list{
     position: relative;
     display: flex;
@@ -317,7 +312,4 @@ header{
     width: 20px;
     height: 20px;
     margin-left: 10px;
-}
-
-.heart_puls{
 }

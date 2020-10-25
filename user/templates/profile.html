@@ -1,38 +1,29 @@
+{% extends 'navbar.html' %}
 {% load static %}
-<!DOCTYPE html>
-<html lang="ko-kr">
+{% block content %}
+<!-- <!DOCTYPE html>
+<html lang="ko-kr"> -->
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>프로필</title>
     <link href="../static/css/profile.css" rel="stylesheet">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
-    integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
-    integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous">
-    </script>
-    <!-- fontawesome cdn 아이콘 폰트 사용하기 위해서 필요합니다. -->
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.1/css/all.min.css" rel="stylesheet">
+    
 </head>
 
 <body>
-    <header>
+    <div style="border-bottom :1px solid burlywood;">
         <div id="nav">
-            <div class="back-btn-wrapper">
-                <i class="fa fa-chevron-left" aria-hidden="true"></i>
-            </div>
 
             <div class="tm-series-name">
                 프로필
             </div>
         </div>
-    </header>
+    </div>
 
-    <section>
-        <div id="main">
+    <section class="container">
+        <div>
             <div class="profile">
-                <img src={% static "img/no-image.png" %} alt="..." />
+                <img src={% static "img/no-image.png" %} alt="..."/>
                 <div class="tm-profile-text">
                     <div class="user-name">
                         <h1>{{user.nickname}}</h1>
@@ -70,14 +61,14 @@
                     <div class="sns">
                         <img src={% static "img/cloud-computing.png" %} alt="..." /> 
                         <div class="sns-link">
-                            SNS : {{user.tmauthor.page_link}}
+                            PAGE : {{user.tmauthor.page_link}}
                         </div>
                     </div>
 
                     <div class="sns">
                         <img src={% static "img/instagram.png" %} alt="..." /> 
                         <div class="sns-link">
-                            PAGE : {{user.tmauthor.sns_link}}
+                            SNS : {{user.tmauthor.sns_link}}
                         </div>
                     </div>
 
@@ -95,9 +86,8 @@
 
             <div class="list">
                 <div class="all_list_title">
-                    <span>내가 쓴 글</span>
+                    <span>시리즈 글</span>
                     <span>구독</span>
-                    <span>배송 현황</span>
                 </div>
             </div>
 
@@ -110,7 +100,7 @@
                         <div class="tmtext_info">
                             <span>{{tmg.text_title}}</span>
                         </div>
-                        <span id="author-name2">{{tmg.date_of_write}}</span>
+                        <span id="author-name2">{{tmg.date_of_write|date:"Y.m.d"}}</span>
                     </div>
                     <div class="author_info_box">
                         <div class="heart_puls">
@@ -120,12 +110,22 @@
                     </div>
                 </div>
             </div>
+            {%empty%}
+            <div class="all_TMtext">
+                <div class="tmtext_list">
+                    <img src="{% static "img/no-image.png" %}"  alt="Hi!">
+                    <div class="tmtext">
+                        <span id="series_name">아직 쓴 시리즈가 없습니다!</span>
+                        <div class="tmtext_info">
+                            <span>아직 쓴 책도 없습니다!</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
             {%endfor%}
         </div>
     </section>
-
-<a href={% url 'signout' %}><span>to Logout</span></a>
-<a href={% url 'main' %}><span>to main</span></a>
 </body>
 
-</html>
+<!-- </html> -->
+{% endblock %}

@@ -1,13 +1,25 @@
-<!doctype html>
-<html lang="ko-kr">
-
+{% extends 'navbar.html' %}
 {% load static %}
 
-<form method="POST" action={% url 'author_register' %} enctype="multipart/form-data">
-    {% csrf_token %}
-    <table>
-    {{author_form.as_table}}
-    </table>
-    <input type="hidden" name="name" value={{user.nickname}}>
-    <input type="submit" value="작가등록">
-</form>
+{% block content %}
+<link rel="stylesheet" href="{% static 'css/signup.css' %}" />
+
+<body>
+    <div  class="container center">
+        <div class="login-content">
+
+            <h1 class="left"> 작가 등록</h1><br />
+            <h5 class="left" style="color: #606060;">작가 등록을 하고 토막글을 작성해 보세요!</h5><br /><br /><br />
+            <form method="POST" action="{% url 'author_register' %}" enctype="multipart/form-data" class = "box ">
+                {% csrf_token %}
+                <table class="author-join--table">
+                {{author_form.as_table}}
+                </table>
+                <input type="hidden" name="name" value={{user.nickname}}>
+                <input type="submit" class="btn btn-primary btn-lg btn-block btn-yellow"  value="작가등록">
+            </form>
+        </div>
+    </div>
+</body>
+
+{% endblock %}
