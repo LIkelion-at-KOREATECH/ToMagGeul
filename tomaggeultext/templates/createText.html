@@ -1,8 +1,7 @@
 {% extends 'navbar.html' %}
-{% load static %}
-<!DOCTYPE html>
-<html lang="ko-kr">
 
+{% load static %}
+{% block content %}
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -14,10 +13,11 @@
 <body>
   <form method="POST" action="" enctype="multipart/form-data">
     {% csrf_token %}
+
     <!-- 제목, 소개, 쓰기 Form -->
     <div class="text-form">
       {{tmtext_form.as_p}}
-      <a id="popup"> 새로운 책 추가하기 </a>
+      <label id="popup" style="text-align : right;"> 새로운 책 추가하기 </label>
     </div>
 
     <!-- 장르 다중 선택 -->
@@ -28,7 +28,8 @@
         <option value={{value.id}}>{{value}}</option>
         {% endfor %}
       </select>
-      <p>토막글과 어울리는 장르를 입력해주세요. 자유롭게 입력하실 수 있지만, 메인 페이지에서 보여주는 장르는</p>
+      <p>토막글과 어울리는 장르를 입력해주세요.</p> 
+        <p>자유롭게 입력하실 수 있지만, 메인 페이지에서 보여주는 장르는 다음과 같습니다.</p>
     </div><br>
 
     <!-- 책 표지 등록하기 -->
@@ -47,14 +48,14 @@
     <!-- 제출 버튼 -->
     <input type="submit" value="글 작성">
   </form>
-
-  <script type="text/javascript">
+  <script type ="text/javascript">
     var popup = document.getElementById('popup');
-    popup.onclick = function () {
-      window.open("/createseries/", "시리즈 추가", "width=800,height=400");
-      popup.onclick = null;
+    popup.onclick= function (){
+    window.open("/createseries/", "시리즈 추가", "width=800,height=400");
+    popup.onclick = null;
     }
   </script>
-</body>
-
 </html>
+
+{% endblock %}
+  

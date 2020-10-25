@@ -101,7 +101,6 @@ def tmseriescreate(request):
                 g = Genre.objects.get(id = int(i))
                 series.series_genre.add(g)
             series.save()
-            return redirect('tmlist')
             
     return render(request, 'createSeries.html',{'genre':genre, 'series_form':series_form})
 
