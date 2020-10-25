@@ -1,3 +1,9 @@
+@import url('https://fonts.googleapis.com/css2?family=Do+Hyeon&display=swap');
+
+body {
+    font-family: 'Do Hyeon', sans-serif;
+}
+
 .left{
     text-align : left;
 }
@@ -22,6 +28,7 @@
     background:white;
     /* display:flex; */
     text-align:left;
+    font-family: 'Do Hyeon', sans-serif;
 }
 
 .blank{
@@ -55,6 +62,7 @@ height : 35px;
     outline: none;
     color: black;
     transition: 0.25s;
+    font-family: 'Do Hyeon', sans-serif;
 }
 
 #topMenu {    
@@ -143,7 +151,7 @@ main{
     text-align:center;
 }
 
-login{
+.login{
     background-color:#F7F7F7; 
     border: 2px solid #979797;
     border-radius: 7px;

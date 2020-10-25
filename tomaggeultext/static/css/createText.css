@@ -1,11 +1,10 @@
-/* header{
-    margin: 0px;
-    padding: 50px;
-} */
+@import url('https://fonts.googleapis.com/css2?family=Do+Hyeon&display=swap');
+
 body{
     margin: 0 auto;
     padding: 50px;
     width: 700px;
+    font-family: 'Do Hyeon', sans-serif;
 }
 
 /* 클래스 */

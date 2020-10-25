@@ -1,4 +1,8 @@
+@import url('https://fonts.googleapis.com/css2?family=Do+Hyeon&display=swap');
 
+.p{
+  font-family: 'Do Hyeon', sans-serif;
+}
 
 .wrap-search{
     width:180px;
