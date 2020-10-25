@@ -14,15 +14,31 @@ html, body{
     margin-right: 40vh;
 }
 
-header{
-    margin: 0;
-    height: 5vh;
-    width: 100%;
-    border-bottom :1px solid burlywood;
-    border-top :1px solid burlywood;
-    text-align: center;
-    bottom: 5px;
-}
+#toast {
+    position: fixed;
+    bottom: 30px;
+    left: 50%;
+    padding: 15px 20px;
+    transform: translate(-50%, 10px);
+    border-radius: 30px;
+    overflow: hidden;
+    visibility: hidden;
+    font-size: .8rem;
+    opacity: 0;
+    font-weight: bold;
+    transition: opacity .5s, visibility .5s, transform .5s;
+    background: rgba(224, 109, 109, 0.35);
+    color: #fff;
+    z-index: 10000;
+  }
+  
+  #toast.reveal {
+    opacity: 1;
+    visibility: visible;
+    transform: translate(-50%, 0)
+  }
+  
+
 
 .back-btn-wrapper{
     /* 위치 설정*/
@@ -89,14 +105,23 @@ header{
     position: relative;
     display: flex;
     flex-direction: row;
-    width: 100px;
+    /* width: 100px; */
 }
 
 .user-name > button{
     height: 25px;
-    width: 160px;
+    width: 75px;
     font-size: 10px;
     margin-left: 40px;
+    margin-top: 15px;
+    padding:2px 5px;
+}
+
+.user-name > a > button{
+    height: 25px;
+    width: 75px;
+    font-size: 10px;
+    margin-left: 10px;
     margin-top: 15px;
 }
 
@@ -106,6 +131,7 @@ header{
     flex-direction: row;   
     width: 400px;
     font-weight: bolder;
+    margin-left:-15px;
 }
 
 .series_count > h6{
@@ -204,7 +230,7 @@ header{
     height: 15px;
     width: 15px;
     margin-top: 10px;
-    margin-left: 25px;
+    /* margin-left: 25px; */
 }
 
 .date{
@@ -225,7 +251,7 @@ header{
     height: 15px;
     width: 15px;
     margin-top: 10px;
-    margin-left: 25px;
+    /* margin-left: 25px; */
 }
 
 .sns-link{
@@ -252,6 +278,19 @@ header{
     display: inline-block;
 }
 
+.tmtext_list{
+    position: relative;
+    display: flex;
+    flex-direction: row;
+}
+
+.tmtext_list > img{
+    /* width: 80px; */
+    height: 110px;
+    margin-left: 30px;
+    margin-top: 10px;
+}
+
 .all_TMtext{
     width: 100%;
     height: 130px;
@@ -262,23 +301,12 @@ header{
     text-align: left;
 }
 
-.tmtext_list{
-    position: relative;
-    display: flex;
-    flex-direction: row;
+.content {
+    width: auto;
 }
 
 .tmtext{
     margin-left: 25px;
-    width: 200px;
-    margin-top: 25px;
-}
-
-.tmtext_list > img{
-    width: 80px;
-    height: 110px;
-    margin-left: 30px;
-    margin-top: 10px;
 }
 
 #series_name{
@@ -300,16 +328,49 @@ header{
     margin-right: 3px;
 }
 
+.author_info_box > img{
+    width: 30px;
+    height: 30px;
+    box-sizing: border-box;
+    border: 0.5px solid lightgray;
+    border-radius: 100px;
+    margin-top: 3px;
+}
+
 .author_info_box{
-    margin-left: 730px;
-    margin-top: 80px;
+    margin-left: 25px;
     position: relative;
     display: flex;
     flex-direction: row;
 }
 
+#view{
+    width: 10px;
+    height: 10px;
+}
+
+.author-info-text-2{
+    width: 240px;
+    font-size: 12px;
+    text-align: left;
+    margin-left: 12px;
+    margin-bottom: 3px;
+}
+
+.k{
+    position: relative;
+    display: flex;
+    flex-direction: row;
+    margin-top: 0;
+}
+
+.k > p{
+    margin-left: 3px;
+    margin-right: 3px;
+}
 
 #author-name2{
+    font-weight: bolder;
     font-size: 13px;
     margin-bottom: 2px;
 }
@@ -318,4 +379,8 @@ header{
     width: 20px;
     height: 20px;
     margin-left: 10px;
+}
+
+.heart_puls{
+    margin-left: 95vh;
 }

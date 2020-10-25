@@ -1,5 +1,6 @@
 from user.models import TMAuthor, TMUser
 from django.shortcuts import get_object_or_404, render, redirect
+from django.contrib.auth.decorators import login_required
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth import authenticate, login, logout
 from .forms import UserCreationForm, AuthorCreationForm
@@ -16,6 +17,7 @@ def signup(request):
             return redirect('signin')
     return render(request, 'signup.html', {'regi_form':user_form})
 
+@login_required
 def createauthor(request):
     username = request.GET.get('name', '')
     author_form = AuthorCreationForm()
@@ -50,9 +52,11 @@ def signin(request):
             return redirect('mypage')
     return render(request, 'signin.html')
 
+@login_required
 def signout(request):
     logout(request)
     return redirect('thank')
+
 
 def profile(request,author):
     column = int(request.GET.get('column', '0'))
@@ -60,6 +64,7 @@ def profile(request,author):
     author = get_object_or_404(TMAuthor, author_name=author)
     return render(request, 'profile.html',{'author':author,'isText':isText})
 
+@login_required
 def mypage(request):
     column = int(request.GET.get('column', '0'))
     user = request.user
@@ -74,5 +79,8 @@ def mypage(request):
         isText = True
         if user.is_author:
             series = user.tmauthor.text.all()
+    elif column == 3:
+        isText = True
+        series = user.like.all()
 
     return render(request, 'mypage.html', {'series':series, 'isText':isText})

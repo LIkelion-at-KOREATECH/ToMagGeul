@@ -1,34 +1,28 @@
+{% extends 'navbar.html' %}
 {% load static %}
+{% block content %}
+
+<!--
 <!DOCTYPE html>
 <html lang="ko-kr">
+-->
+
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>토막글 리스트</title>
     <link href="../static/css/tomaggeullist.css" rel="stylesheet">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
-    integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-    <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
-    integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous">
-    </script>
-    <!-- fontawesome cdn 아이콘 폰트 사용하기 위해서 필요합니다. -->
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.1/css/all.min.css" rel="stylesheet">
 </head>
 
 <body>
-    <header>
+    <div style="border-bottom :1px solid burlywood;">
+    
         <div id="nav">
-            <div class="back-btn-wrapper">
-                <i class="fa fa-chevron-left" aria-hidden="true"></i>
-            </div>
-
             <div class="tm-series-name">
                 책제목
             </div>
         </div>
-    </header>
+
+    </div>
     <div id="toast"></div>
     <section>
         <div id="main">
@@ -66,7 +60,6 @@
                                 <p id="author-name">{{series.writer}}</p>
                                 <p>구독자 {{series.writer.follower_num}}명</p>
                             </div>
-                            <button type="button" class="btn btn-outline-dark">+ 팔로우</button>
                         </div>
                         <div class="author-info-sentence">
                             {{series.writer.introduce}}
@@ -104,7 +97,7 @@
                 <p>{{series.tomag_num_total}}개의 포스트</p>
                 <div class="sort_way">
                     <p>1화부터</p>
-                    <p> | </p>
+                    <p class="bar"> | </p>
                     <p>최신순</p>
                 </div>
             </div>
@@ -132,7 +125,15 @@
                         </div>                        
                     </div>
                     <div class="heart_puls">
-                        <img src={% static "img/heart.png" %} alt="..." />
+                        <img id="heart_{{t.text_id}}" 
+                        onclick="it_sounds_good({{t.text_id}},'{{user.nickname}}')"
+                        src=
+                        {% if user in t.like_users.all %}
+                            {% static "img/redheart.png" %}
+                        {% else %}
+                            {% static "img/heart.png" %}
+                        {% endif %}
+                         alt="..." />
                         <img src={% static "img/ellipsis.png" %} alt="..." />
                     </div>
                 </div>
@@ -205,5 +206,5 @@ function subs(id) {
     });
 }
 </script>
-
-</html>
+<!-- </html> -->
+{% endblock %}

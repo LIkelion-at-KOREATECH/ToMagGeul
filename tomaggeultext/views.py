@@ -1,9 +1,11 @@
 from django.shortcuts import get_object_or_404, redirect, render,redirect
+from django.contrib.auth.decorators import login_required
 from .models import Subscription, TMSeries, TMText, Comment
 from .models import Genre
 from django.core.paginator import Paginator
-import math
 from django.http import HttpResponse
+from django.db.models import Count
+import math
 import json
 from .forms import *
 
@@ -11,7 +13,7 @@ from .forms import *
 # Create your views here.
 def tmtext(request):
     all_tmtext = TMText.objects.all().order_by('-date_of_write')
-    popular_tmts = TMText.objects.all().order_by('-heart_num')[:5] # 좋아요 많은 순으로 5개 
+    popular_tmts = TMText.objects.annotate(like_num=Count('like_users')).order_by('-like_num')[:5] # 좋아요 많은 순으로 5개 
     all_genre = Genre.objects.all()
     paginator = Paginator(all_tmtext,5)
     page=1 if(request.GET.get('page') == None) else int(request.GET.get('page'))
@@ -31,12 +33,17 @@ def tmlist(request, pk):
         isSubs = user.subs.filter(tmseries=series)
     return render(request, 'tomaggeullist.html', {'series':series, 'isSubs':isSubs})
     
-
+@login_required
 def it_sounds_good(request,tmt_id): # test
-    tmtext=TMText.objects.filter(text_id=tmt_id)
-    heart_num = tmtext.values()[0]['heart_num']
-    tmtext.update(heart_num = heart_num+1)
-    context = {'heart_count' : heart_num}
+    user = request.user
+    tmtext=TMText.objects.get(text_id=tmt_id)
+
+    if tmtext.like_users.filter(email=user.email).exists():
+        tmtext.like_users.remove(user)
+    else:
+        tmtext.like_users.add(user)
+    tmtext.save()
+    context = {'heart_count' : tmtext.heart_num}
     return HttpResponse(json.dumps(context), content_type='application/json')
 
 def tmtextcreate(request):
@@ -96,6 +103,7 @@ def tmseriescreate(request):
 def tmlist(request):
     return render(request, 'tomaggeullist.html')
 
+@login_required
 def subscribe(request,series): # test
     user = request.user
     tmseries = get_object_or_404(TMSeries, series_id=series)
@@ -126,3 +134,6 @@ def tmtext_detail(request, tmt_id):
         return redirect('tmtext_detail', tmtext.text_id)
 
     return render(request, 'tomaggeul_detail.html', {'tmtext':tmtext})
+
+def popup(request):
+    return render(request, 'popup.html')
