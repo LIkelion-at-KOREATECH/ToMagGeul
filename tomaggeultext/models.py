@@ -14,7 +14,7 @@ class TMSeries(models.Model):
     series_genre = models.ManyToManyField(Genre, related_name='series_genre')
     last_uploaded_date = models.DateTimeField(default = timezone.now)
     # tomag_num_total = models.PositiveIntegerField(default=0)     #토막글 수 종합
-    heart_num_total = models.PositiveIntegerField(default=0)     #공감 수 #property로 바꾸기
+    # heart_num_total = models.PositiveIntegerField(default=0)     #공감 수 #property로 바꾸기
     # comment_num_total = models.PositiveIntegerField(default=0)   #댓글 수 종합 #property로 바꾸기
     views_num_total = models.PositiveIntegerField(default=0)     #조회 수 종합 #property로 바꾸기
     writer = models.ForeignKey(TMAuthor, on_delete=models.CASCADE, related_name='series')
@@ -30,6 +30,13 @@ class TMSeries(models.Model):
         return result
 
     @property
+    def heart_num_total(self):
+        result = self.text.all().annotate(totallike=Count('like_users')).aggregate(result=Sum('totallike'))['result']
+        if not result:
+            result = 0
+        return result
+
+    @property
     def tomag_num_total(self):
         return len(self.text.all())
 
@@ -39,14 +46,23 @@ class TMText(models.Model):
     main_sentence = models.CharField(max_length=200, null=True, blank=True, default="Main sentence")
     text_content = models.CharField(max_length=5000)
     text_genre =  models.ManyToManyField(Genre, related_name='text_genre')
-    heart_num = models.PositiveIntegerField(default=0)     #공감 수
-    comment_num = models.PositiveIntegerField(default=0)   #댓글 수
+    # heart_num = models.PositiveIntegerField(default=0)     #공감 수
+    # comment_num = models.PositiveIntegerField(default=0)   #댓글 수
     views_num = models.PositiveIntegerField(default=0)     #조회 수
     date_of_write = models.DateField(default = timezone.now)
     writer = models.ForeignKey(TMAuthor, on_delete=models.CASCADE, related_name='text')
     series = models.ForeignKey(TMSeries, on_delete=models.CASCADE, null=True, blank=True, related_name='text')
     text_cover = models.ImageField(upload_to='covers',default='../static/img/no-image.png')
+    like_users = models.ManyToManyField(TMUser, blank=True, related_name='like')
     
+    @property
+    def heart_num(self):
+        return self.like_users.count()
+
+    @property
+    def comment_num(self):
+        return self.comment.count()
+
     def __str__(self):
         return self.text_title
 
