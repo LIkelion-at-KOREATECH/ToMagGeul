@@ -196,11 +196,13 @@
           </div>
           <div id="TM_information">
             {%if tomaggeul.series%}
-            <a href={% url 'tmlist' tomaggeul.series.series_id %}
+            <a href={% url 'series' tomaggeul.series.series_id %}
               style="text-decoration:none; color:#000000;">{{tomaggeul.series.series_title}}</a>
 
             {%endif%}
-            Wrriten By {{tomaggeul.writer.author_name}}<br><br>{{tomaggeul.date_of_write}}
+            Wrriten By <a href={% url 'profile' tomaggeul.writer.author_name %}
+            style="text-decoration:none; color:#000000;">{{tomaggeul.writer.author_name}}</a>
+            <br><br>{{tomaggeul.date_of_write}}
 
             </p>
           </div>

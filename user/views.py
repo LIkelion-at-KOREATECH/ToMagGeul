@@ -59,4 +59,18 @@ def profile(request,author):
     return render(request, 'profile.html',{'author':author})
 
 def mypage(request):
-    return render(request, 'mypage.html')
+    column = int(request.GET.get('column', 0))
+    user = request.user
+    series = []
+    isText = False
+    if column == 0:
+        if user.is_author:
+            series = user.tmauthor.series.all()
+    elif column == 1:
+        series = map(lambda x:x.tmseries,user.subs.all())
+    elif column == 2:
+        isText = True
+        if user.is_author:
+            series = user.tmauthor.text.all()
+
+    return render(request, 'mypage.html', {'series':series, 'isText':isText})
