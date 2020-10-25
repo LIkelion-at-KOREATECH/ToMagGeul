@@ -17,6 +17,7 @@
     <!-- 제목, 소개, 쓰기 Form -->
     <div class="text-form">
       {{tmtext_form.as_p}}
+      <a id="popup"> 새로운 책 추가하기 </a>
     </div>
     
     <!-- 장르 다중 선택 -->
@@ -48,4 +49,11 @@
     <input type="submit" value="글 작성">
   </form>
 
+  <script type ="text/javascript">
+    var popup = document.getElementById('popup');
+    popup.onclick= function (){
+    window.open("/createseries/", "시리즈 추가", "width=800,height=400");
+    popup.onclick = null;
+    }
+  </script>
 </html>

@@ -38,24 +38,6 @@ class TMtextCreationForm(forms.ModelForm):
             }
         )
     )
-    # text_genre = forms.ModelMultipleChoiceField(
-    #     Genre.objects.all(),
-    #     label = ("토막글 장르"),
-    #     widget = forms.Select(
-    #         attrs={
-    #             'required' : 'True',
-    #             'class': 'input-genre',
-    #         }
-    #     )
-    # )
-
-    # text_cover = forms.ImageField(
-    #     required=False,
-    #     label = ("책 표지 등록"),
-    # )
-
-
-
     series = forms.ModelChoiceField(
         TMSeries.objects.all(),
         empty_label = "책 선택 안함", 
@@ -75,4 +57,30 @@ class TMtextCreationForm(forms.ModelForm):
                     'main_sentence', 
                     'text_content', 
                     )
+class TMSeriesCreationForm(forms.ModelForm):
+    series_title = forms.CharField(
+        label = "책 제목 : ",
+        max_length=30,
+        widget=forms.TextInput(
+            attrs = {
+            'required' : 'True',
+        }
+        ))
+
+    introduce = forms.CharField(
+        label = "책 소개 : ",
+        max_length=30,
+        widget=forms.TextInput(
+            attrs = {
+                'required' : 'True',
+            }
+        )
+    )
+    
+    class Meta:
+        model = TMSeries
+        fields = (
+                    'series_title',
+                    'introduce',
+        )
                     
